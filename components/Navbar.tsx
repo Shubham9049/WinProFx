@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { title: "Markets", dropdown: true },
+    { title: "Warkets", dropdown: true },
     { title: "Trading", dropdown: true },
     { title: "About Us", dropdown: false },
     { title: "Education", dropdown: false },
@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#0b111d] text-white px-4 md:px-12 py-4 shadow-md font-montserrat">
+    <nav className="bg-[#0b111d] text-gray-400 px-4 md:px-12 py-4 shadow-md font-montserrat">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between">
         {/* Logo & Language */}
         <div className="flex items-center gap-4">
