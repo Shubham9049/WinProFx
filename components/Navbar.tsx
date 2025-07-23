@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { title: "Warkets", dropdown: true },
+    { title: "Markets", dropdown: true },
     { title: "Trading", dropdown: true },
     { title: "About Us", dropdown: false },
     { title: "Education", dropdown: false },
