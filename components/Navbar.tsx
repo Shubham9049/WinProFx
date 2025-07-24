@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { div } from "framer-motion/client";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,16 +16,18 @@ const Navbar = () => {
       items: [
         { label: "Forex", href: "/forex" },
         { label: "Indices", href: "/indices" },
-        { label: "Asset List", href: "/markets/assets" },
+        { label: "Crypto", href: "/crypto" },
+        { label: "Metals", href: "/metals" },
+        { label: "Commodities", href: "/commodities" },
+        { label: "Oil", href: "/oil" },
       ],
     },
     {
       title: "Trading",
       dropdown: true,
       items: [
-        { label: "Platforms", href: "/trading/platforms" },
-        { label: "Account Types", href: "/trading/accounts" },
-        { label: "Spreads & Fees", href: "/trading/spreads" },
+        { label: "Platforms", href: "/platforms" },
+        { label: "Accounts", href: "/accounts" },
       ],
     },
     {
@@ -41,24 +44,26 @@ const Navbar = () => {
       title: "Insights",
       dropdown: true,
       items: [
-        { label: "Market News", href: "/insights/news" },
-        { label: "Analysis", href: "/insights/analysis" },
+        { label: "News", href: "/news" },
+        { label: "Blogs", href: "/blogs" },
       ],
     },
     {
       title: "Tools",
       dropdown: true,
       items: [
-        { label: "Economic Calendar", href: "/tools/calendar" },
-        { label: "Trading Calculators", href: "/tools/calculators" },
+        { label: "Analytical Tools", href: "/analytical-tools" },
+        { label: "Economic Calendar", href: "/economic-calendar" },
+        { label: "Currency Calculator", href: "/currency-calculator" },
+        { label: "Currency Converter", href: "/currency-converter" },
       ],
     },
     {
       title: "Promotions",
       dropdown: true,
       items: [
-        { label: "Current Offers", href: "/promotions/current" },
-        { label: "Referral Program", href: "/promotions/referral" },
+        { label: "2.5% Cashback", href: "/cashback" },
+        { label: "Trade to Win", href: "/trade-to-win" },
       ],
     },
   ];
@@ -77,36 +82,44 @@ const Navbar = () => {
         isScrolled
           ? "bg-[#121E2C]/80 backdrop-blur shadow-lg"
           : "bg-transparent"
-      } text-gray-400 py-4 font-montserrat`}
+      } text-gray-400 font-montserrat`}
     >
       <div className="w-11/12 mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-4">
-          <img
-            src="https://winprofx.com/_next/static/media/logo.30704b62.svg"
-            alt="Logo"
-            className="h-12"
-          />
+        <div className="flex items-center gap-4 py-5">
+          <Link href={"/"}>
+            <img
+              src="https://winprofx.com/_next/static/media/logo.30704b62.svg"
+              alt="Logo"
+              className="h-12"
+            />
+          </Link>
         </div>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {navItems.map((item) =>
             item.dropdown ? (
-              <div key={item.title} className="relative group cursor-pointer">
-                <span className="flex items-center gap-1 hover:text-white transition">
+              <div
+                key={item.title}
+                className="relative group cursor-pointer py-8"
+              >
+                <span className="flex items-center gap-1 hover:text-white transition ">
                   {item.title}
                   <ChevronDown className="w-4 h-4" />
                 </span>
-                <div className="absolute top-full left-0 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg  py-2 px-4 rounded w-48 z-50">
+                <div className="absolute space-y-3 top-full -left-10 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg  py-2 px-4 rounded w-48 z-50">
                   {item.items?.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="block px-2 py-1 hover:text-white  rounded text-sm"
-                    >
-                      {link.label}
-                    </Link>
+                    <div className="flex justify-between hover:text-[var(--primary)] hover:font-bold">
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-2 py-1 hover:text-white  text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                      <p className="font-bold">→</p>
+                    </div>
                   ))}
                 </div>
               </div>
