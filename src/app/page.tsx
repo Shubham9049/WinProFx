@@ -7,6 +7,7 @@ import awards from "../../assets/icons/awards.svg";
 import country from "../../assets/icons/countries.svg";
 import trading from "../../assets/icons/trading.svg";
 import Stats from "../../components/Stats";
+import TradeSection from "../../components/Markets";
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
       <Stats />
 
       <BenefitsSection />
+
+      <TradeSection />
       <Footer />
     </div>
   );
