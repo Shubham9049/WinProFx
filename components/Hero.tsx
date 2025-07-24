@@ -69,7 +69,12 @@ export default function Hero() {
 
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-14 text-center md:text-left">
-            <div className="flex flex-col items-center md:items-start text-white">
+            {/* Card 1 */}
+            <div
+              className="flex flex-col items-center md:items-start text-white"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
               <img
                 src={icon1.src}
                 alt="Open Account"
@@ -82,7 +87,12 @@ export default function Hero() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center md:items-start text-white">
+            {/* Card 2 */}
+            <div
+              className="flex flex-col items-center md:items-start text-white"
+              data-aos="zoom-in"
+              data-aos-delay="400"
+            >
               <img
                 src={icon2.src}
                 alt="Make Deposit"
@@ -95,7 +105,12 @@ export default function Hero() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center md:items-start text-white">
+            {/* Card 3 */}
+            <div
+              className="flex flex-col items-center md:items-start text-white"
+              data-aos="zoom-in"
+              data-aos-delay="600"
+            >
               <img
                 src={icon3.src}
                 alt="Start Trading"
