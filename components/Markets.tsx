@@ -53,7 +53,7 @@ export default function TradeSection() {
           WHAT YOU CAN <span className="text-cyan-400">TRADE?</span>
         </h2>
         <p className="text-gray-400 mb-10 max-w-3xl">
-          We're here to help during market volatility. With WinproFX you can
+          We&#39;re here to help during market volatility. With WinproFX you can
           trade on major markets across 3 asset classes including FX, Metals,
           and CFDs.
         </p>
