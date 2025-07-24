@@ -17,7 +17,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#0b111d] text-gray-400 py-4 shadow-md font-montserrat">
+    <nav className="bg-[#000002] text-gray-400 py-4 shadow-md font-montserrat">
       <div className="w-11/12 mx-auto flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex items-center gap-4">
