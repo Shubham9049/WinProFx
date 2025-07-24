@@ -3,3 +3,9 @@
 :root {
   --primary: #067690;
 }
+
+@media (max-width: 768px) {
+  .rotateY-mobile {
+    transform: rotateY(180deg);
+  }
+}
