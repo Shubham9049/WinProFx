@@ -108,13 +108,15 @@ const Navbar = () => {
                   {item.title}
                   <ChevronDown className="w-4 h-4" />
                 </span>
-                <div className="absolute space-y-3 top-full -left-10 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg  py-2 px-4 rounded w-48 z-50">
+                <div className="absolute space-y-3 top-full -left-10 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg py-2 px-4 rounded w-48 z-50">
                   {item.items?.map((link) => (
-                    <div className="flex justify-between hover:text-[var(--primary)] hover:font-bold">
+                    <div
+                      key={link.href} // ✅ Key goes here
+                      className="flex justify-between hover:text-[var(--primary)] hover:font-bold"
+                    >
                       <Link
-                        key={link.href}
                         href={link.href}
-                        className="block px-2 py-1 hover:text-white  text-sm"
+                        className="block px-2 py-1 hover:text-white text-sm"
                       >
                         {link.label}
                       </Link>

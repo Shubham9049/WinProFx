@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   FaWhatsapp,
   FaEnvelope,
@@ -14,11 +15,14 @@ export default function Footer() {
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Logo and intro */}
         <div>
-          <img
+          <Image
             src="https://winprofx.com/_next/static/media/logo.30704b62.svg"
             alt="WINPROFX"
-            className="h-10 mb-4"
+            width={120}
+            height={40}
+            className="mb-4"
           />
+
           <p className="text-gray-300">
             Engage in trading with WinproFX – a single platform offering
             multiple opportunities.
