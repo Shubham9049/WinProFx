@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { FaHeadset, FaRegClock, FaShieldAlt } from "react-icons/fa";
-import "../src/app/globals.css";
 import { FiGift } from "react-icons/fi";
+import "../src/app/globals.css";
+import Slider from "react-slick";
 
 const cardContent = [
   {
@@ -35,6 +37,29 @@ const cardContent = [
 ];
 
 export default function BenefitsSection() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const slickSettings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    arrows: false,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: false,
+  };
+
+  useEffect(() => {
+    setIsMounted(true);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section className="text-white py-12">
       <div className="w-11/12 md:w-4/5 mx-auto grid md:grid-cols-2 gap-10 items-center">
@@ -55,35 +80,59 @@ export default function BenefitsSection() {
           </button>
         </div>
 
-        {/* Right Flip Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {cardContent.map((card, index) => (
-            <div
-              key={index}
-              className="group [perspective:1000px] w-full h-52"
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
-            >
-              <div className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                {/* Front */}
-                <div className="absolute w-full h-full backface-hidden border border-cyan-900 rounded-3xl p-5 flex flex-col justify-between gap-3">
+        {/* Right Content */}
+        <div>
+          {isMounted && isMobile ? (
+            // 📱 Mobile view: show static back side of cards
+            <div className="grid grid-cols-1 gap-6">
+              {cardContent.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-cyan-900 rounded-3xl p-5 min-h-[220px] flex flex-col justify-between gap-3 shadow-lg"
+                >
                   {card.icon}
                   <div>
                     <p className="text-gray-300 text-sm">{card.title}</p>
                     <p className="text-xl font-bold">{card.bold}</p>
                   </div>
-                </div>
-
-                {/* Back */}
-                <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-cyan-900 rounded-3xl p-5 flex flex-col gap-3">
-                  {card.icon}
-                  <p className="text-gray-300 text-sm">{card.title}</p>
-                  <p className="text-xl font-bold">{card.bold}</p>
                   <p className="text-sm text-gray-200">{card.description}</p>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            // 💻 Desktop view: show flip cards
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {cardContent.map((card, index) => (
+                <div
+                  key={index}
+                  className="group [perspective:1000px] w-full h-52"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    {/* Front */}
+                    <div className="absolute w-full h-full backface-hidden border border-cyan-900 rounded-3xl p-5 flex flex-col justify-between gap-3">
+                      {card.icon}
+                      <div>
+                        <p className="text-gray-300 text-sm">{card.title}</p>
+                        <p className="text-xl font-bold">{card.bold}</p>
+                      </div>
+                    </div>
+
+                    {/* Back */}
+                    <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-cyan-900 rounded-3xl p-5 flex flex-col gap-3">
+                      {card.icon}
+                      <p className="text-gray-300 text-sm">{card.title}</p>
+                      <p className="text-xl font-bold">{card.bold}</p>
+                      <p className="text-sm text-gray-200">
+                        {card.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
