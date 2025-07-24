@@ -1,18 +1,19 @@
 "use client";
 
-import { FaClock, FaGift, FaHeadset, FaShieldAlt } from "react-icons/fa";
+import { FaHeadset, FaRegClock, FaShieldAlt } from "react-icons/fa";
 import "../src/app/globals.css";
+import { FiGift } from "react-icons/fi";
 
 const cardContent = [
   {
-    icon: <FaClock className="text-2xl text-cyan-400" />,
+    icon: <FaRegClock className="text-2xl text-cyan-400" />,
     title: "Crypto Withdraw in",
     bold: "30 minutes",
     description:
       '"Unlock swift financial flexibility with our 30-minute withdrawal guarantee."',
   },
   {
-    icon: <FaGift className="text-2xl text-cyan-400" />,
+    icon: <FiGift className="text-2xl text-cyan-400" />,
     title: "Trade daily",
     bold: "Win rewards",
     description:
@@ -33,12 +34,12 @@ const cardContent = [
   },
 ];
 
-export default function Home() {
+export default function BenefitsSection() {
   return (
-    <section className=" text-white py-12">
+    <section className="text-white py-12">
       <div className="w-11/12 md:w-4/5 mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left Content */}
-        <div>
+        <div data-aos="fade-right">
           <h2 className="text-2xl md:text-3xl font-bold leading-snug">
             Benefits of <span className="text-cyan-400">Trading</span> With Us
           </h2>
@@ -57,17 +58,24 @@ export default function Home() {
         {/* Right Flip Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {cardContent.map((card, index) => (
-            <div key={index} className="group [perspective:1000px] w-full h-52">
+            <div
+              key={index}
+              className="group [perspective:1000px] w-full h-52"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
+            >
               <div className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 {/* Front */}
-                <div className="absolute w-full h-full backface-hidden  border border-cyan-900 rounded-xl p-5 flex flex-col gap-3">
+                <div className="absolute w-full h-full backface-hidden border border-cyan-900 rounded-3xl p-5 flex flex-col justify-between gap-3">
                   {card.icon}
-                  <p className="text-gray-300 text-sm">{card.title}</p>
-                  <p className="text-xl font-bold">{card.bold}</p>
+                  <div>
+                    <p className="text-gray-300 text-sm">{card.title}</p>
+                    <p className="text-xl font-bold">{card.bold}</p>
+                  </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-cyan-900 rounded-xl p-5 flex flex-col gap-3">
+                <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-cyan-900 rounded-3xl p-5 flex flex-col gap-3">
                   {card.icon}
                   <p className="text-gray-300 text-sm">{card.title}</p>
                   <p className="text-xl font-bold">{card.bold}</p>

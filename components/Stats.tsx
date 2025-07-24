@@ -59,7 +59,7 @@ export default function Stats() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+      <div className="grid grid-cols-2  md:grid-cols-4 gap-8 mt-12">
         {statsData.map((stat, index) => (
           <div key={index} className="flex flex-col items-center text-center">
             <img

@@ -50,7 +50,7 @@ export default function Hero() {
       {/* OVERLAPPING BOX */}
       <div className="relative mt-6 md:-mt-36 px-4 z-10">
         <div
-          className="mx-auto w-full md:w-4/5 rounded-2xl p-6 md:p-12 text-white"
+          className="mx-auto w-full md:w-4/5 rounded-3xl p-6 md:p-12 text-white"
           style={{
             background:
               "linear-gradient(to bottom, #0B121A 0%, #0F2231 50%, #10364C 100%)",

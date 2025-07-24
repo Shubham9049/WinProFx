@@ -13,8 +13,8 @@ const Navbar = () => {
       title: "Markets",
       dropdown: true,
       items: [
-        { label: "Overview", href: "/markets/overview" },
-        { label: "Live Prices", href: "/markets/live" },
+        { label: "Forex", href: "/forex" },
+        { label: "Indices", href: "/indices" },
         { label: "Asset List", href: "/markets/assets" },
       ],
     },
@@ -98,12 +98,12 @@ const Navbar = () => {
                   {item.title}
                   <ChevronDown className="w-4 h-4" />
                 </span>
-                <div className="absolute top-full left-0 hidden group-hover:block bg-white text-black shadow-lg  py-2 px-4 rounded w-48 z-50">
+                <div className="absolute top-full left-0 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg  py-2 px-4 rounded w-48 z-50">
                   {item.items?.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="block px-2 py-1 hover:bg-gray-100 rounded text-sm"
+                      className="block px-2 py-1 hover:text-white  rounded text-sm"
                     >
                       {link.label}
                     </Link>
@@ -132,28 +132,31 @@ const Navbar = () => {
           </Link>
           <Link
             href="/login"
-            className="hover:bg-[#00D5FF] hover:text-white px-4 py-2 rounded-full hover:border transition text-[#00D5FF]"
+            className="hover:bg-[var(--primary)] hover:text-white px-4 py-2 rounded-full hover:border hover:border-[var(--primary)] transition text-[var(--primary)]"
           >
             Login
           </Link>
           <Link
             href="/register"
-            className="px-4 py-2 border border-cyan-400 text-cyan-400 rounded-full hover:bg-cyan-400 hover:text-black transition"
+            className="group relative inline-block px-4 py-2 border border-[var(--primary)] text-[var(--primary)] rounded-full overflow-hidden"
           >
-            Register
+            <span className="absolute inset-0 bg-[var(--primary)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              Register
+            </span>
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center gap-2">
           <button
-            className="text-[#00D5FF] border border-[#00D5FF] px-4 py-1 rounded-full text-sm hover:bg-[#00D5FF] hover:text-black transition"
+            className="text-[var(--primary)] border border-[var(--primary)] px-4 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
             onClick={() => (window.location.href = "/login")}
           >
             Login
           </button>
           <button
-            className="text-cyan-400 border border-cyan-400 px-4 py-1 rounded-full text-sm hover:bg-cyan-400 hover:text-black transition"
+            className="text-[var(--primary)] border border-[var(--primary)] px-4 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
             onClick={() => (window.location.href = "/register")}
           >
             Register
@@ -225,7 +228,7 @@ const Navbar = () => {
 
           <Link
             href="/introducing-broker"
-            className="hover:text-white text-cyan-400 block"
+            className="hover:text-white text-[var(--primary)] block"
           >
             Introducing Broker
           </Link>
@@ -234,7 +237,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/register"
-            className="text-cyan-400 border border-cyan-400 w-fit px-4 py-1 rounded-full block mt-2"
+            className="text-[var(--primary)] border border-[var(--primary)] w-fit px-4 py-1 rounded-full block mt-2"
           >
             Register
           </Link> */}
