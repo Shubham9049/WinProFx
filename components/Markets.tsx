@@ -49,7 +49,7 @@ const originalItems = [
 export default function TradeSection() {
   const [isMobile, setIsMobile] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const intervalRef = useRef<any>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Clone first & last for circular effect (only on mobile)
   const items = isMobile
@@ -91,7 +91,7 @@ export default function TradeSection() {
       }
     }, 3000);
 
-    return () => clearInterval(intervalRef.current);
+    return () => clearInterval(intervalRef.current!);
   }, [isMobile, items.length]);
 
   return (
