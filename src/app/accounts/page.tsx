@@ -18,7 +18,7 @@ const TradingAccounts = () => {
           </h2>
           <p className="text-gray-300 max-w-xl mb-12">
             Unlock feature-packed, commission-free trading accounts designed for
-            today's traders. Sign up now and enjoy the benefits of our most
+            today&#39;s traders. Sign up now and enjoy the benefits of our most
             popular account.
           </p>
 
