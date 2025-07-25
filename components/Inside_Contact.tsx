@@ -15,7 +15,7 @@ export default function InsightsSection() {
         ahead. The Best Forex Brokers Platform can help achieve success.
       </p>
 
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button  */}
       <a
         href="https://wa.me/919876543210"
         target="_blank"
