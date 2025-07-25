@@ -148,7 +148,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className=" text-white py-12">
+      <section className=" text-white py-16">
         <div className="w-11/12 md:w-4/5 mx-auto">
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
@@ -179,11 +179,19 @@ export default function About() {
                     )}
                   </span>
                 </button>
-                {activeIndex === i && (
-                  <p className="text-gray-400 mt-3 text-sm md:text-base">
+
+                {/* Animated Answer */}
+                <div
+                  className={`transition-all duration-500 overflow-hidden ${
+                    activeIndex === i
+                      ? "max-h-40 opacity-100 mt-3"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-gray-400 text-sm md:text-base">
                     {faq.answer}
                   </p>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -192,11 +200,9 @@ export default function About() {
 
       <section className="w-11/12 md:w-4/5 mx-auto py-12 space-y-5">
         <h2 className="text-center max-w-3xl mx-auto text-gray-200 text-xl md:text-2xl font-bold">
-          Embark on a transformative trading journey with us — where{" "}
-          <span className="text-[var(--primary)]">
-            trading isn&#39;t just an action, it&#39;s a difference.
-          </span>{" "}
-          Trade with us, be the difference.
+          Embark on a transformative trading journey with us — where trading
+          isn&#39;t just an action, it&#39;s a difference. Trade with us, be the
+          difference.
         </h2>
         <p className="text-gray-400 text-center max-w-4xl mx-auto">
           Dive into a world where every trade creates a ripple of impact. Join
