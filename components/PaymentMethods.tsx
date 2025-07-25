@@ -61,8 +61,8 @@ export default function PaymentMethods() {
         {/* Text Section */}
         <div className="md:w-1/2 flex flex-col justify-between gap-8 ">
           <h2 className="text-2xl md:text-3xl font-bold mb-5 ">
-            Effortless Fund Flow: Swift Deposits and Seamless{" "}
-            <span className="text-cyan-400">Withdrawals</span>
+            Effortless Fund Flow: Swift Deposits and Seamless
+            <span className="text-cyan-400"> Withdrawals</span>
           </h2>
           <p className="text-gray-400 mx-auto md:mx-0 ">
             Experience financial fluidity with our hassle-free deposit and
