@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { div } from "framer-motion/client";
+import logo from "../assets/logo.webp";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -86,13 +88,9 @@ const Navbar = () => {
     >
       <div className="w-11/12 mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-4 py-5">
+        <div className="flex items-center gap-4">
           <Link href={"/"}>
-            <img
-              src="https://winprofx.com/_next/static/media/logo.30704b62.svg"
-              alt="Logo"
-              className="h-12"
-            />
+            <Image src={logo} alt="logo" className="w-36 h-24" />
           </Link>
         </div>
 

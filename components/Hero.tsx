@@ -1,7 +1,6 @@
 "use client";
 import heroImage from "../assets/hero.webp";
 import Button from "./Button";
-import { UserPlus, DollarSign, LineChart } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import icon1 from "../assets/icons/icon.svg";
 import icon2 from "../assets/icons/icon2.svg";

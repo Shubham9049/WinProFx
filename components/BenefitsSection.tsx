@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaHeadset, FaRegClock, FaShieldAlt } from "react-icons/fa";
 import { FiGift } from "react-icons/fi";
-import "../src/app/globals.css";
 
-const cardContent = [
+const baseCards = [
   {
     icon: <FaRegClock className="text-2xl text-cyan-400" />,
     title: "Crypto Withdraw in",
@@ -37,29 +36,38 @@ const cardContent = [
 
 export default function BenefitsSection() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const cards = isMobile ? [...baseCards, baseCards[0]] : baseCards;
 
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    let currentIndex = 0;
+  useEffect(() => {
+    if (!isMobile || !scrollRef.current) return;
+
+    const container = scrollRef.current;
+    const cardWidth = container.clientWidth;
+    let index = 0;
 
     const interval = setInterval(() => {
-      const cardWidth = scrollContainer.clientWidth;
-      currentIndex++;
+      index++;
+      container.scrollTo({ left: cardWidth * index, behavior: "smooth" });
 
-      if (currentIndex >= cardContent.length) {
-        currentIndex = 0;
+      if (index === cards.length - 1) {
+        setTimeout(() => {
+          container.scrollTo({ left: 0, behavior: "auto" });
+          index = 0;
+        }, 600);
       }
-
-      scrollContainer.scrollTo({
-        left: cardWidth * currentIndex,
-        behavior: "smooth",
-      });
-    }, 3000); // 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isMobile, cards.length]);
 
   return (
     <section className="text-white py-12">
@@ -84,24 +92,38 @@ export default function BenefitsSection() {
         {/* Right Cards */}
         <div
           ref={scrollRef}
-          className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto md:overflow-visible hide-scrollbar scroll-smooth snap-x snap-mandatory"
+          className={`${
+            isMobile
+              ? "flex overflow-x-auto gap-6 snap-x snap-mandatory no-scrollbar"
+              : "grid grid-cols-2 gap-6"
+          }`}
         >
-          {cardContent.map((card, index) => (
+          {cards.map((card, index) => (
             <div
               key={index}
-              className="group snap-start w-full min-w-full md:min-w-0 [perspective:1000px] h-52"
+              className={`group h-52 snap-center flex-shrink-0 ${
+                isMobile ? "w-full min-w-full" : ""
+              } [perspective:1000px]`}
               data-aos="zoom-in"
               data-aos-delay={index * 100}
             >
-              <div className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] md:group-hover:[transform:rotateY(180deg)] rotateY-mobile">
-                {/* Front */}
-                <div className="absolute w-full h-full backface-hidden border border-cyan-900 rounded-3xl p-5 flex flex-col justify-between gap-3 bg-[#0b1622]">
-                  {card.icon}
-                  <div>
-                    <p className="text-gray-300 text-sm">{card.title}</p>
-                    <p className="text-xl font-bold">{card.bold}</p>
+              <div
+                className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
+                  isMobile
+                    ? "rotate-y-180"
+                    : "md:group-hover:[transform:rotateY(180deg)]"
+                }`}
+              >
+                {/* Front - only visible on desktop */}
+                {!isMobile && (
+                  <div className="absolute w-full h-full backface-hidden border border-cyan-900 rounded-3xl p-5 flex flex-col justify-between gap-3">
+                    {card.icon}
+                    <div>
+                      <p className="text-gray-300 text-sm">{card.title}</p>
+                      <p className="text-xl font-bold">{card.bold}</p>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Back */}
                 <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-cyan-900 rounded-3xl p-5 flex flex-col gap-3">
@@ -115,17 +137,6 @@ export default function BenefitsSection() {
           ))}
         </div>
       </div>
-
-      {/* Hide scrollbar */}
-      <style jsx>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </section>
   );
 }
