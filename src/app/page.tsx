@@ -11,6 +11,8 @@ import Image from "next/image";
 import Button from "../../components/Button";
 import logo from "../../assets/logo.webp";
 import NewsInsights from "../../components/NewsInsights";
+import PaymentMethods from "../../components/PaymentMethods";
+import InsightsSection from "../../components/Inside_Contact";
 
 export default function Home() {
   const handleClick = () => alert("Account Opening Started!");
@@ -29,7 +31,7 @@ export default function Home() {
           <div className="bg-gradient-to-b from-[#121E2C] to-[#104E64] text-white p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between relative z-10">
             {/* Text Content */}
             <div className="max-w-xl">
-              <h2 className="text-2xl md:text-3xl font-semibold mb-2">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">
                 Trade to <span className="text-cyan-400">WIN</span>
               </h2>
               <p className="text-lg font-medium mb-1">
@@ -45,7 +47,7 @@ export default function Home() {
           </div>
 
           {/* Image going below the box */}
-          <div className="absolute -bottom-10 right-0 md:right-[-40px] z-10">
+          <div className="absolute -bottom-10 right-0 md:right-[-40px] z-10 hidden md:block">
             <Image
               src={mobile}
               alt="Promo Prizes"
@@ -59,7 +61,7 @@ export default function Home() {
         <div className="w-11/12 md:w-4/5 mx-auto grid md:grid-cols-3 rounded-2xl overflow-hidden">
           {/* Left 2/3 Content Section */}
           <div className="md:col-span-2 bg-[#34404A] text-white p-8">
-            <h3 className="text-xl md:text-2xl font-bold mb-2">
+            <h3 className="text-2xl md:text-3xl font-bold mb-2">
               ABOUT <span className="text-cyan-400">WINPROFX</span>
             </h3>
             <p className="text-gray-400 mb-4">
@@ -110,7 +112,25 @@ export default function Home() {
       </section>
 
       <NewsInsights />
-
+      <PaymentMethods />
+      <section className="w-11/12 md:w-4/5 mx-auto py-12 space-y-5">
+        <h2 className="text-center max-w-3xl mx-auto text-gray-200 text-xl md:text-2xl font-bold">
+          Embark on a transformative trading journey with us — where{" "}
+          <span className="text-[var(--primary)]">
+            trading isn't just an action, it's a difference.
+          </span>{" "}
+          Trade with us, be the difference.
+        </h2>
+        <p className="text-gray-400 text-center max-w-4xl mx-auto">
+          Dive into a world where every trade creates a ripple of impact. Join
+          us in shaping a unique trading experience that not only sets you apart
+          but also makes a positive difference. Trade with purpose, trade with
+          us.
+        </p>
+        <div className="flex justify-center">
+          <Button text="Open Account" onClick={handleClick} />
+        </div>
+      </section>
       <Footer />
     </div>
   );
