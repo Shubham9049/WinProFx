@@ -62,7 +62,7 @@ export default function NewsInsights() {
           </div>
         </div>
 
-        {/* Cards for Mobile */}
+        {/* Cards for Mobile  */}
         <div className="sm:hidden mt-10 space-y-4">
           {newsLogos.slice(0, 2).map((logo, i) => (
             <div
