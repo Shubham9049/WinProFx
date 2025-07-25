@@ -72,7 +72,7 @@ export default function About() {
 
         {/* Paragraph */}
         <p className="text-gray-400 max-w-4xl mx-auto text-base leading-relaxed">
-          Welcome to Billion Dollar FX, the world's leading Best Popular
+          Welcome to Billion Dollar FX, the world&#39;s leading Best Popular
           Platform Forex Trading designed for traders of all levels. For those
           interested in FOREX, CFD, or commodities markets, we strive to provide
           programs, services, and information that will make them more
@@ -115,7 +115,7 @@ export default function About() {
               Client Empowerment
             </h3>
             <p className="text-gray-300">
-              It's more than a business; it's a mission to empower. Our
+              It&#39;s more than a business; it&#39;s a mission to empower. Our
               commitment lies in elevating each client, forging a path where
               success is not just a possibility but an inevitability.
             </p>
@@ -139,7 +139,7 @@ export default function About() {
               Community of Achievers
             </h3>
             <p className="text-gray-300">
-              We're not just a platform; we're a thriving community of
+              We&#39;re not just a platform; we&#39;re a thriving community of
               achievers. Join a collective journey where aspirations meet
               accomplishments, and individual successes contribute to a shared
               legacy.
