@@ -47,7 +47,7 @@ const Navbar = () => {
       dropdown: true,
       items: [
         { label: "News", href: "/news" },
-        { label: "Blogs", href: "/blogs" },
+        { label: "Blogs", href: "/blog" },
       ],
     },
     {
