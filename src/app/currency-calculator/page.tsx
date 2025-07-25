@@ -71,7 +71,7 @@ export default function CurrencyCalculator() {
           <div className="flex flex-col items-center text-center max-w-sm relative">
             <span className="text-5xl text-cyan-300 font-semibold mb-4">1</span>
             <p className="text-gray-300 text-base">
-              Choose your WinproFX account type and specify your account's
+              Choose your WinproFX account type and specify your account&#39;s
               leverage and currency.
             </p>
             {/* Line & Diamond to Step 2 */}
@@ -96,8 +96,8 @@ export default function CurrencyCalculator() {
           <div className="flex flex-col items-center text-center max-w-sm">
             <span className="text-5xl text-cyan-300 font-semibold mb-4">3</span>
             <p className="text-gray-300 text-base">
-              Determine your trade's lot size and proceed to calculate by
-              clicking the 'Calculate' button.
+              Determine your trade&#39;s lot size and proceed to calculate by
+              clicking the &#39;Calculate&#39; button.
             </p>
           </div>
         </div>
