@@ -28,7 +28,7 @@ const Navbar = () => {
       title: "Trading",
       dropdown: true,
       items: [
-        { label: "Platforms", href: "/platforms" },
+        { label: "Platforms", href: "/platform" },
         { label: "Accounts", href: "/accounts" },
       ],
     },

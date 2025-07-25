@@ -24,8 +24,8 @@ export default function InsightsSection() {
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1DA851] text-white px-6 py-2.5 rounded-full text-base font-medium shadow-md border border-[#1DA851] transition"
       >
-        <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        <img
+          src="https://www.svgrepo.com/show/475692/whatsapp-color.svg"
           alt="WhatsApp"
           className="w-5 h-5"
         />
