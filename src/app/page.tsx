@@ -117,7 +117,7 @@ export default function Home() {
         <h2 className="text-center max-w-3xl mx-auto text-gray-200 text-xl md:text-2xl font-bold">
           Embark on a transformative trading journey with us — where{" "}
           <span className="text-[var(--primary)]">
-            trading isn't just an action, it's a difference.
+            trading isn&#39;t just an action, it&#39;s a difference.
           </span>{" "}
           Trade with us, be the difference.
         </h2>
