@@ -4,11 +4,13 @@ import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import Image from "next/image";
 
-type Props = {
-  params: { slug: string };
+type PageProps = {
+  params: {
+    slug: string;
+  };
 };
 
-export default function BlogDetails({ params }: Props) {
+export default async function BlogDetails({ params }: PageProps) {
   const blog = blogData.find((item) => item.slug === params.slug);
 
   if (!blog) return notFound();
