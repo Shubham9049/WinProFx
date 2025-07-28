@@ -138,7 +138,7 @@ const Navbar = () => {
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
           <Link
-            href="/introducing-broker"
+            href="/ib-broker"
             className="hover:text-[#00D5FF] transition text-[#0e83f9]"
           >
             Introducing Broker
