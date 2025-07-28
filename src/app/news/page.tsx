@@ -24,6 +24,11 @@ export default function News() {
         <h1 className="text-2xl md:text-3xl font-bold leading-snug max-w-4xl mx-auto mb-4">
           News
         </h1>
+        <p className="text-center text-gray-400 max-w-4xl mx-auto px-4 text-medium">
+          Stay informed with our latest market updates and expert insights,
+          empowering you to make well-informed decisions in the world of
+          finance.
+        </p>
       </section>
 
       <Footer />
