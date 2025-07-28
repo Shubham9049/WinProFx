@@ -1,3 +1,5 @@
+"use client";
+
 import { blogData } from "@/data/blogData";
 import { notFound } from "next/navigation";
 import Navbar from "../../../../components/Navbar";
