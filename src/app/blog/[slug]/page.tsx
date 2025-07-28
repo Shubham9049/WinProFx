@@ -4,12 +4,11 @@ import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import Image from "next/image";
 
-export default async function BlogDetails({
-  params,
-}: {
-  params: { slug: string };
+export default async function BlogDetails(props: {
+  params: Promise<{ slug: string }>;
 }) {
-  const blog = blogData.find((item) => item.slug === params.slug);
+  const { slug } = await props.params;
+  const blog = blogData.find((item) => item.slug === slug);
 
   if (!blog) return notFound();
 
