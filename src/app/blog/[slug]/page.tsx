@@ -1,18 +1,14 @@
-"use client";
-
 import { blogData } from "@/data/blogData";
 import { notFound } from "next/navigation";
 import Navbar from "../../../../components/Navbar";
 import Footer from "../../../../components/Footer";
 import Image from "next/image";
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function BlogDetails({ params }: PageProps) {
+export default async function BlogDetails({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const blog = blogData.find((item) => item.slug === params.slug);
 
   if (!blog) return notFound();
