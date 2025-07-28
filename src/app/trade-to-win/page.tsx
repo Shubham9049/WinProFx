@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "Are the exchange rates updated in real-time?",
     answer:
-      "Yes, the exchange rates used by the WinProFX Currency Converter are updated in real-time to ensure accuracy.",
+      "Yes, the exchange rates used by the Billion Dollar FX Currency Converter are updated in real-time to ensure accuracy.",
   },
 ];
 
@@ -172,7 +172,7 @@ export default function TradeToWin() {
               },
               {
                 title: "Liability Disclaimer",
-                desc: "WinproFX will not be responsible for trading losses. Program participation does not alter risk profiles.",
+                desc: "Billion Dollar FX will not be responsible for trading losses. Program participation does not alter risk profiles.",
               },
               {
                 title: "Dispute Resolution",
@@ -195,8 +195,8 @@ export default function TradeToWin() {
             Start Trading & <span className="text-cyan-400">Win Big!</span>
           </h3>
           <p className="italic mb-6">
-            Sign up today and start your journey to amazing rewards with
-            WinproFX.
+            Sign up today and start your journey to amazing rewards with Billion
+            Dollar FX.
           </p>
           <Button text="Sign up Now" onClick={handleClick} />
         </div>
