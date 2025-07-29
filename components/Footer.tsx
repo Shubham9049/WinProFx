@@ -165,7 +165,7 @@ export default function Footer() {
             href="https://www.bigwigdigital.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center transition-colors hover:text-black dark:hover:text-white"
+            className="text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center transition-colors "
           >
             Made & Marketed with ❤️ by Bigwig Digital
           </a>
