@@ -160,6 +160,16 @@ export default function Footer() {
             </span>
           ))}
         </div>
+        <div className="w-full flex justify-center mt-4">
+          <a
+            href="https://www.bigwigdigital.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center transition-colors hover:text-black dark:hover:text-white"
+          >
+            Made & Marketed with ❤️ by Bigwig Digital
+          </a>
+        </div>
       </div>
     </footer>
   );
