@@ -44,7 +44,7 @@ export default function Education() {
   };
 
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[#121E2C] px-2">
       <Navbar />
       <section className=" text-white pb-8 text-center pt-36">
         {/* Breadcrumb */}
@@ -106,7 +106,7 @@ export default function Education() {
         </div>
       </section>
 
-      <section className=" text-white py-16">
+      <section className=" text-white py-12">
         <div className="w-11/12 md:w-4/5 mx-auto">
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-5">

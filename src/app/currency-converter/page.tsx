@@ -57,7 +57,7 @@ export default function CurrencyCoverter() {
 
       <section className=" text-white py-12">
         <div className="w-11/12 md:w-4/5 mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 t">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 ">
             Using the{" "}
             <span className="text-cyan-400">WinproFX Currency Converter</span>
           </h2>

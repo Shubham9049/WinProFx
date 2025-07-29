@@ -240,7 +240,7 @@ const Navbar = () => {
           ))}
 
           <Link
-            href="/introducing-broker"
+            href="/ib-broker"
             className="hover:text-white text-[var(--primary)] block"
           >
             Introducing Broker

@@ -48,7 +48,7 @@ export default function About() {
 
   const handleClick = () => alert("Account Opening Started!");
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[#121E2C] px-2">
       <Navbar />
       <section className=" text-white pb-16 text-center pt-36">
         {/* Breadcrumb */}

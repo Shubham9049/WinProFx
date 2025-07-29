@@ -85,7 +85,7 @@ export default function AnalyticalTools() {
         </p>
       </section>
 
-      <section className=" text-white py-16 px-4">
+      <section className=" text-white py-12">
         <div className="w-11/12 md:w-4/5 mx-auto space-y-16">
           {features.map((feature, i) => (
             <div
@@ -121,7 +121,7 @@ export default function AnalyticalTools() {
         </div>
       </section>
 
-      <section className=" text-white py-16">
+      <section className=" text-white py-12">
         <div className="w-11/12 md:w-4/5 mx-auto">
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
