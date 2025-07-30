@@ -4,9 +4,9 @@ export default function InsightsSection() {
   return (
     <section className="bg-[#072029] text-white py-16 px-4 text-center">
       {/* Heading */}
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight mb-4">
+      <h2 className="text-2xl md:text-3xl  font-semibold leading-tight mb-4">
         Critical Insights: Unveiling the
-        <span className="text-[#00CFFF]">Pinnacle Learnings</span> for
+        <span className="text-[var(--primary)]"> Pinnacle Learnings</span> for
         <br className="hidden md:block" /> Strategic Success.
       </h2>
 
@@ -22,7 +22,7 @@ export default function InsightsSection() {
         href="https://wa.me/919876543210"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1DA851] text-white px-6 py-2.5 rounded-full text-base font-medium shadow-md border border-[#1DA851] transition"
+        className="inline-flex items-center gap-2 bg-[#1DA851] hover:bg-[#52956a] text-white px-6 py-2.5 rounded-full text-base font-medium shadow-md border border-[#1DA851] transition"
       >
         <img
           src="https://www.svgrepo.com/show/475692/whatsapp-color.svg"

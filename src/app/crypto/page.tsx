@@ -8,6 +8,7 @@ import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Button from "../../../components/Button";
 import InsightsSection from "../../../components/Inside_Contact";
+import { useRouter } from "next/navigation";
 
 export default function Crypto() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,7 +16,10 @@ export default function Crypto() {
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  const handleClick = () => alert("Account Opening Started!");
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
 
   const chartItems = [
     {
@@ -88,20 +92,20 @@ export default function Crypto() {
       <main className="bg-[#0b1e26] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mt-4">
-            <span className="text-cyan-400"> CRYPTOCURRENCY</span> TRADING?
+          <h1 className="text-2xl md:text-3xl font-bold mt-4">
+            What is
+            <span className="text-[var(--primary)]">
+              {" "}
+              Cryptocurrency Trading?
+            </span>
           </h1>
           <p className="mt-4 text-gray-400 w-11/12 mx-auto">
-            Cryptocurrencies also known as digital currencies are fast-growing
-            investment instruments attracting popularity worldwide. Traders can
-            trade a wide range of crypto-currencies as the ideal asset in CFD
-            trades. Available on MT5 you can now trade Bitcoin, Ether, Ripple,
-            Litecoin, Dash, and Monero against the USD and other innovative
-            digital currencies. Diversify your trading portfolio today with one
-            of the industry’s safest providers of online trading. We offer
-            cryptocurrencies on leverage with the advantage of short selling,
-            delivering an ideal solution for hedging physical holdings. Explore
-            our Best Crypto Currency Platform for optimal trading experiences.
+            Cryptocurrencies are digital assets that operate without a central
+            bank. Their value is driven by market demand, technology, and
+            adoption. With the global crypto market surpassing $2.5 trillion, it
+            is a dynamic space for traders seeking high potential and portfolio
+            diversification. Trade top cryptocurrencies on MT5 with leverage and
+            security using our trusted platform.
           </p>
           <Button
             text="Open Account"

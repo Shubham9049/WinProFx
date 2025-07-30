@@ -87,24 +87,19 @@ export default function Oil() {
       <Navbar />
       <main className="bg-[#0b1e26] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
-        <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mt-4">
-            Mastering
-            <span className="text-cyan-400 px-1">Energy Futures</span>:
-            Navigating Contracts for Strategic Market Prowess
+        <section className="max-w-6xl mx-auto px-4 py-16 text-center space-y-5">
+          <h1 className="text-2xl md:text-3xl font-bold">
+            What are
+            <span className="text-[var(--primary)] px-1">Energy Futures?</span>
           </h1>
-          <p className="mt-4 text-gray-400 w-11/12 mx-auto">
-            Energy futures are contracts to buy or sell fossil fuels or related
-            products at a set date and price. Investors use these contracts to
-            hedge against price fluctuations. Explore our Best Oil Trading
-            Platform to study contracts and navigate the energy market
-            effectively.
+          <p className=" text-gray-400 w-11/12 mx-auto">
+            Energy futures are contracts to buy or sell fuels like oil or gas at
+            a set price on a future date. Traders use them to manage risk or
+            profit from market moves. At BillionDollarFX, access leading oil
+            trading instruments and strengthen your energy strategy. Explore our
+            best oil trading platform for smart, seamless trading.
           </p>
-          <Button
-            text="Open Account"
-            onClick={handleClick}
-            className="mt-6 px-6 py-2 rounded-full bg-cyan-500 hover:bg-cyan-600 transition"
-          />
+          <Button text="Open Account" onClick={handleClick} />
         </section>
 
         {/* Chart Section */}

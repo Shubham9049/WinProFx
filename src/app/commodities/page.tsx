@@ -8,6 +8,7 @@ import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Button from "../../../components/Button";
 import InsightsSection from "../../../components/Inside_Contact";
+import { useRouter } from "next/navigation";
 
 export default function Commodities() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,7 +16,10 @@ export default function Commodities() {
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  const handleClick = () => alert("Account Opening Started!");
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
 
   const chartItems = [
     {
@@ -88,20 +92,20 @@ export default function Commodities() {
       <main className="bg-[#0b1e26] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mt-4">
-            Invest in the
-            <span className="text-cyan-400 px-1">
-              metals, energy and agriculture
+          <h1 className="text-2xl md:text-3xl font-bold mt-4">
+            What Is
+            <span className="text-[var(--primary)] px-1">
+              {" "}
+              Commodity Trading?
             </span>
-            markets
           </h1>
           <p className="mt-4 text-gray-400 w-11/12 mx-auto">
-            Take advantage of market volatility and choose from CFDs on spot
-            commodities and futures. At WINPROFX, we offer some of the most
-            popular instruments in the commodity market including gold, oil, and
-            coffee, for speculation and hedging. Trade per whole tick movement
-            with zero commissions and no hidden fees. Explore our Best Commodity
-            Trading Platform for seamless trading experiences.
+            Commodity trading allows you to invest in physical goods like
+            metals, energy, and agricultural products. These markets offer
+            strong potential during price movements. With BillionDollarFX,
+            access popular spot and futures CFDs with zero commissions and no
+            hidden fees. Take control of every price tick and trade confidently
+            on our best-in-class Commodity Trading Platform.
           </p>
           <Button
             text="Open Account"

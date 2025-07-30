@@ -8,6 +8,7 @@ import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Button from "../../../components/Button";
 import InsightsSection from "../../../components/Inside_Contact";
+import { useRouter } from "next/navigation";
 
 export default function Indices() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,7 +16,10 @@ export default function Indices() {
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  const handleClick = () => alert("Account Opening Started!");
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
 
   const chartItems = [
     {
@@ -91,18 +95,16 @@ export default function Indices() {
       <Navbar />
       <main className="bg-[#0b1e26] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
-        <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mt-4">
-            WHAT ARE<span className="text-cyan-400"> INDICES</span>?
+        <section className="max-w-6xl mx-auto px-4 py-12 text-center">
+          <h1 className="text-2xl md:text-3xl font-bold mt-4">
+            WHAT ARE<span className="text-[var(--primary)]"> INDICES?</span>
           </h1>
           <p className="mt-4 text-gray-400 w-11/12 mx-auto">
-            Indices are a measurement of the price performance of a group of
-            shares from an exchange. For example, the FTSE 100 tracks the 100
-            largest companies on the London Stock Exchange (LSE). Trading
-            indices enables you to get exposure to an entire economy or sector
-            at once, while only having to open a single position. For optimal
-            trading explore our Best Stock Indices Platform for comprehensive
-            and efficient trading options.
+            Indices represent the collective performance of top companies in a
+            stock market. Instead of picking individual stocks, you can trade on
+            broad market trends through indices like the FTSE 100 or S&P 500.
+            Want broader market exposure with lower risk? Our powerful Stock
+            Indices Platform is built for that.
           </p>
           <Button
             text="Open Account"

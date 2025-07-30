@@ -8,6 +8,7 @@ import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Button from "../../../components/Button";
 import InsightsSection from "../../../components/Inside_Contact";
+import { useRouter } from "next/navigation";
 
 export default function Metals() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -15,7 +16,10 @@ export default function Metals() {
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  const handleClick = () => alert("Account Opening Started!");
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
 
   const chartItems = [
     {
@@ -88,16 +92,17 @@ export default function Metals() {
       <main className="bg-[#0b1e26] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mt-4">
-            TRADING PRECIOUS<span className="text-cyan-400"> METALS</span>
+          <h1 className="text-2xl md:text-3xl font-bold mt-4">
+            What Is Precious
+            <span className="text-[var(--primary)]"> Metals Trading?</span>
           </h1>
           <p className="mt-4 text-gray-400 w-11/12 mx-auto">
-            Spot Metal Trading holds a special place in the heart of every
-            trader. Metals have attracted traders all over the world since
-            ancient times and continue to do so today. WinproFX Trader offers
-            the lowest ever spreads in various metals based on your core
-            interest and preference. Explore our Best Precious Metals Trading
-            Platform for optimal trading experiences.
+            Precious metals like gold and silver have long been safe-haven
+            assets during market volatility. With over $300 billion traded
+            daily, they remain a key choice for traders worldwide. At
+            BillionDollarFX, enjoy tight spreads and fast execution when trading
+            spot metals. Explore advanced Precious Metals Trading Platform and
+            start diversifying your portfolio today.
           </p>
           <Button
             text="Open Account"
