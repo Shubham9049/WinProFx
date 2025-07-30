@@ -6,6 +6,7 @@ import Image from "next/image";
 import Logo from "../../../assets/logo.webp";
 import Button from "../../../components/Button";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function SignUpPage() {
       {/* Form Container */}
       <div className="relative z-10 bg-black opacity-85 max-w-3xl w-full mx-4 md:mx-auto rounded-xl p-8 md:p-12 text-white">
         <div className="flex flex-col items-center mb-6">
-          <a href="/">
+          <Link href="/">
             {" "}
             <Image
               src={Logo}
@@ -46,7 +47,7 @@ export default function SignUpPage() {
               height={40}
               className="mb-4"
             />
-          </a>
+          </Link>
           <h1 className="text-2xl font-semibold">Sign Up</h1>
           <p className="text-sm mt-2">
             Already have an account?{" "}
