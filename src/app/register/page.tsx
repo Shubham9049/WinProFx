@@ -36,7 +36,7 @@ export default function SignUpPage() {
       </video>
 
       {/* Form Container */}
-      <div className="relative z-10 bg-black opacity-85 max-w-3xl w-full mx-4 md:mx-auto rounded-xl p-8 md:p-12 text-white">
+      <div className="relative z-10 bg-black/30 opacity-85 max-w-3xl w-full mx-4 md:mx-auto rounded-xl p-8 md:p-12 text-white">
         <div className="flex flex-col items-center mb-6">
           <Link href="/">
             {" "}
@@ -51,7 +51,9 @@ export default function SignUpPage() {
           <h1 className="text-2xl font-semibold">Sign Up</h1>
           <p className="text-sm mt-2">
             Already have an account?{" "}
-            <span className="text-[#00CFFF] cursor-pointer">Sign In</span>
+            <span className="text-[#00CFFF] cursor-pointer">
+              <Link href={"/login"}>Sign In</Link>
+            </span>
           </p>
         </div>
 
