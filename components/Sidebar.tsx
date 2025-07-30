@@ -47,7 +47,7 @@ export default function Sidebar() {
   return (
     <aside className="h-screen w-64 bg-[#0b121a] text-white flex flex-col overflow-hidden">
       {/* Fixed Logo */}
-      <div className="p-6 flex justify-center items-center border-b border-gray-700 shrink-0">
+      <div className=" flex justify-center items-center border-b border-gray-700 shrink-0">
         <Image src={logo} alt="Billion Dollar FX" className="w-32" />
       </div>
 
@@ -273,7 +273,7 @@ function Dropdown({
     <div>
       <button
         onClick={onToggle}
-        className="w-full flex justify-between items-center px-4 py-2 rounded hover:text-[var(--primary)] transition-all text-sm"
+        className="w-full flex justify-between items-center px-4 rounded hover:text-[var(--primary)] transition-all text-sm"
       >
         <span className="flex items-center gap-2">
           <Icon size={16} />
