@@ -6,6 +6,7 @@ import evolving from "../assets/icons/evolving.svg";
 import awards from "../assets/icons/awards.svg";
 import country from "../assets/icons/countries.svg";
 import trading from "../assets/icons/trading.svg";
+import Image from "next/image";
 
 interface StatItem {
   icon: string;
@@ -17,26 +18,26 @@ interface StatItem {
 
 const statsData: StatItem[] = [
   {
-    icon: evolving.src,
+    icon: evolving,
     title: "Evolving",
     subtitle: "In The Market",
   },
   {
-    icon: awards.src,
+    icon: awards,
     endValue: 40,
-    subtitle: "Awards",
+    subtitle: "Global Honours",
     suffix: "+",
   },
   {
-    icon: country.src,
-    endValue: 105,
-    subtitle: "Countries Covered",
-    suffix: "+",
+    icon: country,
+    endValue: 99.9,
+    subtitle: "Orders Filled in Under 50ms",
+    suffix: "%",
   },
   {
-    icon: trading.src,
+    icon: trading,
     endValue: 300,
-    subtitle: "Trading Instruments",
+    subtitle: "Markets to Explore",
     suffix: "+",
   },
 ];
@@ -52,17 +53,19 @@ export default function Stats() {
       {/* Heading */}
       <div className="text-start mb-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          Invest With Fastest Growing Broker <br />
-          <span className="text-cyan-400">Asia 2024</span>
+          Power Your Trades with <br />
+          <span className="text-[var(--primary)]">
+            Asia’s Breakout Broker of 2024
+          </span>
         </h2>
-        <hr className="border-cyan-400 border-t-1 mt-4" />
+        <hr className="border-[var(--primary)] border-t-1 mt-4" />
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2  md:grid-cols-4 gap-8 mt-12">
         {statsData.map((stat, index) => (
           <div key={index} className="flex flex-col items-center text-center">
-            <img
+            <Image
               src={stat.icon}
               alt={stat.subtitle}
               className="w-16 h-16 mb-4"

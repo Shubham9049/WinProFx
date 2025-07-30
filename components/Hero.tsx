@@ -5,9 +5,14 @@ import Typewriter from "typewriter-effect";
 import icon1 from "../assets/icons/icon.svg";
 import icon2 from "../assets/icons/icon2.svg";
 import icon3 from "../assets/icons/icon3.svg";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Hero() {
-  const handleClick = () => alert("Account Opening Started!");
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
 
   return (
     <div className="relative font-montserrat bg-[#121E2C] py-20 md:pt-0">
@@ -27,9 +32,9 @@ export default function Hero() {
             <Typewriter
               options={{
                 strings: [
-                  "Your Path To Profitable \n Trading Starts Here",
-                  "Trade Smart:\n Elevate Your Financial Potential",
-                  "Empower Your Portfolio:\n Unleash the Future of Trading",
+                  "Global Markets \n Billion-Dollar Precision",
+                  "Global Forex \n Local Impact",
+                  "Step Into the World of Smart\n Profitable Trades",
                 ],
                 autoStart: true,
                 loop: true,
@@ -37,12 +42,11 @@ export default function Hero() {
               }}
             />
           </h1>
-          <p className="text-md md:max-w-4xl mb-6 text-gray-400">
-            WinproFX is a Globally Reputed Broker Offering Tightest Spreads,
-            Lightning Fast Withdrawals, 300+ Tradable Instruments With
-            Nanosecond Execution on Your Finger tips.
+          <p className="text-md md:max-w-3xl mb-6 text-gray-400">
+            Access lightning-speed execution, 300+ tradable assets, and elite
+            trading conditions trusted by professionals worldwide.
           </p>
-          <Button text="Open Account" onClick={handleClick} />
+          <Button text="Create Account" onClick={handleClick} />
         </div>
       </section>
 
@@ -57,12 +61,16 @@ export default function Hero() {
         >
           {/* Heading + Button */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-10 text-center md:text-left">
-            <h2 className="text-2xl  font-semibold leading-tight">
-              How Can You Start Making <br />
-              <span className="text-cyan-400">Money</span> With Us
-            </h2>
+            <div className="space-y-3">
+              <h2 className="text-2xl  font-semibold leading-tight">
+                Launch Your Forex Career Today
+              </h2>
+              <p className="text-sm italic ">
+                Start trading in minutes with Billion Dollar FX.
+              </p>
+            </div>
             <div className="mt-4 md:mt-0">
-              <Button text="Open Account" onClick={handleClick} />
+              <Button text="Create Account" onClick={handleClick} />
             </div>
           </div>
 
@@ -74,15 +82,15 @@ export default function Hero() {
               data-aos="zoom-in"
               data-aos-delay="200"
             >
-              <img
-                src={icon1.src}
+              <Image
+                src={icon1}
                 alt="Open Account"
                 className="w-12 h-12 mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Open an account</h3>
+              <h3 className="text-lg font-semibold mb-2">Open An Account</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Click the button above and just follow some easy steps to get
-                started.
+                Create your account quickly and access 300+ trading instruments
+                worldwide.
               </p>
             </div>
 
@@ -92,15 +100,15 @@ export default function Hero() {
               data-aos="zoom-in"
               data-aos-delay="400"
             >
-              <img
-                src={icon2.src}
+              <Image
+                src={icon2}
                 alt="Make Deposit"
                 className="w-12 h-12 mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Make a deposit</h3>
+              <h3 className="text-lg font-semibold mb-2">Add Funds Securely</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Pro Tip: USDT Deposits and Withdrawals are the Fastest and most
-                reliable.
+                Deposit securely with USDT for the fastest and most reliable
+                funding.
               </p>
             </div>
 
@@ -110,15 +118,14 @@ export default function Hero() {
               data-aos="zoom-in"
               data-aos-delay="600"
             >
-              <img
-                src={icon3.src}
+              <Image
+                src={icon3}
                 alt="Start Trading"
                 className="w-12 h-12 mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Start Trading</h3>
+              <h3 className="text-lg font-semibold mb-2">Trade Instantly</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Every professional started from scratch. So start trading now
-                with confidence.
+                Begin trading with confidence and performance.
               </p>
             </div>
           </div>

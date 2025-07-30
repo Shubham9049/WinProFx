@@ -13,35 +13,35 @@ const originalItems = [
     title: "Commodities",
     image: commodity,
     description:
-      "Take advantage of market volatility and choose from CFDs on spot commodities and futures. At WINP...",
+      "Trade CFDs on spot and futures to harness market volatility in oil, gas, and more.",
     link: "/commodities",
   },
   {
     title: "Forex",
     image: forex,
     description:
-      "Forex or the Foreign Exchange is a global market where currencies trade. It vastly oversh...",
+      "Access non-stop trading of major, minor, and exotic currencies in the global forex market.",
     link: "/forex",
   },
   {
     title: "Indices",
     image: indices,
     description:
-      "Indices are a measurement of the price performance of a group of shares from an exchang...",
+      "Speculate on the world’s leading stock markets with real-time access, all in one place.",
     link: "/indices",
   },
   {
     title: "Crypto Currency",
     image: crypto,
     description:
-      "Cryptocurrencies also known as digital currencies are fast-growing investment instrum...",
+      "Trade the future of finance. Access top digital currencies with ultra-fast execution.",
     link: "/crypto",
   },
   {
     title: "Metals",
     image: metals,
     description:
-      "Spot Metal Trading holds a special place in the heart of every trader. Metals have attra...",
+      "Tap into the value of gold and silver, ideal for both safety and strategy.",
     link: "/metals",
   },
 ];
@@ -98,12 +98,10 @@ export default function TradeSection() {
     <section className=" text-white py-16">
       <div className="w-11/12 md:w-4/5 mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">
-          WHAT YOU CAN <span className="text-cyan-400">TRADE?</span>
+          <span className="text-[var(--primary)]">Markets </span>We Offer
         </h2>
         <p className="text-gray-400 mb-10 max-w-3xl">
-          We&#39;re here to help during market volatility. With WinproFX you can
-          trade on major markets across 3 asset classes including FX, Metals,
-          and CFDs.
+          Step into billion-dollar markets with FX, Metals, and CFDs.
         </p>
 
         <div

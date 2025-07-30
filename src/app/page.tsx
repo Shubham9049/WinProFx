@@ -13,9 +13,14 @@ import logo from "../../assets/logo.webp";
 import NewsInsights from "../../components/NewsInsights";
 import PaymentMethods from "../../components/PaymentMethods";
 import InsightsSection from "../../components/Inside_Contact";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const handleClick = () => alert("Account Opening Started!");
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
   return (
     <div className="bg-[#121E2C]">
       <Navbar />
@@ -25,24 +30,24 @@ export default function Home() {
       <BenefitsSection />
 
       <TradeSection />
-      <section className="py-10">
+      <section className="py-16">
         <div className="relative w-11/12 md:w-4/5 mx-auto">
           {/* Box with gradient and text */}
           <div className="bg-gradient-to-b from-[#121E2C] to-[#104E64] text-white p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between relative z-10">
             {/* Text Content */}
             <div className="max-w-xl">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">
-                Trade to <span className="text-cyan-400">WIN</span>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                <span className="text-[var(--primary)]">Win</span> As You Trade
               </h2>
-              <p className="text-lg font-medium mb-1">
-                Trade more and win <span className="font-bold">GUARANTEED</span>{" "}
-                prizes.
+              <p className="text-lg font-medium mb-5">
+                Every trade gets you closer to{" "}
+                <span className="font-bold">guaranteed</span> rewards.
               </p>
-              <p className="mb-3">The more you trade, the better the prize.</p>
+              {/* <p className="mb-3">The more you trade, the better the prize.</p>
               <p className="italic text-sm text-gray-300 mb-4">
                 Promotion Dates: 1st January 2025 to 31st May 2025
-              </p>
-              <Button text="Learn More" onClick={handleClick} />
+              </p> */}
+              <Button text="Create Account" onClick={handleClick} />
             </div>
           </div>
 
@@ -61,43 +66,52 @@ export default function Home() {
         <div className="w-11/12 md:w-4/5 mx-auto grid md:grid-cols-3 rounded-2xl overflow-hidden">
           {/* Left 2/3 Content Section */}
           <div className="md:col-span-2 bg-[#34404A] text-white p-8">
-            <h3 className="text-2xl md:text-3xl font-bold mb-2">
-              ABOUT <span className="text-cyan-400">WINPROFX</span>
+            <h3 className="text-2xl md:text-3xl font-bold mb-2 uppercase">
+              About{" "}
+              <span className="text-[var(--primary)]">
+                B<span className="text-xl md:text-2xl">illion</span>D
+                <span className="text-xl md:text-2xl">ollar</span>FX
+              </span>
             </h3>
             <p className="text-gray-400 mb-4">
-              Limitless opportunity for excessive growth
+              Limitless Potential. Smarter Trading.
             </p>
             <p className="mb-5 text-gray-300">
-              At WinproFX, we offer a secure online trading platform, fostering
-              sustainability through expertise, market knowledge, and trusted
-              partnerships.
+              BillionDollarFX is your gateway to secure and sustainable online
+              trading. We combine deep market insight, advanced tools, and
+              trusted partnerships to empower traders at every level.
             </p>
 
             <ul className="list-none space-y-2 text-xs text-gray-300">
               <li>
-                <span className="text-cyan-400 text-2xl">•</span> Best platform
-                for Every Class of Traders: Beginners, Intermediate or
-                Professional.
+                <span className="text-[var(--primary)] text-2xl">•</span> Best
+                Built for All Traders, from beginners to pros
               </li>
               <li>
-                <span className="text-cyan-400 text-2xl">•</span> Sophisticated
-                order management tools.
+                <span className="text-[var(--primary)] text-2xl">•</span>{" "}
+                All-in-One Platform: FX, Crypto, Indices, Commodities & Metals
               </li>
               <li>
-                <span className="text-cyan-400 text-2xl">•</span> Introducing
-                more native technical indicators.
+                <span className="text-[var(--primary)] text-2xl">•</span>{" "}
+                Advanced order management features
               </li>
               <li>
-                <span className="text-cyan-400 text-2xl">•</span> Easy to
-                configure and customize your trading setup.
+                <span className="text-[var(--primary)] text-2xl">• </span>
+                Enhanced with new native technical indicators
+              </li>
+              <li>
+                <span className="text-[var(--primary)] text-2xl">• </span>
+                Fully customisable trading environment
               </li>
             </ul>
-            <button className="mt-6 relative overflow-hidden px-4 py-1 border border-cyan-400 text-cyan-400 rounded-full group">
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white text-xs">
-                Explore More →
-              </span>
-              <span className="absolute inset-0 bg-[var(--primary)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
-            </button>
+            <Link href="/about">
+              <button className="mt-6 relative overflow-hidden px-4 py-1 border border-[var(--primary)] text-[var(--primary)] rounded-full group">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white text-xs">
+                  Explore More →
+                </span>
+                <span className="absolute inset-0 bg-[var(--primary)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
+              </button>
+            </Link>
           </div>
 
           {/* Right 1/3 Image Section with different bg */}
@@ -115,20 +129,15 @@ export default function Home() {
       <PaymentMethods />
       <section className="w-11/12 md:w-4/5 mx-auto py-12 space-y-5">
         <h2 className="text-center max-w-3xl mx-auto text-gray-200 text-xl md:text-2xl font-bold">
-          Embark on a transformative trading journey with us — where{" "}
-          <span className="text-[var(--primary)]">
-            trading isn&#39;t just an action, it&#39;s a difference.
-          </span>{" "}
-          Trade with us, be the difference.
+          Trade with Impact.{" "}
+          <span className="text-[var(--primary)]">Win with Purpose.</span>
         </h2>
         <p className="text-gray-400 text-center max-w-4xl mx-auto">
-          Dive into a world where every trade creates a ripple of impact. Join
-          us in shaping a unique trading experience that not only sets you apart
-          but also makes a positive difference. Trade with purpose, trade with
-          us.
+          Join 1 lakh+ traders already making purpose-driven moves with
+          BillionDollarFX.
         </p>
         <div className="flex justify-center">
-          <Button text="Open Account" onClick={handleClick} />
+          <Button text="Create Account" onClick={handleClick} />
         </div>
       </section>
       <Footer />

@@ -15,16 +15,14 @@ export default function NewsInsights() {
       <div className="w-11/12 md:w-4/5 mx-auto text-center">
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-bold mb-3">
-          News & <span className="text-cyan-400">Insights</span>
+          News & <span className="text-[var(--primary)]">Insights</span>
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Stay informed with our latest market updates and expert insights,
-          empowering you to make well-informed decisions in the world of
-          finance.
+          Informed trading starts with informed reading.
         </p>
 
         {/* Cards for Desktop */}
-        <div className="hidden sm:block relative h-60 mt-10">
+        <div className="hidden sm:block relative h-60">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute left-1/2 -translate-x-1/2 bottom-[-30px] flex items-end z-0">
               {newsLogos.map((logo, i) => {
