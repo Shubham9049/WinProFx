@@ -78,7 +78,7 @@ export default function Forex() {
   return (
     <div>
       <Navbar />
-      <main className="bg-[#0b1e26] text-white font-[Montserrat] pt-12 pb-8">
+      <main className="bg-[#121E2C] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl md:text-3xl font-bold mt-4">
@@ -100,7 +100,7 @@ export default function Forex() {
         </section>
 
         {/* Chart Section */}
-        <section className="bg-[#072029] py-10">
+        <section className=" py-10">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
             {chartItems.map((item) => (
               <div

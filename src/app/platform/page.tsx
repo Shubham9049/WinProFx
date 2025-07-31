@@ -7,7 +7,7 @@ export default function MT5Page() {
   return (
     <div>
       <Navbar />
-      <div className="bg-[#0c0f1c] text-white py-12">
+      <div className="bg-[#121E2C] text-white py-12">
         <div className="max-w-6xl mx-auto px-4 py-16 text-center">
           <h1 className="text-3xl sm:text-4xl font-bold mt-4">
             MT5 Unleashed: Dive into <br />

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function InsightsSection() {
   return (
-    <section className="bg-[#072029] text-white py-16 px-4 text-center">
+    <section className="bg-[#121E2C] text-white py-16 px-4 text-center">
       {/* Heading */}
       <h2 className="text-2xl md:text-3xl  font-semibold leading-tight mb-4">
         Critical Insights: Unveiling the

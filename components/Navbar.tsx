@@ -108,18 +108,14 @@ const Navbar = () => {
                 </span>
                 <div className="absolute space-y-3 top-full -left-10 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg py-2 px-4 rounded w-48 z-50">
                   {item.items?.map((link) => (
-                    <div
-                      key={link.href} // ✅ Key goes here
-                      className="flex justify-between hover:text-[var(--primary)] hover:font-bold"
+                    <Link
+                      href={link.href}
+                      key={link.href}
+                      className="flex justify-between items-center px-2 py-1 hover:text-[var(--primary)] hover:font-bold  text-sm"
                     >
-                      <Link
-                        href={link.href}
-                        className="block px-2 py-1 hover:text-white text-sm"
-                      >
-                        {link.label}
-                      </Link>
-                      <p className="font-bold">→</p>
-                    </div>
+                      <span>{link.label}</span>
+                      <span className="font-bold">→</span>
+                    </Link>
                   ))}
                 </div>
               </div>

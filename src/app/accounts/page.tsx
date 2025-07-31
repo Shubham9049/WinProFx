@@ -11,7 +11,7 @@ const TradingAccounts = () => {
   return (
     <div>
       <Navbar />
-      <section className="bg-[#0b1e26] text-white px-4 py-12 md:pt-36">
+      <section className="bg-[#121E2C] text-white px-4 py-12 md:pt-36">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#36BFFA] mb-4">
             Trading Accounts:
