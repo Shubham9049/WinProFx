@@ -32,7 +32,7 @@ export default function MT5Page() {
           <Button text="Create Account" onClick={handleClick} />
         </div>
 
-        <div className="bg-gradient-to-b from-[var(--bg)] to-[#143f53] rounded-xl max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center gap-6 mb-12">
+        <div className="bg-gradient-to-b from-[var(--bg)] to-[#0B3554] rounded-xl max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center gap-6 mb-12">
           <div className="flex-1">
             <Image
               src="https://winprofx.com/_next/static/media/mobile.a656fac5.svg"
@@ -85,7 +85,7 @@ export default function MT5Page() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-[#0e2330] to-[#143f53] rounded-xl max-w-6xl mx-auto px-4 py-12 flex flex-col-reverse md:flex-row items-center gap-6 ">
+        <div className="bg-gradient-to-b from-[var(--bg)] to-[#0B3554] rounded-xl max-w-6xl mx-auto px-4 py-12 flex flex-col-reverse md:flex-row items-center gap-6 ">
           <div className="flex-1 text-center md:text-left">
             <p className="text-sm text-gray-400 uppercase mb-2">
               Trading Platform

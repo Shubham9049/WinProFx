@@ -135,7 +135,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
           <Link
             href="/ib-broker"
-            className="hover:text-[#00D5FF] transition text-[#0e83f9]"
+            className="hover:text-[#ffd277] transition text-[var(--primary)]"
           >
             Introducing Broker
           </Link>
