@@ -36,7 +36,7 @@ function IbBroker() {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="bg-[#121E2C] text-white">
+    <div className="bg-[var(--bg)] text-white">
       <Navbar />
       <section className="w-11/12 md:w-4/5 mx-auto pt-36 pb-20 flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content */}
@@ -77,8 +77,9 @@ function IbBroker() {
       <section className="w-11/12 md:w-4/5 mx-auto text-center py-12  text-white">
         {/* Heading */}
         <h2 className="text-2xl max-w-3xl mx-auto mb-6  font-bold leading-snug ">
-          <span className="text-cyan-400">Partnering Perks:</span> Commission
-          Riches, Award-Winning Trust, Market Evolution and Daily Win Rewards!
+          <span className="text-[var(--primary)]">Partnering Perks:</span>{" "}
+          Commission Riches, Award-Winning Trust, Market Evolution and Daily Win
+          Rewards!
         </h2>
 
         {/* Perks Grid */}
@@ -138,7 +139,9 @@ function IbBroker() {
         {/* Separator Heading */}
         <h2 className="text-2xl  font-bold leading-snug text-start mb-5">
           What Sets Us Apart: <br />
-          <span className="text-cyan-400">Reasons for Client Preference</span>
+          <span className="text-[var(--primary)]">
+            Reasons for Client Preference
+          </span>
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-white">
@@ -151,7 +154,7 @@ function IbBroker() {
             <div key={i} className=" flex items-center">
               <div className="flex items-start gap-3">
                 {/* Number */}
-                <div className="text-3xl md:text-5xl font-bold text-cyan-400">
+                <div className="text-3xl md:text-5xl font-bold text-[var(--primary)]">
                   {item.number}
                 </div>
 
@@ -177,8 +180,8 @@ function IbBroker() {
         <div>
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Benefits Of Becoming{" "}
-            <span className="text-cyan-400">Introducing Broker</span> With
-            Billion Dollar FX
+            <span className="text-[var(--primary)]">Introducing Broker</span>{" "}
+            With Billion Dollar FX
           </h2>
           <p className="text-gray-300 max-w-3xl mx-auto text-sm md:text-base">
             Unlock a world of advantages by becoming an Introducing Broker with
@@ -272,13 +275,15 @@ function IbBroker() {
       <section className="w-11/12 md:w-4/5 mx-auto py-16 text-white text-center space-y-6">
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-bold">
-          <span className="text-cyan-400">IB Loyalty Reward Program</span>
+          <span className="text-[var(--primary)]">
+            IB Loyalty Reward Program
+          </span>
         </h2>
 
         {/* Subheading */}
         <h3 className="text-lg md:text-xl font-semibold text-white">
           Earn More with{" "}
-          <span className="text-cyan-400">Billion Dollar FX!</span>
+          <span className="text-[var(--primary)]">Billion Dollar FX!</span>
         </h3>
 
         {/* Description */}
@@ -311,7 +316,7 @@ function IbBroker() {
         <div className="text-center space-y-2">
           <h2 className="text-2xl md:text-3xl font-bold">
             How Much You Can Earn?{" "}
-            <span className="text-cyan-400">Calculate your profit</span>
+            <span className="text-[var(--primary)]">Calculate your profit</span>
           </h2>
           <p className="text-sm md:text-base text-gray-300 max-w-3xl mx-auto">
             This advanced commission calculator operates on the basis of
@@ -328,10 +333,10 @@ function IbBroker() {
             </span>
             <div className="text-right">
               <p className="text-sm font-medium text-white">Rewards</p>
-              <p className="text-cyan-400 font-bold text-xl">
+              <p className="text-[var(--primary)] font-bold text-xl">
                 ${getReward(clients)}
               </p>
-              <p className="text-xs text-cyan-400">Per lot</p>
+              <p className="text-xs text-[var(--primary)]">Per lot</p>
             </div>
           </div>
           <input
@@ -340,7 +345,7 @@ function IbBroker() {
             max="39"
             value={clients}
             onChange={(e) => setClients(Number(e.target.value))}
-            className="w-full accent-cyan-400"
+            className="w-full accent-[var(--primary)]"
           />
         </div>
 
@@ -348,8 +353,10 @@ function IbBroker() {
         <div className="bg-gradient-to-br from-[#132435] to-[#0F1C2A] rounded-xl p-6 md:p-10 text-center space-y-6">
           <h3 className="text-lg md:text-2xl font-bold">
             Become A{" "}
-            <span className="text-cyan-400">Billion Dollar FX Partner</span> &
-            Start Earning Today
+            <span className="text-[var(--primary)]">
+              Billion Dollar FX Partner
+            </span>{" "}
+            & Start Earning Today
           </h3>
           <p className="text-gray-300 text-sm md:text-base max-w-3xl mx-auto">
             Embark on a lucrative journey by becoming a Billion Dollar FX
@@ -366,7 +373,9 @@ function IbBroker() {
               </div>
               <p className="font-medium">
                 Apply to become an <br />{" "}
-                <span className="text-cyan-400">Introducing Broker</span>
+                <span className="text-[var(--primary)]">
+                  Introducing Broker
+                </span>
               </p>
             </div>
             <div className="space-y-2">
@@ -375,7 +384,7 @@ function IbBroker() {
               </div>
               <p className="font-medium">
                 Attract clients by <br /> sharing your{" "}
-                <span className="text-cyan-400">Referral Link</span>
+                <span className="text-[var(--primary)]">Referral Link</span>
               </p>
             </div>
             <div className="space-y-2">
@@ -384,7 +393,9 @@ function IbBroker() {
               </div>
               <p className="font-medium">
                 Receive Daily <br />{" "}
-                <span className="text-cyan-400">Commission Payouts</span>
+                <span className="text-[var(--primary)]">
+                  Commission Payouts
+                </span>
               </p>
             </div>
           </div>
