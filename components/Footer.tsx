@@ -24,8 +24,8 @@ export default function Footer() {
           />
 
           <p className="text-gray-300">
-            Engage in trading with WinproFX – a single platform offering
-            multiple opportunities.
+            Engage in trading with Billion Dollar FX – a single platform
+            offering multiple opportunities.
           </p>
         </div>
 
@@ -133,18 +133,19 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white mb-2">Restricted Regions</h4>
           <p className="text-gray-400 text-sm">
-            WinproFX Limited does not provide services for citizens/residents of
-            the USA, Cuba, Iraq, Myanmar, North Korea, Sudan. The services of
-            WinproFX Limited are not intended for distribution to, or use by,
-            any person in any country or jurisdiction where such distribution or
-            use would be contrary to local law or regulation.
+            Billion Dollar FX Limited does not provide services for
+            citizens/residents of the USA, Cuba, Iraq, Myanmar, North Korea,
+            Sudan. The services of Billion Dollar FX Limited are not intended
+            for distribution to, or use by, any person in any country or
+            jurisdiction where such distribution or use would be contrary to
+            local law or regulation.
           </p>
         </div>
       </div>
 
       {/* Footer Bottom */}
       <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-400 text-xs flex flex-col md:flex-row md:justify-between items-center gap-2">
-        <p>© 2025 All Rights Reserved By WinproFx</p>
+        <p>© 2025 All Rights Reserved By Billion Dollar FX</p>
         <div className="flex flex-wrap justify-center gap-4">
           {[
             "Privacy Policy",
