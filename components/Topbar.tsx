@@ -9,14 +9,16 @@ import {
   Minimize,
 } from "lucide-react";
 import Image from "next/image";
-import userAvatar from "../assets/logo.webp"; // replace with your image
+import userAvatar from "../assets/logo.webp";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Topbar() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const router = useRouter();
 
-  // Track full screen state
+  // Fullscreen toggle tracking
   useEffect(() => {
     const handleChange = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handleChange);
@@ -35,14 +37,20 @@ export default function Topbar() {
     }
   };
 
+  // 🔐 Sign out logic
+  const handleSignOut = () => {
+    // Clear token or any auth data
+    localStorage.removeItem("token"); // or sessionStorage / cookies
+
+    // Redirect to home page
+    router.push("/");
+  };
+
   return (
     <header className="h-16 w-full bg-[#121e2c] text-white flex items-center justify-between px-6 shadow z-40 relative">
-      {/* Left Side */}
       <div className="text-lg font-semibold">Welcome Back!</div>
 
-      {/* Right Side */}
       <div className="flex items-center gap-4 relative">
-        {/* Fullscreen toggle */}
         <button
           className="hover:text-gray-300 transition"
           title="Toggle Fullscreen"
@@ -51,7 +59,6 @@ export default function Topbar() {
           {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
         </button>
 
-        {/* Icons */}
         <button
           className="hover:text-gray-300 transition"
           title="Notifications"
@@ -65,7 +72,6 @@ export default function Topbar() {
           <HelpCircle size={20} />
         </button>
 
-        {/* Avatar Dropdown */}
         <div className="relative">
           <button
             className="flex items-center gap-2 hover:text-gray-300"
@@ -79,7 +85,6 @@ export default function Topbar() {
             <ChevronDown size={16} />
           </button>
 
-          {/* Dropdown menu */}
           {openUserMenu && (
             <div className="absolute right-0 mt-2 w-40 bg-white text-black rounded shadow z-50">
               <a
@@ -94,12 +99,12 @@ export default function Topbar() {
               >
                 Security
               </a>
-              <a
-                href="/signout"
-                className="block px-4 py-2 hover:bg-gray-100 text-red-600"
+              <button
+                onClick={handleSignOut}
+                className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600"
               >
                 Sign Out
-              </a>
+              </button>
             </div>
           )}
         </div>
