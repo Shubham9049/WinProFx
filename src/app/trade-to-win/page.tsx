@@ -36,14 +36,15 @@ export default function TradeToWin() {
   };
 
   return (
-    <div className="bg-[#121E2C] text-white">
+    <div className="bg-[var(--bg)] text-white">
       <Navbar />
 
       <section className="w-11/12 md:w-4/5 mx-auto pt-36 pb-20 flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold leading-snug mb-4">
-            Unlock Amazing <span className="text-cyan-400">Rewards</span> <br />
+            Unlock Amazing{" "}
+            <span className="text-[var(--primary)]">Rewards</span> <br />
             with Every Trade!
           </h2>
           <p className="italic text-gray-300 mb-6">
@@ -79,8 +80,8 @@ export default function TradeToWin() {
 
       <section className="w-11/12 md:w-4/5 mx-auto py-12 text-white text-center">
         <h3 className="text-2xl md:text-3xl font-bold mb-4">
-          How the <span className="text-cyan-400">Trade to Win</span> Program
-          Works?
+          How the <span className="text-[var(--primary)]">Trade to Win</span>{" "}
+          Program Works?
         </h3>
 
         <p className="text-gray-300 mb-2">
@@ -108,7 +109,8 @@ export default function TradeToWin() {
         {/* Program Period & Eligibility */}
         <div>
           <h3 className="text-xl md:text-2xl font-bold mb-1">
-            Program <span className="text-cyan-400">Period & Eligibility:</span>
+            Program{" "}
+            <span className="text-[var(--primary)]">Period & Eligibility:</span>
           </h3>
           <p className="italic text-sm text-gray-300 mb-4">
             Get started now and make the most of your trades.
@@ -141,7 +143,7 @@ export default function TradeToWin() {
               },
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <CheckCircle className="text-cyan-400 w-5 h-5 mt-1" />
+                <CheckCircle className="text-[var(--primary)] w-5 h-5 mt-1" />
                 <span>
                   <strong>{item.title}:</strong> {item.desc}
                 </span>
@@ -155,7 +157,8 @@ export default function TradeToWin() {
         {/* Terms & Conditions */}
         <div>
           <h3 className="text-xl md:text-2xl font-bold mb-1">
-            Important <span className="text-cyan-400">Terms & Conditions</span>
+            Important{" "}
+            <span className="text-[var(--primary)]">Terms & Conditions</span>
           </h3>
           <p className="italic text-sm text-gray-300 mb-4">
             Ensure you meet all the criteria before participating.
@@ -180,7 +183,7 @@ export default function TradeToWin() {
               },
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <CheckCircle className="text-cyan-400 w-5 h-5 mt-1" />
+                <CheckCircle className="text-[var(--primary)] w-5 h-5 mt-1" />
                 <span>
                   <strong>{item.title}:</strong> {item.desc}
                 </span>
@@ -192,7 +195,8 @@ export default function TradeToWin() {
         {/* CTA */}
         <div className="text-center pt-4">
           <h3 className="text-2xl font-bold mb-2">
-            Start Trading & <span className="text-cyan-400">Win Big!</span>
+            Start Trading &{" "}
+            <span className="text-[var(--primary)]">Win Big!</span>
           </h3>
           <p className="italic mb-6">
             Sign up today and start your journey to amazing rewards with Billion
@@ -207,7 +211,7 @@ export default function TradeToWin() {
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-5">
             FAQs: Your Guide to
-            <span className="text-cyan-400"> Seamless Trading</span>
+            <span className="text-[var(--primary)]"> Seamless Trading</span>
           </h2>
 
           {/* Accordion */}
@@ -219,7 +223,7 @@ export default function TradeToWin() {
                   className="w-full flex items-center justify-between text-left text-white text-lg font-medium"
                 >
                   {faq.question}
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-cyan-400">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-[var(--primary)]">
                     {activeIndex === i ? (
                       <Minus className="w-5 h-5" />
                     ) : (

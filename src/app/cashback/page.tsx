@@ -24,7 +24,7 @@ function Cashback() {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="bg-[#121E2C] text-white">
+    <div className="bg-[var(--bg)] text-white">
       <Navbar />
       <section className="w-11/12 md:w-4/5 mx-auto pt-36 pb-20 flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content */}
@@ -84,7 +84,7 @@ function Cashback() {
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-bold text-white">
           Why Switch to{" "}
-          <span className="text-cyan-400">Billion Dollar FX?</span>
+          <span className="text-[var(--primary)]">Billion Dollar FX?</span>
         </h2>
 
         {/* Features Grid */}
@@ -97,7 +97,7 @@ function Cashback() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-gradient-to-b from-[#121E2C] to-[#134054] p-6 rounded-xl hover:shadow-xl transition duration-300 group"
+              className="bg-gradient-to-b from-[#0a0f1c] to-[#0B3554] p-6 rounded-xl hover:shadow-xl transition duration-300 group"
             >
               <div className="w-20 h-20 mx-auto mb-4">
                 <Image
@@ -116,10 +116,10 @@ function Cashback() {
       <TradeSection />
       <PaymentMethods />
 
-      <section className="w-11/12 md:w-4/5 mx-auto text-center py-12 mb-10 rounded-2xl space-y-12 bg-gradient-to-b from-[#121E2C] to-[#134054]">
+      <section className="w-11/12 md:w-4/5 mx-auto text-center py-12 mb-10 rounded-2xl space-y-12 bg-gradient-to-b from-[#0a0f1c] to-[#0B3554]">
         <h2 className="text-2xl md:text-3xl font-bold text-white">
           Start Trading with{" "}
-          <span className="text-cyan-400">Billion Dollar FX!</span>
+          <span className="text-[var(--primary)]">Billion Dollar FX!</span>
         </h2>
 
         {/* Steps Grid */}
@@ -129,10 +129,7 @@ function Cashback() {
             { img: fund, label: "Fund" },
             { img: trade, label: "Trade" },
           ].map((item, index) => (
-            <div
-              key={index}
-              className=" border border-[var(--primary)] rounded-2xl px-10 py-5 "
-            >
+            <div key={index} className="   px-10 py-5 ">
               <div className="w-20 h-20 mx-auto mb-4">
                 <Image
                   src={item.img}

@@ -32,7 +32,7 @@ export default function CurrencyCalculator() {
   };
 
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[var(--bg)]">
       <Navbar />
       <section className=" text-white pb-8 text-center pt-36">
         {/* Breadcrumb */}
@@ -49,7 +49,7 @@ export default function CurrencyCalculator() {
         </h1>
       </section>
 
-      <section className="text-white bg-[#121E2C] py-12">
+      <section className="text-white bg-[var(--bg)] py-12">
         {/* Disclaimer */}
         <p className="text-center text-gray-400 max-w-3xl mx-auto px-4 text-sm mb-12">
           Disclaimer: The trading calculator is provided for illustrative
@@ -62,39 +62,45 @@ export default function CurrencyCalculator() {
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-16">
           How to use the <span className="text-white">WinproFX</span>{" "}
-          <span className="text-cyan-400">Trading Calculator</span>
+          <span className="text-[var(--primary)]">Trading Calculator</span>
         </h2>
 
         {/* Steps */}
         <div className="flex flex-col md:flex-row justify-center items-start gap-12 w-11/12 md:w-4/5 mx-auto">
           {/* Step 1 */}
           <div className="flex flex-col items-center text-center max-w-sm relative">
-            <span className="text-5xl text-cyan-300 font-semibold mb-4">1</span>
+            <span className="text-5xl text-[var(--primary)] font-semibold mb-4">
+              1
+            </span>
             <p className="text-gray-300 text-base">
               Choose your WinproFX account type and specify your account&#39;s
               leverage and currency.
             </p>
             {/* Line & Diamond to Step 2 */}
-            <div className="hidden md:flex items-center absolute top-6 right-[-110px] w-[250px] h-[1px] bg-cyan-700">
-              <div className="w-3 h-3 bg-cyan-700 rotate-45 mx-auto" />
+            <div className="hidden md:flex items-center absolute top-6 right-[-110px] w-[250px] h-[1px] bg-[var(--primary)]">
+              <div className="w-3 h-3 bg-[var(--primary)] rotate-45 mx-auto" />
             </div>
           </div>
 
           {/* Step 2 */}
           <div className="flex flex-col items-center text-center max-w-sm relative">
-            <span className="text-5xl text-cyan-300 font-semibold mb-4">2</span>
+            <span className="text-5xl text-[var(--primary)] font-semibold mb-4">
+              2
+            </span>
             <p className="text-gray-300 text-base">
               Select your desired trading instrument from the available list.
             </p>
             {/* Line & Diamond to Step 3 */}
-            <div className="hidden md:flex items-center absolute top-6 right-[-150px] w-[250px] h-[1px] bg-cyan-700">
-              <div className="w-3 h-3 bg-cyan-700 rotate-45 mx-auto" />
+            <div className="hidden md:flex items-center absolute top-6 right-[-150px] w-[250px] h-[1px] bg-[var(--primary)]">
+              <div className="w-3 h-3 bg-[var(--primary)] rotate-45 mx-auto" />
             </div>
           </div>
 
           {/* Step 3 */}
           <div className="flex flex-col items-center text-center max-w-sm">
-            <span className="text-5xl text-cyan-300 font-semibold mb-4">3</span>
+            <span className="text-5xl text-[var(--primary)] font-semibold mb-4">
+              3
+            </span>
             <p className="text-gray-300 text-base">
               Determine your trade&#39;s lot size and proceed to calculate by
               clicking the &#39;Calculate&#39; button.
@@ -108,7 +114,7 @@ export default function CurrencyCalculator() {
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Forex
-            <span className="text-cyan-400"> Currency Calculator</span>
+            <span className="text-[var(--primary)]"> Currency Calculator</span>
           </h2>
           <p className="text-gray-400 mb-10 text-base md:text-lg">
             Unlock the answers you need with our FAQs. From account setup to
@@ -126,7 +132,7 @@ export default function CurrencyCalculator() {
                   className="w-full flex items-center justify-between text-left text-white text-lg font-medium"
                 >
                   {faq.question}
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-cyan-400">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-[var(--primary)]">
                     {activeIndex === i ? (
                       <Minus className="w-5 h-5" />
                     ) : (

@@ -1,5 +1,5 @@
 "use client";
-import heroImage from "../assets/hero.webp";
+import heroImage from "../assets/hero.png";
 import Button from "./Button";
 import Typewriter from "typewriter-effect";
 import icon1 from "../assets/icons/icon.svg";
@@ -15,16 +15,17 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative font-montserrat bg-[#121E2C] py-20 md:pt-0">
+    <div className="relative font-montserrat bg-[var(--bg)] py-20 md:pt-0">
       {/* HERO SECTION */}
       <section className="relative md:h-[80vh] w-full text-white">
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat after:content-[''] after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-[#121E2A]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${heroImage.src})`,
           }}
         ></div>
+        <div className="absolute inset-0 bg-black/50   "></div>
 
         {/* Centered Content */}
         <div className="relative  mx-auto z-10 flex flex-col items-center justify-center h-full text-center px-4">
@@ -55,8 +56,7 @@ export default function Hero() {
         <div
           className="mx-auto w-full md:w-4/5 rounded-3xl p-6 md:p-12 text-white"
           style={{
-            background:
-              "linear-gradient(to bottom, #0B121A 0%, #0F2231 50%, #10364C 100%)",
+            background: "linear-gradient(to bottom, #0A0F1C 0%, #0B3554 100%)",
           }}
         >
           {/* Heading + Button */}

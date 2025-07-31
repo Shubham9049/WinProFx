@@ -1,33 +1,38 @@
-import { div } from "framer-motion/client";
+"use client";
 import Image from "next/image";
+
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import Button from "../../../components/Button";
+import { useRouter } from "next/navigation";
 
 export default function MT5Page() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
   return (
     <div>
       <Navbar />
-      <div className="bg-[#121E2C] text-white py-12">
-        <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold mt-4">
+      <div className="bg-[var(--bg)] text-white py-12">
+        <div className="max-w-6xl mx-auto px-4 py-12 text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold mt-4">
             MT5 Unleashed: Dive into <br />
             <span className="text-white">Limitless </span>
-            <span className="text-[#00b3ff]">Trading Success </span>
+            <span className="text-[var(--primary)]">Trading Success </span>
             with <br /> WinproFX
           </h1>
-          <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+          <p className="mt-4 text-gray-300 max-w-3xl mx-auto mb-4">
             WinproFX has achieved significant success in global business
             expansion. We offer the Best Forex Trading Platform on MT5,
             accessible on both Android and iPhone, bringing you one step closer
             to success. Take the plunge into a realm of endless trading
             opportunities by downloading MT5 now.
           </p>
-          <button className="mt-6 px-6 py-2 bg-[#00b3ff] text-white rounded-full hover:bg-[#0099dd] transition">
-            Open Account
-          </button>
+          <Button text="Create Account" onClick={handleClick} />
         </div>
 
-        <div className="bg-gradient-to-br from-[#0e2330] to-[#143f53] rounded-xl max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center gap-6 mb-12">
+        <div className="bg-gradient-to-b from-[var(--bg)] to-[#143f53] rounded-xl max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center gap-6 mb-12">
           <div className="flex-1">
             <Image
               src="https://winprofx.com/_next/static/media/mobile.a656fac5.svg"
@@ -43,7 +48,7 @@ export default function MT5Page() {
             </p>
             <h2 className="text-xl font-semibold mb-2">
               Download MT 5 <br />
-              <span className="text-[#00b3ff]">For Mobile</span>
+              <span className="text-[var(--primary)]">For Mobile</span>
             </h2>
             <p className="text-gray-300 mb-4">
               WinproFX has remained highly successful to expand their business
@@ -87,7 +92,7 @@ export default function MT5Page() {
             </p>
             <h2 className="text-xl font-semibold mb-2">
               Download MT 5 <br />{" "}
-              <span className="text-[#00b3ff]">For Web</span>
+              <span className="text-[var(--primary)]">For Web</span>
             </h2>
             <p className="text-gray-300 mb-4">
               WinproFX has remained highly successful to expand their business

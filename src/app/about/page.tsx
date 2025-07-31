@@ -48,7 +48,7 @@ export default function About() {
 
   const handleClick = () => alert("Account Opening Started!");
   return (
-    <div className="bg-[#121E2C] px-2">
+    <div className="bg-[var(--bg)] px-2">
       <Navbar />
       <section className=" text-white pb-16 text-center pt-36">
         {/* Breadcrumb */}
@@ -99,7 +99,7 @@ export default function About() {
         <div className="w-11/12 md:w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
           {/* Item 1 */}
           <div>
-            <h3 className="text-cyan-400 font-semibold text-xl mb-2">
+            <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
               Innovative Aspirations
             </h3>
             <p className="text-gray-300">
@@ -111,7 +111,7 @@ export default function About() {
 
           {/* Item 2 */}
           <div>
-            <h3 className="text-cyan-400 font-semibold text-xl mb-2">
+            <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
               Client Empowerment
             </h3>
             <p className="text-gray-300">
@@ -123,7 +123,7 @@ export default function About() {
 
           {/* Item 3 */}
           <div>
-            <h3 className="text-cyan-400 font-semibold text-xl mb-2">
+            <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
               Trailblazing Integrity
             </h3>
             <p className="text-gray-300">
@@ -135,7 +135,7 @@ export default function About() {
 
           {/* Item 4 */}
           <div>
-            <h3 className="text-cyan-400 font-semibold text-xl mb-2">
+            <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
               Community of Achievers
             </h3>
             <p className="text-gray-300">
@@ -153,7 +153,7 @@ export default function About() {
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             FAQs: Your Guide to{" "}
-            <span className="text-cyan-400">Seamless Trading</span>
+            <span className="text-[var(--primary)]">Seamless Trading</span>
           </h2>
           <p className="text-gray-400 mb-10 text-base md:text-lg">
             Unlock the answers you need with our FAQs. From account setup to
@@ -171,7 +171,7 @@ export default function About() {
                   className="w-full flex items-center justify-between text-left text-white text-lg font-medium"
                 >
                   {faq.question}
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-cyan-400">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-[var(--primary)]">
                     {activeIndex === i ? (
                       <Minus className="w-5 h-5" />
                     ) : (

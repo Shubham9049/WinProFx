@@ -22,7 +22,7 @@ export default function Home() {
     router.push("/register");
   };
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[var(--bg)]">
       <Navbar />
       <Hero />
       <Stats />
@@ -33,7 +33,7 @@ export default function Home() {
       <section className="py-16">
         <div className="relative w-11/12 md:w-4/5 mx-auto">
           {/* Box with gradient and text */}
-          <div className="bg-gradient-to-b from-[#121E2C] to-[#104E64] text-white p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between relative z-10">
+          <div className="bg-gradient-to-b from-[#0A0F1C] to-[#0B3554] text-white p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between relative z-10">
             {/* Text Content */}
             <div className="max-w-xl">
               <h2 className="text-2xl md:text-3xl font-bold mb-3">

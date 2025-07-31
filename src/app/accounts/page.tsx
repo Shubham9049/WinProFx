@@ -11,12 +11,12 @@ const TradingAccounts = () => {
   return (
     <div>
       <Navbar />
-      <section className="bg-[#121E2C] text-white px-4 py-12 md:pt-36">
+      <section className="bg-[var(--bg)] text-white px-4 py-12 md:pt-36">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#36BFFA] mb-4">
+          <h2 className="text-2xl md:text-3xl text-center font-bold text-[var(--primary)] mb-4">
             Trading Accounts:
           </h2>
-          <p className="text-gray-300 max-w-xl mb-12">
+          <p className="text-gray-300 max-w-2xl mb-12 text-center mx-auto">
             Unlock feature-packed, commission-free trading accounts designed for
             today&#39;s traders. Sign up now and enjoy the benefits of our most
             popular account.

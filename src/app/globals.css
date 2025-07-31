@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #067690;
+  --primary: #927948;
+  --bg: #0a0f1c;
 }
 
 @media (max-width: 768px) {

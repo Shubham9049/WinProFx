@@ -8,7 +8,7 @@ import { blogData } from "@/data/blogData";
 
 export default function Blog() {
   return (
-    <div className="bg-[#121E2C] min-h-screen text-white">
+    <div className="bg-[var(--bg)] min-h-screen text-white">
       <Navbar />
       <section className="text-center pt-36 pb-12">
         <div className="text-sm text-gray-400 mb-4">

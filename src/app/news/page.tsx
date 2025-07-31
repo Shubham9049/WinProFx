@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function News() {
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[var(--bg)]">
       <Navbar />
       <section className=" text-white pb-8 text-center pt-36">
         {/* Breadcrumb */}

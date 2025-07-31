@@ -115,13 +115,13 @@ export default function TradeSection() {
           {items.map((item, index) => (
             <div
               key={index}
-              className={`relative group overflow-hidden border border-cyan-900 rounded-3xl h-[330px] p-6 flex-shrink-0 ${
+              className={`relative group overflow-hidden border border-[#927948] rounded-3xl h-[330px] p-6 flex-shrink-0 ${
                 isMobile ? "snap-center w-[80%]" : ""
               }`}
             >
               {/* Background zoom on hover */}
               <div className="absolute inset-0 z-0 overflow-hidden">
-                <div className="absolute inset-0 scale-0 rounded-full bg-cyan-900 transition-transform duration-1000 ease-out group-hover:scale-[3]" />
+                <div className="absolute inset-0 scale-0 rounded-full bg-[#927948] transition-transform duration-1000 ease-out group-hover:scale-[3]" />
               </div>
 
               <div className="flex flex-col justify-end h-full relative z-10 transition-all duration-1000 ease-in-out group-hover:pt-6">

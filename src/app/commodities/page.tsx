@@ -89,7 +89,7 @@ export default function Commodities() {
   return (
     <div>
       <Navbar />
-      <main className="bg-[#121E2C] text-white font-[Montserrat] pt-12 pb-8">
+      <main className="bg-[var(--bg)] text-white font-[Montserrat] pt-12 pb-8">
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl md:text-3xl font-bold mt-4">

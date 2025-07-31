@@ -44,7 +44,7 @@ export default function Education() {
   };
 
   return (
-    <div className="bg-[#121E2C] px-2">
+    <div className="bg-[var(--bg)] px-2">
       <Navbar />
       <section className=" text-white pb-8 text-center pt-36">
         {/* Breadcrumb */}
@@ -78,7 +78,7 @@ export default function Education() {
                 onClick={() => setActiveTab(i)}
                 className={`pb-2 font-medium transition-all ${
                   activeTab === i
-                    ? "text-cyan-400 border-b-2 border-cyan-400"
+                    ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
                     : "text-gray-400 hover:text-cyan-300"
                 }`}
               >
@@ -111,7 +111,7 @@ export default function Education() {
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-5">
             FAQs: Your Guide to
-            <span className="text-cyan-400"> Seamless Trading</span>
+            <span className="text-[var(--primary)]"> Seamless Trading</span>
           </h2>
 
           {/* Accordion */}
@@ -123,7 +123,7 @@ export default function Education() {
                   className="w-full flex items-center justify-between text-left text-white text-lg font-medium"
                 >
                   {faq.question}
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-cyan-400">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-[var(--primary)]">
                     {activeIndex === i ? (
                       <Minus className="w-5 h-5" />
                     ) : (

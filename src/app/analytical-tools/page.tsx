@@ -62,7 +62,7 @@ export default function AnalyticalTools() {
   };
 
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[var(--bg)]">
       <Navbar />
       <section className=" text-white pb-8 text-center pt-36">
         {/* Breadcrumb */}
@@ -96,7 +96,7 @@ export default function AnalyticalTools() {
             >
               {/* Image */}
               <div
-                className="w-full md:w-1/2 rounded-xl overflow-hidden bg-gradient-to-b from-[#121E2C] to-[#104E64]"
+                className="w-full md:w-1/2 rounded-xl overflow-hidden bg-gradient-to-b from-[var(--bg)] to-[#0B3554]"
                 data-aos="fade-up"
               >
                 <Image
@@ -110,7 +110,9 @@ export default function AnalyticalTools() {
               <div className="w-full md:w-1/2" data-aos="fade-up">
                 <h2 className="text-2xl md:text-3xl font-bold mb-4">
                   {feature.title}{" "}
-                  <span className="text-cyan-400">{feature.highlight}</span>
+                  <span className="text-[var(--primary)]">
+                    {feature.highlight}
+                  </span>
                 </h2>
                 <p className="text-gray-400 leading-relaxed">
                   {feature.content}
@@ -126,7 +128,7 @@ export default function AnalyticalTools() {
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Frequently
-            <span className="text-cyan-400">asked questions</span>
+            <span className="text-[var(--primary)]"> asked questions</span>
           </h2>
           <p className="text-gray-400 mb-10 text-base md:text-lg">
             Unlock the answers you need with our FAQs. From account setup to
@@ -144,7 +146,7 @@ export default function AnalyticalTools() {
                   className="w-full flex items-center justify-between text-left text-white text-lg font-medium"
                 >
                   {faq.question}
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-cyan-400">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-[var(--primary)]">
                     {activeIndex === i ? (
                       <Minus className="w-5 h-5" />
                     ) : (

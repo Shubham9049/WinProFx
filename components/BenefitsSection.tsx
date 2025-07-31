@@ -117,7 +117,7 @@ export default function BenefitsSection() {
               >
                 {/* Front - only visible on desktop */}
                 {!isMobile && (
-                  <div className="absolute w-full h-full backface-hidden border border-cyan-900 rounded-3xl p-5 flex flex-col justify-between gap-3">
+                  <div className="absolute w-full h-full backface-hidden border border-[#927948] rounded-3xl p-5 flex flex-col justify-between gap-3">
                     {card.icon}
                     <div>
                       <p className="text-gray-300 text-sm">{card.title}</p>
@@ -127,7 +127,7 @@ export default function BenefitsSection() {
                 )}
 
                 {/* Back */}
-                <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-cyan-900 rounded-3xl p-5 flex flex-col gap-3">
+                <div className="absolute w-full h-full backface-hidden [transform:rotateY(180deg)] bg-[#927948] rounded-3xl p-5 flex flex-col gap-3">
                   {card.icon}
                   <p className="text-gray-300 text-sm">{card.title}</p>
                   <p className="text-xl font-bold">{card.bold}</p>

@@ -13,7 +13,7 @@ export default async function BlogDetails(props: {
   if (!blog) return notFound();
 
   return (
-    <div className="bg-[#121E2C] text-white min-h-screen">
+    <div className="bg-[var(--bg)] text-white min-h-screen">
       <Navbar />
       <div className="max-w-3xl mx-auto py-36 px-6">
         <Image

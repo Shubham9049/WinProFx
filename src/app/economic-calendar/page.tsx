@@ -62,7 +62,7 @@ export default function EconomicCalendar() {
   };
 
   return (
-    <div className="bg-[#121E2C]">
+    <div className="bg-[var(--bg)]">
       <Navbar />
       <section className=" text-white pb-8 text-center pt-36">
         {/* Breadcrumb */}
@@ -133,7 +133,7 @@ export default function EconomicCalendar() {
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Frequently
-            <span className="text-cyan-400">asked questions</span>
+            <span className="text-[var(--primary)]"> asked questions</span>
           </h2>
           <p className="text-gray-400 mb-10 text-base md:text-lg">
             Unlock the answers you need with our FAQs. From account setup to
@@ -151,7 +151,7 @@ export default function EconomicCalendar() {
                   className="w-full flex items-center justify-between text-left text-white text-lg font-medium"
                 >
                   {faq.question}
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-cyan-400">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-[var(--primary)]">
                     {activeIndex === i ? (
                       <Minus className="w-5 h-5" />
                     ) : (
