@@ -73,8 +73,11 @@ export default function Home() {
                 <span className="text-xl md:text-2xl">ollar</span>FX
               </span>
             </h3>
-            <p className="text-gray-400 mb-4">
-              Limitless Potential. Smarter Trading.
+            <p className="text-gray-400 mb-4 font-semibold">
+              <span className="text-[var(--primary)]">
+                Limitless Potential.
+              </span>{" "}
+              Smarter Trading.
             </p>
             <p className="mb-5 text-gray-300">
               BillionDollarFX is your gateway to secure and sustainable online
@@ -106,7 +109,7 @@ export default function Home() {
             </ul>
             <Link href="/about">
               <button className="mt-6 relative overflow-hidden px-4 py-1 border border-[var(--primary)] text-[var(--primary)] rounded-full group">
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white text-xs">
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white text-sm">
                   Explore More →
                 </span>
                 <span className="absolute inset-0 bg-[var(--primary)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>

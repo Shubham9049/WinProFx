@@ -53,10 +53,8 @@ export default function Stats() {
       {/* Heading */}
       <div className="text-start mb-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-2">
-          Power Your Trades with <br />
-          <span className="text-[var(--primary)]">
-            Asia’s Breakout Broker of 2024
-          </span>
+          <span className="text-[var(--primary)]"> Lead the Market</span> <br />
+          with Asia&apos;s Top-Ranked Broker of 2025
         </h2>
         <hr className="border-[var(--primary)] border-t-1 mt-4" />
       </div>

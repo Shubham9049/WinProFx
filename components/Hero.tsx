@@ -63,7 +63,9 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row justify-between items-center mb-10 text-center md:text-left">
             <div className="space-y-3">
               <h2 className="text-2xl  font-semibold leading-tight">
-                Launch Your Forex Career Today
+                Launch Your{" "}
+                <span className="text-[var(--primary)]">Forex Career</span>{" "}
+                Today
               </h2>
               <p className="text-sm italic ">
                 Start trading in minutes with Billion Dollar FX.

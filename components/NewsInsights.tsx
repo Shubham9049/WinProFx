@@ -14,9 +14,7 @@ export default function NewsInsights() {
     <section className="text-white py-12 relative">
       <div className="w-11/12 md:w-4/5 mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-2xl md:text-3xl font-bold mb-3">
-          News & <span className="text-[var(--primary)]">Insights</span>
-        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-3">News & Insights</h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
           Informed trading starts with informed reading.
         </p>

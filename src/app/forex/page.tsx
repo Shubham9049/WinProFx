@@ -82,8 +82,8 @@ export default function Forex() {
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl md:text-3xl font-bold mt-4">
-            WHAT IS <span className="text-[var(--primary)]">FOREX</span>{" "}
-            TRADING?
+            WHAT IS{" "}
+            <span className="text-[var(--primary)]">FOREX TRADING?</span>
           </h1>
           <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
             Forex, or Foreign Exchange, is the world’s largest financial market

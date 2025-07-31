@@ -75,7 +75,7 @@ export default function BenefitsSection() {
         <div data-aos="fade-right">
           <h2 className="text-2xl md:text-3xl font-bold leading-snug">
             Smart Reasons to{" "}
-            <span className="text-[var(--primary)]">Trade </span> With Us
+            <span className="text-[var(--primary)]">Trade With Us</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-md">
             Curated for traders who demand clarity, speed, and real results.

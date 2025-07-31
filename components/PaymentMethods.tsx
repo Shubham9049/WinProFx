@@ -11,6 +11,7 @@ import solana from "../assets/icons/abc.svg";
 import ripple from "../assets/icons/maskgroup.svg";
 import mastercard from "../assets/icons/mastercard.png";
 import bank from "../assets/icons/bankt.png";
+import upi from "../assets/icons/upi.webp";
 
 const paymentIcons = [
   { src: mastercard, alt: "Mastercard" },
@@ -21,6 +22,7 @@ const paymentIcons = [
   { src: solana, alt: "Solana" },
   { src: ripple, alt: "Ripple" },
   { src: bank, alt: "Bank Transfer" },
+  { src: upi, alt: "UPI" },
 ];
 
 export default function PaymentMethods() {
