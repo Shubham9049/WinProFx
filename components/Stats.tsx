@@ -2,14 +2,14 @@
 
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import evolving from "../assets/icons/evolving.svg";
-import awards from "../assets/icons/awards.svg";
-import country from "../assets/icons/countries.svg";
-import trading from "../assets/icons/trading.svg";
-import Image from "next/image";
+import evolving from "../assets/icons1/evolving.png";
+import awards from "../assets/icons1/awards.png";
+import country from "../assets/icons1/countries.png";
+import trading from "../assets/icons1/trading.png";
+import Image, { StaticImageData } from "next/image";
 
 interface StatItem {
-  icon: string;
+  icon: StaticImageData;
   endValue?: number;
   title?: string;
   subtitle: string;

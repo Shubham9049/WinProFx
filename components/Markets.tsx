@@ -1,9 +1,9 @@
 "use client";
-import commodity from "../assets/icons/commodities.svg";
-import forex from "../assets/icons/forex.svg";
-import indices from "../assets/icons/indices.svg";
-import crypto from "../assets/icons/crypto.svg";
-import metals from "../assets/icons/metals.svg";
+import commodity from "../assets/icons1/commodities.png";
+import forex from "../assets/icons1/forex.png";
+import indices from "../assets/icons1/indices.png";
+import crypto from "../assets/icons1/crypto.png";
+import metals from "../assets/icons1/metals.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";

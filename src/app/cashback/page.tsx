@@ -6,15 +6,15 @@ import cashback2 from "../../../assets/Cashback-03-1.svg";
 import Button from "../../../components/Button";
 import Image from "next/image";
 import Footer from "../../../components/Footer";
-import img1 from "../../../assets/icons/Why-Choose-1.svg";
-import img2 from "../../../assets/icons/Why-Choose-2.svg";
-import img3 from "../../../assets/icons/Why-Choose-3.svg";
-import img4 from "../../../assets/icons/Why-Choose-4.svg";
+import img1 from "../../../assets/icons1/Why-Choose-1.png";
+import img2 from "../../../assets/icons1/Why-Choose-2.png";
+import img3 from "../../../assets/icons1/Why-Choose-3.png";
+import img4 from "../../../assets/icons1/Why-Choose-4.png";
 import TradeSection from "../../../components/Markets";
 import PaymentMethods from "../../../components/PaymentMethods";
-import register from "../../../assets/icons/register.svg";
-import fund from "../../../assets/icons/fund.svg";
-import trade from "../../../assets/icons/trade.svg";
+import register from "../../../assets/icons1/register.png";
+import fund from "../../../assets/icons1/fund.png";
+import trade from "../../../assets/icons1/trade.png";
 
 function Cashback() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

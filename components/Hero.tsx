@@ -2,9 +2,9 @@
 import heroImage from "../assets/hero.png";
 import Button from "./Button";
 import Typewriter from "typewriter-effect";
-import icon1 from "../assets/icons/icon.svg";
-import icon2 from "../assets/icons/icon2.svg";
-import icon3 from "../assets/icons/icon3.svg";
+import icon1 from "../assets/icons1/icon.png";
+import icon2 from "../assets/icons1/icon2.png";
+import icon3 from "../assets/icons1/icon3.png";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
