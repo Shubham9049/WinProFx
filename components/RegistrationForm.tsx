@@ -1,22 +1,68 @@
 "use client";
 import { useState } from "react";
+import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 export default function RegistrationForm() {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+    otp: "",
+  });
   const [agreed, setAgreed] = useState(false);
-  const [phone, setPhone] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [responseMsg, setResponseMsg] = useState("");
+  const [otpLoading, setOtpLoading] = useState(false);
 
-  const handleSendOtp = () => {
-    if (phone.length >= 10) alert("OTP Sent");
-    else alert("Enter a valid phone number.");
+  const handleChange = (e: any) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSendOtp = async () => {
+    try {
+      setOtpLoading(true);
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/brokers/request-otp`,
+        {
+          email: form.email,
+        }
+      );
+      setOtpSent(true);
+      setResponseMsg(res.data.message || "OTP sent");
+    } catch (err: any) {
+      setResponseMsg(err.response?.data?.message || "Failed to send OTP");
+    } finally {
+      setOtpLoading(false);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!agreed) return;
+
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/brokers/verify`,
+        form
+      );
+      setResponseMsg(res.data.message || "Broker verified successfully");
+    } catch (err: any) {
+      setResponseMsg(err.response?.data?.message || "Submission failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section className=" py-12 text-white text-center">
+    <section className="py-12 text-white text-center">
       <h2 className="text-2xl md:text-3xl font-semibold">
         Start Your Journey Towards <br />
-        <span className="text-cyan-400">Growth & Success</span>
+        <span className="text-[var(--primary)]">Growth & Success</span>
       </h2>
 
       <div className="bg-white text-black w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-10 rounded-2xl p-6 md:p-10 space-y-6 shadow-xl">
@@ -29,55 +75,100 @@ export default function RegistrationForm() {
 
         <div className="flex flex-col md:flex-row gap-4">
           <input
+            name="firstName"
             type="text"
             placeholder="👤 First Name"
+            value={form.firstName}
+            onChange={handleChange}
             className="border rounded-md px-4 py-2 flex-1 bg-gray-50 text-sm"
           />
           <input
+            name="lastName"
             type="text"
             placeholder="👤 Last Name"
+            value={form.lastName}
+            onChange={handleChange}
             className="border rounded-md px-4 py-2 flex-1 bg-gray-50 text-sm"
           />
         </div>
 
-        <input
-          type="email"
-          placeholder="✉️ Email"
-          className="border rounded-md px-4 py-2 w-full bg-gray-50 text-sm"
-        />
-
-        {/* ✅ Phone with Country Code */}
-        <div className="flex gap-2 items-center">
-          <div className="flex-1">
-            <PhoneInput
-              country={"in"}
-              value={phone}
-              onChange={(phone) => setPhone(phone)}
-              inputClass="!w-full !py-2 !pl-10 !text-sm !bg-gray-50 !border !rounded-md"
-              buttonClass="!bg-gray-200"
-              dropdownClass="!bg-white"
-              containerClass="!w-full"
-              inputProps={{
-                required: true,
-                name: "phone",
-              }}
-            />
-          </div>
+        <div className="flex gap-2">
+          <input
+            name="email"
+            type="email"
+            placeholder="✉️ Email"
+            value={form.email}
+            onChange={handleChange}
+            className="border rounded-md px-4 py-2 flex-1 bg-gray-50 text-sm"
+          />
           <button
             onClick={handleSendOtp}
-            className={`bg-gray-400 text-white px-4 py-2 rounded-md text-sm ${
-              phone.length >= 10
-                ? "hover:bg-gray-600"
-                : "opacity-50 cursor-not-allowed"
+            disabled={!form.email || otpLoading}
+            className={`text-sm px-4 rounded-md flex items-center justify-center ${
+              form.email && !otpLoading
+                ? "bg-[var(--primary)]  text-white"
+                : "bg-gray-300 cursor-not-allowed text-gray-500"
             }`}
-            disabled={phone.length < 10}
           >
-            Send OTP
+            {otpLoading ? (
+              <svg
+                className="animate-spin h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            ) : otpSent ? (
+              "Resend OTP"
+            ) : (
+              "Send OTP"
+            )}
           </button>
         </div>
+        {/* OTP Input */}
+        {otpSent && (
+          <input
+            name="otp"
+            type="text"
+            placeholder="🔒 Enter OTP"
+            value={form.otp}
+            onChange={handleChange}
+            className="border rounded-md px-4 py-2 w-full bg-gray-50 text-sm"
+          />
+        )}
 
+        {/* ✅ Phone with Country Code */}
+        <PhoneInput
+          country={"in"}
+          value={form.phone}
+          onChange={(phone) => setForm((prev) => ({ ...prev, phone }))}
+          inputClass="!w-full !py-2 !pl-10 !text-sm !bg-gray-50 !border !rounded-md"
+          containerClass="!w-full"
+          inputProps={{
+            required: true,
+            name: "phone",
+          }}
+        />
+
+        {/* Message */}
         <textarea
+          name="message"
           placeholder="💬 Message"
+          value={form.message}
+          onChange={handleChange}
           rows={3}
           className="w-full border rounded-md px-4 py-2 bg-gray-50 text-sm"
         ></textarea>
@@ -93,16 +184,23 @@ export default function RegistrationForm() {
           </span>
         </label>
 
+        {/* Submit Button */}
         <button
-          disabled={!agreed}
+          onClick={handleSubmit}
+          disabled={!agreed || !form.otp}
           className={`w-full py-2 rounded-full font-semibold text-white ${
-            agreed
-              ? "bg-cyan-600 hover:bg-cyan-700"
+            agreed && form.otp
+              ? "bg-[var(--primary)] hover:bg-[#FDE89B]"
               : "bg-gray-400 cursor-not-allowed"
           }`}
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </button>
+
+        {/* Response Message */}
+        {responseMsg && (
+          <p className="text-sm mt-2 text-gray-700 text-left">{responseMsg}</p>
+        )}
       </div>
     </section>
   );
