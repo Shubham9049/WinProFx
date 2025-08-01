@@ -26,7 +26,11 @@ export default function BrokerPopup({ isOpen, onClose }: BrokerPopupProps) {
 
   if (!isOpen) return null;
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -39,8 +43,12 @@ export default function BrokerPopup({ isOpen, onClose }: BrokerPopupProps) {
       );
       setOtpSent(true);
       setResponseMsg(res.data.message || "OTP sent");
-    } catch (err: any) {
-      setResponseMsg(err.response?.data?.message || "Failed to send OTP");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setResponseMsg(err.response?.data?.message || "Failed to send OTP");
+      } else {
+        setResponseMsg("Failed to send OTP");
+      }
     } finally {
       setOtpLoading(false);
     }
@@ -56,8 +64,12 @@ export default function BrokerPopup({ isOpen, onClose }: BrokerPopupProps) {
         form
       );
       setResponseMsg(res.data.message || "Broker verified successfully");
-    } catch (err: any) {
-      setResponseMsg(err.response?.data?.message || "Submission failed");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setResponseMsg(err.response?.data?.message || "Submission failed");
+      } else {
+        setResponseMsg("Submission failed");
+      }
     } finally {
       setLoading(false);
     }
