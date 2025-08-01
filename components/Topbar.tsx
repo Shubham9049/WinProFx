@@ -93,11 +93,6 @@ export default function Topbar() {
             className="flex items-center gap-2 hover:text-gray-300"
             onClick={() => setOpenUserMenu((prev) => !prev)}
           >
-            <Image
-              src={userAvatar}
-              alt="User Avatar"
-              className="w-8 h-8 rounded-full border border-gray-500"
-            />
             <span className="hidden md:inline text-sm font-medium">
               {userName}
             </span>

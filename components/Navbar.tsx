@@ -99,13 +99,13 @@ const Navbar = () => {
             item.dropdown ? (
               <div
                 key={item.title}
-                className="relative group cursor-pointer py-6"
+                className="relative group cursor-pointer py-6 "
               >
-                <span className="flex items-center gap-1 hover:text-white transition">
+                <span className="flex items-center gap-1 hover:text-white transition ">
                   {item.title}
                   <ChevronDown className="w-4 h-4" />
                 </span>
-                <div className="absolute top-full left-0 mt-2 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg py-2 px-4 rounded w-52 z-50 space-y-2">
+                <div className="absolute top-full left-0 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg py-2 px-4 rounded w-52 z-50 space-y-2">
                   {item.items?.map((link) => (
                     <Link
                       href={link.href}
