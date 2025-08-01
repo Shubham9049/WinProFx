@@ -7,34 +7,34 @@ import {
   ChevronDown,
   Maximize,
   Minimize,
+  Menu,
 } from "lucide-react";
-import Image from "next/image";
-import userAvatar from "../assets/logo.webp";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
-export default function Topbar() {
+export default function Topbar({
+  onToggleSidebar,
+}: {
+  onToggleSidebar: () => void;
+}) {
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [userName, setUserName] = useState("");
 
-  const router = useRouter();
-
-  // Fullscreen toggle tracking
   useEffect(() => {
     const handleChange = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handleChange);
     return () => document.removeEventListener("fullscreenchange", handleChange);
   }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
         try {
           const parsedUser = JSON.parse(storedUser);
-          setUserName(parsedUser.fullName || "User");
+          setUserName(parsedUser.fullName || "U");
         } catch (e) {
-          console.error("Failed to parse user from localStorage", e);
+          setUserName("U");
         }
       }
     }
@@ -42,61 +42,51 @@ export default function Topbar() {
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement
-        .requestFullscreen()
-        .catch((err) =>
-          console.error("Error trying to enable full-screen mode:", err)
-        );
+      document.documentElement.requestFullscreen().catch(console.error);
     } else {
       document.exitFullscreen();
     }
   };
 
-  // 🔐 Sign out logic
   const handleSignOut = () => {
-    // Clear token or any auth data
-    localStorage.removeItem("token"); // or sessionStorage / cookies
-    localStorage.removeItem("user"); // or sessionStorage / cookies
-
-    // Redirect to home page
-    router.push("/");
+    localStorage.clear();
+    window.location.href = "/";
   };
 
   return (
-    <header className="h-16 w-full bg-[#121e2c] text-white flex items-center justify-between px-6 shadow z-40 relative">
-      <div className="text-lg font-semibold">Welcome Back!</div>
+    <header className="h-16 w-full bg-[#121e2c] text-white flex items-center justify-between px-4 md:px-6 shadow z-40">
+      {/* Hamburger (mobile) */}
+      <div className="flex items-center gap-3">
+        <button onClick={onToggleSidebar} className="lg:hidden text-white">
+          <Menu size={24} />
+        </button>
+        <span className="font-semibold text-lg hidden sm:inline">
+          Welcome Back!
+        </span>
+      </div>
 
+      {/* Right Icons */}
       <div className="flex items-center gap-4 relative">
-        <button
-          className="hover:text-gray-300 transition"
-          title="Toggle Fullscreen"
-          onClick={toggleFullscreen}
-        >
+        <button title="Fullscreen" onClick={toggleFullscreen}>
           {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
         </button>
-
-        <button
-          className="hover:text-gray-300 transition"
-          title="Notifications"
-        >
+        <button title="Notifications">
           <Bell size={20} />
         </button>
-        <button className="hover:text-gray-300 transition" title="Language">
+        <button title="Language">
           <Globe size={20} />
         </button>
-        <button className="hover:text-gray-300 transition" title="Help">
+        <button title="Help">
           <HelpCircle size={20} />
         </button>
 
+        {/* User dropdown */}
         <div className="relative">
           <button
-            className="flex items-center gap-2 hover:text-gray-300"
+            className="flex items-center justify-center bg-[var(--primary)] text-black w-8 h-8 rounded-full text-sm font-bold"
             onClick={() => setOpenUserMenu((prev) => !prev)}
           >
-            <span className="hidden md:inline text-sm font-medium">
-              {userName}
-            </span>
-            <ChevronDown size={16} />
+            {userName.charAt(0).toUpperCase()}
           </button>
 
           {openUserMenu && (
