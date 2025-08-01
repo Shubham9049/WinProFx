@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 
 import clsx from "clsx";
-import logo from "../assets/logo.webp";
+import logo from "../assets/bdfx.gif";
 import Image from "next/image";
 
 export default function Sidebar() {
@@ -47,8 +47,8 @@ export default function Sidebar() {
   return (
     <aside className="h-screen w-64 bg-[#0b121a] text-white flex flex-col overflow-hidden">
       {/* Fixed Logo */}
-      <div className=" flex justify-center items-center border-b border-gray-700 shrink-0">
-        <Image src={logo} alt="Billion Dollar FX" className="w-32" />
+      <div className=" flex justify-center items-center border-b border-gray-700 shrink-0 py-4">
+        <Image src={logo} alt="Billion Dollar FX" />
       </div>
 
       {/* Scrollable Nav */}
