@@ -20,9 +20,18 @@ import icon1 from "../../../assets/icons1/ib-icon-08.png";
 import icon2 from "../../../assets/icons1/ib-icon-09.png";
 import icon3 from "../../../assets/icons1/ib-icon-10.png";
 import RegistrationForm from "../../../components/RegistrationForm";
+import BrokerPopup from "../../../components/BrokerPopup";
+import { useRouter } from "next/navigation";
+
 function IbBroker() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [clients, setClients] = useState(0);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/register");
+  };
 
   const getReward = (clients: number) => {
     if (clients < 5) return 1;
@@ -30,7 +39,6 @@ function IbBroker() {
     if (clients < 20) return 5;
     return 7;
   };
-  const handleClick = () => alert("Account Opening Started!");
 
   const toggleIndex = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -55,10 +63,10 @@ function IbBroker() {
           <p className=" text-gray-400 mb-6 italic">*T&C Apply</p>
 
           {/* Primary CTA */}
-          <Button text="View Details" onClick={handleClick} />
+
           <button
-            className="mt-6 ml-5 relative overflow-hidden px-6 py-2 border border-[var(--primary)] text-[var(--primary)] rounded-full group text-sm font-medium"
-            onClick={handleClick}
+            className="mt-6 relative overflow-hidden px-6 py-2 border border-[var(--primary)] text-[var(--primary)] rounded-full group text-sm font-medium"
+            onClick={() => setPopupOpen(true)}
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
               Become a Partner
@@ -263,7 +271,7 @@ function IbBroker() {
           </p>
 
           {/* Primary CTA */}
-          <Button text="Learn More" onClick={handleClick} />
+          <Button text="Create Account" onClick={handleClick} />
         </div>
 
         {/* Right Image */}
@@ -403,6 +411,7 @@ function IbBroker() {
       </section>
 
       <Footer />
+      <BrokerPopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
     </div>
   );
 }
