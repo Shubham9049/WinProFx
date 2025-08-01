@@ -49,7 +49,7 @@ export default function DepositsPage() {
               You don’t have any live accounts yet.
             </p>
             <p className="text-xs text-gray-500 mt-1">
-              Click "Create Account" to get started.
+              Click &#34;Create Account&#34; to get started.
             </p>
           </div>
         ) : (
