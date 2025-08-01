@@ -24,8 +24,10 @@ export default function LoginPage() {
 
   const handleSignIn = async () => {
     setError("");
+    setLoading(true); // ⬅️ Add loading start
 
     if (!email || !password) {
+      setLoading(false); // ⬅️ Stop loading if validation fails
       return setError("Please fill in all fields.");
     }
 
@@ -40,15 +42,20 @@ export default function LoginPage() {
       );
 
       const data = await res.json();
+      console.log(data.user);
 
-      if (!res.ok) return setError(data.message || "Login failed.");
+      if (!res.ok) {
+        setLoading(false); // ⬅️ Stop loading on error
+        return setError(data.message || "Login failed.");
+      }
 
       localStorage.setItem("token", data.token);
-      // alert("Login successful!");
+      localStorage.setItem("user", JSON.stringify(data.user));
       router.push("/dashboard");
     } catch (err) {
-      console.error("Login error:", err);
       setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false); // ⬅️ Always stop loading
     }
   };
 
@@ -204,9 +211,21 @@ export default function LoginPage() {
             )}
 
             <Button
-              text="SIGN IN"
+              text={
+                loading ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Signing In...
+                  </div>
+                ) : (
+                  "SIGN IN"
+                )
+              }
               onClick={handleSignIn}
-              className="w-full bg-gradient-to-r from-cyan-600 to-blue-500 hover:opacity-90 text-white py-2 rounded-full"
+              disabled={loading}
+              className={`w-full bg-gradient-to-r from-cyan-600 to-blue-500 text-white py-2 rounded-full ${
+                loading ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"
+              }`}
             />
 
             <Button
