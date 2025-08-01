@@ -6,16 +6,16 @@ import Footer from "../../../components/Footer";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
-const videoTabs = [
-  {
-    label: "Part 1. Basics of Forex",
-    videoId: "jx2nPMmw5Mc", // replace with actual video ID
-  },
-  {
-    label: "Part 2. Basics of Forex",
-    videoId: "oUyNo9ISsAM", // replace with actual video ID
-  },
-];
+// const videoTabs = [
+//   {
+//     label: "Part 1. Basics of Forex",
+//     videoId: "jx2nPMmw5Mc",
+//   },
+//   {
+//     label: "Part 2. Basics of Forex",
+//     videoId: "oUyNo9ISsAM",
+//   },
+// ];
 
 const faqs = [
   {
@@ -37,7 +37,7 @@ const faqs = [
 
 export default function Education() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState(0);
+  // const [activeTab, setActiveTab] = useState(0);
 
   const toggleIndex = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -68,9 +68,9 @@ export default function Education() {
         </p>
       </section>
 
-      <section className="text-white py-8">
+      {/* <section className="text-white py-8">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Tab Navigation */}
+          
           <div className="flex justify-center space-x-6  mb-6">
             {videoTabs.map((tab, i) => (
               <button
@@ -87,7 +87,6 @@ export default function Education() {
             ))}
           </div>
 
-          {/* Video */}
           <div className="aspect-video rounded-lg overflow-hidden">
             <iframe
               className="w-full h-full"
@@ -99,12 +98,11 @@ export default function Education() {
             ></iframe>
           </div>
 
-          {/* Video Caption */}
           <p className="mt-4 text-start text-sm md:text-2xl text-gray-300">
             {videoTabs[activeTab].label}
           </p>
         </div>
-      </section>
+      </section> */}
 
       <section className=" text-white py-12">
         <div className="w-11/12 md:w-4/5 mx-auto">

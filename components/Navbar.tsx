@@ -2,8 +2,7 @@
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { div } from "framer-motion/client";
-import logo from "../assets/logo.webp";
+import logo from "../assets/bdfx.gif";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -80,38 +79,38 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 mb-10 md:mb-0 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-[#121E2C]/80 backdrop-blur shadow-lg"
           : "bg-transparent"
       } text-gray-400 font-montserrat`}
     >
-      <div className="w-11/12 mx-auto flex items-center justify-between">
+      <div className="w-11/12 mx-auto flex items-center justify-between py-4 md:py-3">
         {/* Logo */}
-        <div className="flex items-center gap-4">
-          <Link href={"/"}>
-            <Image src={logo} alt="logo" className="w-36 h-24" />
+        <div className="flex items-center w-auto">
+          <Link href="/">
+            <Image src={logo} alt="logo" className="w-auto max-w-[200px]" />
           </Link>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <div className="hidden lg:flex items-center gap-6 text-sm font-medium ml-4">
           {navItems.map((item) =>
             item.dropdown ? (
               <div
                 key={item.title}
-                className="relative group cursor-pointer py-8"
+                className="relative group cursor-pointer py-6"
               >
-                <span className="flex items-center gap-1 hover:text-white transition ">
+                <span className="flex items-center gap-1 hover:text-white transition">
                   {item.title}
                   <ChevronDown className="w-4 h-4" />
                 </span>
-                <div className="absolute space-y-3 top-full -left-10 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg py-2 px-4 rounded w-48 z-50">
+                <div className="absolute top-full left-0 mt-2 hidden group-hover:block bg-[#0d1721] text-gray-500 shadow-lg py-2 px-4 rounded w-52 z-50 space-y-2">
                   {item.items?.map((link) => (
                     <Link
                       href={link.href}
                       key={link.href}
-                      className="flex justify-between items-center px-2 py-1 hover:text-[var(--primary)] hover:font-bold  text-sm"
+                      className="flex justify-between items-center px-2 py-1 hover:text-[var(--primary)] text-sm"
                     >
                       <span>{link.label}</span>
                       <span className="font-bold">→</span>
@@ -123,7 +122,7 @@ const Navbar = () => {
               <Link
                 key={item.title}
                 href={item.href!}
-                className="hover:text-white transition"
+                className="hover:text-white transition py-6"
               >
                 {item.title}
               </Link>
@@ -132,7 +131,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Buttons */}
-        <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <div className="hidden lg:flex items-center gap-4 text-sm font-medium ml-auto">
           <Link
             href="/ib-broker"
             className="hover:text-[#ffd277] transition text-[var(--primary)]"
@@ -141,7 +140,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/login"
-            className="hover:bg-[var(--primary)] hover:text-white px-4 py-2 rounded-full hover:border hover:border-[var(--primary)] transition text-[var(--primary)]"
+            className="hover:bg-[var(--primary)] hover:text-white px-4 py-2 rounded-full border border-[var(--primary)] transition text-[var(--primary)]"
           >
             Login
           </Link>
@@ -150,22 +149,22 @@ const Navbar = () => {
             className="group relative inline-block px-4 py-2 border border-[var(--primary)] text-[var(--primary)] rounded-full overflow-hidden"
           >
             <span className="absolute inset-0 bg-[var(--primary)] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
               Register
             </span>
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center gap-2">
+        {/* Mobile Buttons */}
+        <div className="lg:hidden flex items-center gap-2 ml-auto">
           <button
-            className="text-[var(--primary)] border border-[var(--primary)] px-4 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
+            className="text-[var(--primary)] border border-[var(--primary)] px-3 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
             onClick={() => (window.location.href = "/login")}
           >
             Login
           </button>
           <button
-            className="text-[var(--primary)] border border-[var(--primary)] px-4 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
+            className="text-[var(--primary)] border border-[var(--primary)] px-3 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
             onClick={() => (window.location.href = "/register")}
           >
             Register
@@ -193,7 +192,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden h-[100vh] bg-[#0b111d] text-sm font-medium px-6 pt-6 pb-6 mt-[20px] space-y-5">
+        <div className="md:hidden h-[100vh] bg-[#0b111d] text-sm font-medium px-6 pt-10 space-y-6">
           {navItems.map((item) => (
             <div key={item.title}>
               <div
@@ -218,7 +217,7 @@ const Navbar = () => {
                 )}
               </div>
 
-              {/* Mobile dropdown */}
+              {/* Dropdown Items */}
               {item.dropdown && openDropdown === item.title && (
                 <div className="ml-4 mt-2 pl-2 border-l border-gray-700 text-gray-300 space-y-1">
                   {item.items?.map((link) => (
@@ -241,15 +240,6 @@ const Navbar = () => {
           >
             Introducing Broker
           </Link>
-          {/* <Link href="/login" className="hover:text-white block">
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="text-[var(--primary)] border border-[var(--primary)] w-fit px-4 py-1 rounded-full block mt-2"
-          >
-            Register
-          </Link> */}
         </div>
       )}
     </nav>

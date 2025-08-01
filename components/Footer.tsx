@@ -8,6 +8,28 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import logo from "../assets/bdfx.gif";
+import Link from "next/link";
+
+const marketLinks = [
+  { label: "Forex", href: "/forex" },
+  { label: "Indices", href: "/indices" },
+  { label: "Crypto", href: "/crypto" },
+  { label: "Metals", href: "/metals" },
+  { label: "Commodities", href: "/commodities" },
+  { label: "Oil", href: "/oil" },
+];
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Platform", href: "/platform" },
+  { label: "About Us", href: "/about" },
+  { label: "Our IB", href: "/ib-broker" },
+  { label: "Education", href: "/education" },
+  { label: "News & Insights", href: "/news" }, // or use "/insights" if that's your route
+  { label: "Join Our Team", href: "/career" },
+  { label: "Contact Us", href: "/contact" },
+];
 
 export default function Footer() {
   return (
@@ -16,10 +38,9 @@ export default function Footer() {
         {/* Logo and intro */}
         <div>
           <Image
-            src="https://winprofx.com/_next/static/media/logo.30704b62.svg"
-            alt="WINPROFX"
-            width={120}
-            height={40}
+            src={logo}
+            alt="Billio Dollar FX"
+            width={240}
             className="mb-4"
           />
 
@@ -33,21 +54,14 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-white mb-2">Explore</h3>
           <ul className="text-gray-400 space-y-1">
-            {[
-              "Home",
-              "Platform",
-              "About Us",
-              "Our IB",
-              "Holiday Schedule",
-              "Education",
-              "News & Insights",
-              "Join Our Team",
-              "Contact Us",
-              "Sitemap",
-              "Trading View",
-            ].map((item, idx) => (
-              <li key={idx} className="hover:text-white cursor-pointer">
-                {item}
+            {navLinks.map(({ label, href }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  className="hover:text-white cursor-pointer transition-colors"
+                >
+                  {label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -57,13 +71,16 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-white mb-2">Markets</h3>
           <ul className="text-gray-400 space-y-1">
-            {["Forex", "Indices", "Crypto", "Metals", "Commodities", "Oil"].map(
-              (item, idx) => (
-                <li key={idx} className="hover:text-white cursor-pointer">
-                  {item}
-                </li>
-              )
-            )}
+            {marketLinks.map(({ label, href }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  className="hover:text-white cursor-pointer transition-colors"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -75,7 +92,7 @@ export default function Footer() {
               <FaWhatsapp className="text-green-400" /> whatsapp
             </li>
             <li className="flex items-center gap-2">
-              <FaEnvelope className="text-blue-400" /> support@winprofx.com
+              <FaEnvelope className="text-blue-400" /> support@abc.com
             </li>
             <li className="flex items-center gap-2">
               <FaPhone className="text-cyan-400" /> +971 4 447 1894
