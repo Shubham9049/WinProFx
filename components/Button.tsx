@@ -1,9 +1,12 @@
 "use client";
 
+import { ReactNode } from "react";
+
 interface ButtonProps {
-  text: string;
-  onClick: () => void;
-  className?: string; // optional extra classes
+  text: string | ReactNode; // ⬅️ change from string to string | ReactNode
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
 }
 
 export default function Button({ text, onClick, className = "" }: ButtonProps) {

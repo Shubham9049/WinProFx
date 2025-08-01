@@ -16,6 +16,8 @@ import { useRouter } from "next/navigation";
 export default function Topbar() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [userName, setUserName] = useState("");
+
   const router = useRouter();
 
   // Fullscreen toggle tracking
@@ -23,6 +25,19 @@ export default function Topbar() {
     const handleChange = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handleChange);
     return () => document.removeEventListener("fullscreenchange", handleChange);
+  }, []);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          setUserName(parsedUser.fullName || "User");
+        } catch (e) {
+          console.error("Failed to parse user from localStorage", e);
+        }
+      }
+    }
   }, []);
 
   const toggleFullscreen = () => {
@@ -41,6 +56,7 @@ export default function Topbar() {
   const handleSignOut = () => {
     // Clear token or any auth data
     localStorage.removeItem("token"); // or sessionStorage / cookies
+    localStorage.removeItem("user"); // or sessionStorage / cookies
 
     // Redirect to home page
     router.push("/");
@@ -82,6 +98,9 @@ export default function Topbar() {
               alt="User Avatar"
               className="w-8 h-8 rounded-full border border-gray-500"
             />
+            <span className="hidden md:inline text-sm font-medium">
+              {userName}
+            </span>
             <ChevronDown size={16} />
           </button>
 
