@@ -100,7 +100,7 @@ export default function Sidebar({
             pathname={pathname}
           />
           <NavLink
-            href="/platform"
+            href="/Ourplatform"
             label="Platform"
             icon={BarChart3}
             pathname={pathname}
