@@ -20,6 +20,9 @@ export default function DepositsPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const [accountNo, setAccountNo] = useState("");
+  const [balance, setBalance] = useState<string>("0.00");
+  const [DWBalance, setDWBalance] = useState<string>("0.00");
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
@@ -35,11 +38,12 @@ export default function DepositsPage() {
         `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/user/${email}`
       );
       const userData = res.data;
-
+      console.log(userData.accounts[0].accountNo);
       if (userData && userData.accounts) {
         setAccounts(userData.accounts);
-      } else {
-        setAccounts([]);
+        const firstAccountNo = userData.accounts[0].accountNo;
+        setAccountNo(firstAccountNo);
+        fetchAccountSummary(firstAccountNo); // ✅ fetch balance info
       }
 
       setIsLoggedIn(true);
@@ -47,6 +51,37 @@ export default function DepositsPage() {
       console.error("Error fetching user data:", err);
       setAccounts([]);
       setIsLoggedIn(false);
+    }
+  };
+  const fetchAccountSummary = async (accountNo: number) => {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/moneyplant/checkBalance`,
+        {
+          accountno: accountNo.toString(), // Sent in body as required
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const result = res.data;
+
+      if (result.data?.response === "success") {
+        const accountData = result.data;
+
+        setBalance(accountData.balance);
+        setDWBalance(accountData.DWBalance);
+      } else {
+        console.warn(
+          "Account summary fetch failed:",
+          result.data?.message || result.message
+        );
+      }
+    } catch (error) {
+      console.error("Failed to fetch account summary:", error);
     }
   };
 
@@ -132,19 +167,19 @@ export default function DepositsPage() {
         <div className="space-y-5">
           <div className="bg-[#0d1b2a] p-4 rounded-xl flex justify-between items-center">
             <div className="text-gray-400 text-sm">Total Deposited</div>
-            <div className="text-white font-bold">$0.00</div>
+            <div className="text-white font-bold">${balance}</div>
           </div>
           <div className="flex justify-center">
             <Button text="Make a Deposit" onClick={handleClick} />
           </div>
 
-          <div className="bg-[#0d1b2a] p-4 rounded-xl flex justify-between items-center">
+          {/* <div className="bg-[#0d1b2a] p-4 rounded-xl flex justify-between items-center">
             <div className="text-gray-400 text-sm">Total Withdrawn</div>
-            <div className="text-white font-bold">$0.00</div>
-          </div>
-          <div className="flex justify-center">
+            <div className="text-white font-bold">${DWBalance}</div>
+          </div> */}
+          {/* <div className="flex justify-center">
             <Button text="Withdraw Funds" onClick={handleClick} />
-          </div>
+          </div> */}
         </div>
       </div>
       <RegisterModal
