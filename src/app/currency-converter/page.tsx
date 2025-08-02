@@ -8,19 +8,53 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How do I select the base currency?",
+    question:
+      "Which tools on your platform provide the most accurate market predictions?",
     answer:
-      "You can select your base currency from the six available dropdown lists. This will be the currency you are converting from",
+      "Track major economic events using the Economic Calendar, stay informed with real-time updates via FXStreet News, and access expert insights through Trading Central WebTV.",
   },
   {
-    question: "How do I enter the amount to convert?",
+    question:
+      "What tools on your website are best for analysing trading patterns?",
     answer:
-      "Simply enter the amount you wish to convert from your base currency in the designated field. The converter will automatically calculate the equivalent values in the selected currencies.",
+      "BillionDollarFX provides a combination of fundamental and technical analysis tools to help you predict price movements and identify patterns. These tools are free, easy to use, and available across all devices.",
   },
   {
-    question: "Are the exchange rates updated in real-time?",
+    question:
+      "Where can I access free trading signals on the BillionDollarFX website?",
     answer:
-      "Yes, the exchange rates used by the WinProFX Currency Converter are updated in real-time to ensure accuracy.",
+      "You can access free trading signals from Trading Central via your Personal Area or the BillionDollarFX Trade App. These signals use various analytical approaches and are ideal for building smart trade strategies.",
+  },
+  {
+    question: "How do I open a trading account on BillionDollarFX?",
+    answer:
+      "Click on the “Register” button, fill in your details, verify your identity, and your account will be ready in minutes.",
+  },
+  {
+    question: "Is a demo account available for new users?",
+    answer:
+      "Yes, we offer a free demo account with virtual funds so you can practise strategies and explore the platform without any financial risk.",
+  },
+  {
+    question: "Can I use the platform on my mobile device?",
+    answer:
+      "Absolutely. The BillionDollarFX Trade App offers full access to charts, signals, trading tools, and account management on the go.",
+  },
+  {
+    question: "How do I withdraw funds from my account?",
+    answer:
+      "Go to the withdrawal section in your Personal Area, choose a preferred method, enter the amount, and follow the steps to complete the process.",
+  },
+  {
+    question: "Is my personal and financial data secure on BillionDollarFX?",
+    answer:
+      "Yes. We use bank-level encryption, two-factor authentication, and secure protocols to ensure your data and funds are fully protected.",
+  },
+  {
+    question:
+      "Where can I find beginner-friendly resources to learn Forex trading?",
+    answer:
+      "Our Education section includes beginner video courses, trading guides, glossaries, and webinars which are ideal for building a strong foundation in Forex trading.",
   },
 ];
 
@@ -50,38 +84,32 @@ export default function CurrencyCoverter() {
 
         {/* Subtitle */}
         <p className="text-lg text-gray-400 mb-6">
-          Calculate live exchange rates and convert all major and exotic
-          currency pairs effortlessly with our user-friendly currency converter.
+          Convert major and exotic currencies in seconds using our sleek,
+          real-time converter.
         </p>
       </section>
 
       <section className=" text-white py-12">
         <div className="w-11/12 md:w-4/5 mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-6 ">
-            Using the{" "}
+            How to Use{" "}
             <span className="text-[var(--primary)]">
-              WinproFX Currency Converter
+              the BillionDollarFX Currency Converter?
             </span>
           </h2>
 
           <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-6">
-            Our currency converter assists you in swiftly and accurately
-            converting one currency to another with real-time rates. This tool
-            is essential when making deposits and withdrawals on your trading
-            account.
+            Easily convert one currency to multiple others with real-time rates.
+            This tool is perfect for managing deposits, withdrawals, or checking
+            live values before trading.
           </p>
 
           <ul className="text-left text-gray-300 text-base space-y-4  list-disc pl-5">
+            <li>Start by selecting your base currency.</li>
+            <li> Pick up to five currencies you'd like to convert to.</li>
             <li>
-              From the available six dropdown lists, select your base currency.
-            </li>
-            <li>Choose up to five other currencies to convert to.</li>
-            <li>
-              Enter the amount you want to convert from the base currency.
-            </li>
-            <li>
-              The currency converter will automatically calculate and display
-              the exchange rates for your chosen currencies.
+              Enter the amount, and the converter will instantly show the latest
+              exchange rates.
             </li>
           </ul>
         </div>
