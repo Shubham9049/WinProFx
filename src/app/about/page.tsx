@@ -9,33 +9,39 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is Billion Dollar FX?",
-    answer: "Billion Dollar FX is a leading forex trading platform...",
+    question: "What is BillionDollarFX?",
+    answer:
+      "BillionDollarFX is a global trading platform offering access to Forex, CFDs, and commodities, built for both beginners and experienced traders.",
   },
   {
-    question: "How do I start trading with Billion Dollar FX?",
-    answer: "To start trading, create an account on Billion Dollar FX...",
+    question: "How do I start trading with BillionDollarFX?",
+    answer:
+      "Simply create an account, verify your identity, fund your wallet, and access the trading platform in just a few easy steps.",
   },
   {
-    question: "Which Financial instruments can I trade with Billion Dollar FX?",
-    answer: "You can trade FOREX, CFDs, commodities...",
+    question: "Which financial instruments can I trade with BillionDollarFX?",
+    answer:
+      "You can trade a wide range of instruments including major and minor currency pairs, commodities, indices, and CFDs.",
   },
   {
-    question: "How can I deposit and withdraw funds on Billion Dollar FX?",
-    answer: "You can deposit and withdraw through multiple payment methods...",
+    question: "How can I deposit and withdraw funds on BillionDollarFX?",
+    answer:
+      "We support multiple payment methods such as bank transfers, credit/debit cards, and e-wallets. Withdrawals are processed quickly and securely.",
   },
   {
-    question: "What trading platforms does Billion Dollar FX support?",
-    answer: "Billion Dollar FX supports MT4 and web platforms...",
+    question: "What trading platforms does BillionDollarFX support?",
+    answer:
+      "Our platform is compatible with industry-standard tools like MetaTrader, along with our own intuitive web and mobile trading interfaces.",
   },
   {
-    question:
-      "Does Billion Dollar FX provide educational resources for traders?",
-    answer: "Yes, we offer blogs, videos, and guides...",
+    question: "Does BillionDollarFX provide educational resources for traders?",
+    answer:
+      "Yes, we offer webinars, trading tutorials, market insights, and strategy guides to help traders grow at every level.",
   },
   {
-    question: "How can I contact Billion Dollar FX customer support?",
-    answer: "You can contact our support via email, live chat...",
+    question: "How can I contact BillionDollarFX customer support?",
+    answer:
+      "Our support team is available 24/7 via live chat, email, and phone to assist with any queries or technical concerns.",
   },
 ];
 
@@ -61,22 +67,23 @@ export default function About() {
 
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold leading-snug max-w-4xl mx-auto mb-4">
-          Pioneering Excellence: Redefining Trading <br />
-          Standards at Billion Dollar FX
+          Redefining the Future of{" "}
+          <span className="text-[var(--primary)]">Global Trading</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg text-gray-400 mb-6">
-          Empowering Traders Worldwide
+          BillionDollarFX empowers every trade and every trader
         </p>
 
         {/* Paragraph */}
         <p className="text-gray-400 max-w-4xl mx-auto text-base leading-relaxed">
-          Welcome to Billion Dollar FX, the world&#39;s leading Best Popular
-          Platform Forex Trading designed for traders of all levels. For those
-          interested in FOREX, CFD, or commodities markets, we strive to provide
-          programs, services, and information that will make them more
-          profitable, self-sufficient, and efficient.
+          At BillionDollarFX, we offer a cutting-edge trading experience for
+          everyone, from first-time investors to seasoned professionals. Our
+          platform provides easy access to global markets, including forex,
+          commodities, and CFD opportunities. With real-time insights, advanced
+          tools, and dedicated assistance, we help you stay ahead and make smart
+          decisions.
         </p>
       </section>
 
@@ -84,14 +91,15 @@ export default function About() {
         {/* Section Heading */}
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Discovering Distinction: What Sets Our Journey Apart?
+            <span className="text-[var(--primary)]">Standing Out</span> in a Sea
+            of Brokers
           </h2>
           <p className="text-gray-400 mb-12 text-base md:text-lg">
-            Envisioned as a pioneering force, Billion Dollar FX aspires to be a
-            catalyst for positive change in the world of finance. We aim to
-            provide a dynamic and secure trading environment that fosters
-            success, creating opportunities for both seasoned professionals and
-            budding enthusiasts.
+            BillionDollarFX is committed to reshaping the financial landscape by
+            driving innovation and accessibility. Our goal is to deliver a
+            powerful, secure, and user-centric trading platform that empowers
+            both experienced investors and newcomers to thrive in global
+            markets.
           </p>
         </div>
 
@@ -100,49 +108,45 @@ export default function About() {
           {/* Item 1 */}
           <div>
             <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
-              Innovative Aspirations
+              1. Vision-Led Performance
             </h3>
             <p className="text-gray-300">
-              Breaking free from conventions, our journey is marked by a
-              relentless pursuit of innovation, weaving a narrative that
-              transcends the ordinary.
+              Driven by clarity and purpose, we combine strategy with technology
+              to deliver trading solutions that exceed expectations.
             </p>
           </div>
 
           {/* Item 2 */}
           <div>
             <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
-              Client Empowerment
+              2. Confidence Through Clarity
             </h3>
             <p className="text-gray-300">
-              It&#39;s more than a business; it&#39;s a mission to empower. Our
-              commitment lies in elevating each client, forging a path where
-              success is not just a possibility but an inevitability.
+              We simplify complex markets with intuitive tools and clear
+              communication because informed traders are confident traders.
             </p>
           </div>
 
           {/* Item 3 */}
           <div>
             <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
-              Trailblazing Integrity
+              3. Resilience in Every Trade
             </h3>
             <p className="text-gray-300">
-              Beyond transactions, we uphold a standard of unwavering integrity.
-              Every interaction is a testament to our commitment to
-              transparency, trust, and ethical conduct.
+              Markets fluctuate, but our commitment doesn’t. We’re your constant
+              in an unpredictable landscape from market swings to personal
+              goals.
             </p>
           </div>
 
           {/* Item 4 */}
           <div>
             <h3 className="text-[var(--primary)] font-semibold text-xl mb-2">
-              Community of Achievers
+              4. Together, We Grow
             </h3>
             <p className="text-gray-300">
-              We&#39;re not just a platform; we&#39;re a thriving community of
-              achievers. Join a collective journey where aspirations meet
-              accomplishments, and individual successes contribute to a shared
-              legacy.
+              Success is stronger when shared. We foster meaningful
+              relationships and grow as a united, global trading community.
             </p>
           </div>
         </div>
@@ -152,14 +156,13 @@ export default function About() {
         <div className="w-11/12 md:w-4/5 mx-auto">
           {/* Heading */}
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            FAQs: Your Guide to{" "}
-            <span className="text-[var(--primary)]">Seamless Trading</span>
+            <span className="text-[var(--primary)]"> FAQs – </span>Everything
+            You Need to Know
           </h2>
           <p className="text-gray-400 mb-10 text-base md:text-lg">
-            Unlock the answers you need with our FAQs. From account setup to
-            trading strategies, find quick solutions to common queries, ensuring
-            your trading journey with Billion Dollar FX is smooth and
-            successful.
+            Have questions? We've got answers. Whether you're getting started or
+            refining your strategy, our FAQs cover the essentials to keep your
+            experience with BillionDollarFX effortless and informed.
           </p>
 
           {/* Accordion */}
@@ -200,18 +203,19 @@ export default function About() {
 
       <section className="w-11/12 md:w-4/5 mx-auto py-12 space-y-5">
         <h2 className="text-center max-w-3xl mx-auto text-gray-200 text-xl md:text-2xl font-bold">
-          Embark on a transformative trading journey with us — where trading
-          isn&#39;t just an action, it&#39;s a difference. Trade with us, be the
-          difference.
+          <span className="text-[var(--primary)]"> Start Your Trading</span>{" "}
+          Journey with Purpose
         </h2>
         <p className="text-gray-400 text-center max-w-4xl mx-auto">
-          Dive into a world where every trade creates a ripple of impact. Join
-          us in shaping a unique trading experience that not only sets you apart
-          but also makes a positive difference. Trade with purpose, trade with
-          us.
+          At Billion Dollar FX, trading is all about making an impact. Step into
+          a platform where every move shapes your future and defines your edge.
         </p>
+        <p className="text-gray-400 text-center max-w-4xl mx-auto">
+          Trade with intention. Stand out. Make a difference.
+        </p>
+
         <div className="flex justify-center">
-          <Button text="Start Your Journey Today" onClick={handleClick} />
+          <Button text="Create Account Now" onClick={handleClick} />
         </div>
       </section>
       <Footer />

@@ -57,7 +57,10 @@ export default function Education() {
 
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold leading-snug max-w-4xl mx-auto mb-4">
-          Forex basics: video course
+          <span className="text-[var(--primary-color)]">
+            Forex Foundations for Beginners
+          </span>{" "}
+          by BillionDollarFX
         </h1>
         <p className="text-center text-gray-400 max-w-4xl mx-auto px-4 text-medium">
           This video course for beginners will guide you through the main

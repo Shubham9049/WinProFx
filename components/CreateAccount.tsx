@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -27,6 +27,23 @@ export default function RegisterModal({
   const [loading, setLoading] = useState(false);
   const [responseMsg, setResponseMsg] = useState("");
 
+  useEffect(() => {
+    const userString = localStorage.getItem("user");
+    if (userString) {
+      const user = JSON.parse(userString);
+
+      const [first, ...rest] = user.fullName.split(" ");
+      const last = rest.join(" ");
+
+      setFormData((prev) => ({
+        ...prev,
+        Fname: first,
+        Lname: last,
+        email: user.email || "",
+      }));
+    }
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -35,6 +52,16 @@ export default function RegisterModal({
   const handleSubmit = async () => {
     setLoading(true);
     setResponseMsg("");
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+    if (!passwordRegex.test(formData.Password)) {
+      setResponseMsg(
+        "❌ Password must include uppercase, lowercase, number, special character, and be 8+ characters long."
+      );
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch(
@@ -72,7 +99,7 @@ export default function RegisterModal({
       className="fixed z-50 inset-0 overflow-y-auto"
     >
       <div className="flex items-center justify-center min-h-screen px-4">
-        <Dialog.Panel className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+        <Dialog.Panel className="bg-white  text-black  rounded-xl shadow-lg p-6 w-full max-w-md transition-colors duration-300">
           <Dialog.Title className="text-xl font-bold mb-4">
             Create Account
           </Dialog.Title>
@@ -194,7 +221,7 @@ export default function RegisterModal({
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+            className="mt-4 w-full bg-[var(--primary)] text-white py-2 rounded hover:brightness-110 transition"
           >
             {loading ? "Registering..." : "Register"}
           </button>
@@ -205,7 +232,7 @@ export default function RegisterModal({
 
           <button
             onClick={onClose}
-            className="mt-3 text-sm text-gray-500 underline block mx-auto"
+            className="mt-3 text-sm text-[var(--primary)] underline block mx-auto hover:opacity-80"
           >
             Cancel
           </button>
