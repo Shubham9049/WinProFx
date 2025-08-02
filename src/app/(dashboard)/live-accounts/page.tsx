@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import emptyIcon from "../../../../assets/icons/empty_state.png"; // Update if needed
-import Button from "../../../../components/Button";
-import RegisterModal from "../../../../components/CreateAccount"; // adjust path as needed
 import axios from "axios";
+import { Wallet } from "lucide-react";
+import emptyIcon from "../../../../assets/icons/empty_state.png";
+import Button from "../../../../components/Button";
+import RegisterModal from "../../../../components/CreateAccount";
 
 interface Account {
   _id: string;
@@ -15,7 +16,7 @@ interface Account {
   // add more fields if needed
 }
 
-export default function DepositsPage() {
+export default function LiveAccounts() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -59,6 +60,7 @@ export default function DepositsPage() {
   }, []);
 
   if (!isLoggedIn) return null;
+
   const handleClick = () => {
     alert("clicked");
   };
@@ -111,7 +113,7 @@ export default function DepositsPage() {
 
                 {/* Optional details */}
                 {/* <p className="text-sm text-gray-400 mt-2">Leverage: 1:100</p>
-          <p className="text-sm text-gray-400">Status: Active</p> */}
+      <p className="text-sm text-gray-400">Status: Active</p> */}
               </div>
             ))}
           </div>
@@ -122,30 +124,27 @@ export default function DepositsPage() {
         </div>
       </div>
 
-      {/* Right Section - Account Summary */}
-      <div className="w-full lg:w-[360px] rounded-2xl p-6 bg-white/5 backdrop-blur border border-gray-700 shadow-xl space-y-6">
+      {/* Right Section */}
+      <div className="w-full h-fit lg:w-[360px] rounded-2xl p-6 bg-white/5 backdrop-blur border border-gray-700 shadow-xl space-y-6">
+        <div className="bg-[var(--primary)]/20 p-3 w-fit rounded-full">
+          <Wallet className="text-[var(--primary)]" size={24} />
+        </div>
         <h2 className="text-lg font-semibold text-[var(--primary)] tracking-wide">
-          Account Summary
+          Enjoy Easy Trading and
+          <br />
+          Quick Transactions!
         </h2>
 
-        <div className="space-y-5">
-          <div className="bg-[#0d1b2a] p-4 rounded-xl flex justify-between items-center">
-            <div className="text-gray-400 text-sm">Total Deposited</div>
-            <div className="text-white font-bold">$0.00</div>
-          </div>
-          <div className="flex justify-center">
-            <Button text="Make a Deposit" onClick={handleClick} />
-          </div>
+        <p className="text-sm text-gray-300 leading-relaxed">
+          Experience seamless order execution, instant deposits & withdrawals,
+          and an intuitive platform designed to empower your trading journey!
+        </p>
 
-          <div className="bg-[#0d1b2a] p-4 rounded-xl flex justify-between items-center">
-            <div className="text-gray-400 text-sm">Total Withdrawn</div>
-            <div className="text-white font-bold">$0.00</div>
-          </div>
-          <div className="flex justify-center">
-            <Button text="Withdraw Funds" onClick={handleClick} />
-          </div>
+        <div className="flex justify-center pt-2">
+          <Button text="Deposit Now" onClick={handleClick} className="w-full" />
         </div>
       </div>
+
       <RegisterModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );

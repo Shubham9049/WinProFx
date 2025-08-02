@@ -83,8 +83,12 @@ export default function Sidebar({
             isOpen={open.mt5}
             onToggle={() => toggle("mt5")}
             items={[
-              { label: "Live Accounts", href: "/mt5/live", icon: FileText },
-              { label: "Demo Accounts", href: "/mt5/demo", icon: FileCheck },
+              { label: "Live Accounts", href: "live-accounts", icon: FileText },
+              {
+                label: "Demo Accounts",
+                href: "demo-accounts",
+                icon: FileCheck,
+              },
             ]}
             pathname={pathname}
           />
