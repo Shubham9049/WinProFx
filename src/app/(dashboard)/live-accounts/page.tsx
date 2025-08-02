@@ -22,40 +22,36 @@ export default function LiveAccounts() {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
+  const fetchUserData = async () => {
     const token = localStorage.getItem("token");
     const userString = localStorage.getItem("user");
 
-    if (!token || !userString) {
-      router.replace("/login");
-      return;
-    }
+    if (!token || !userString) return;
 
     const user = JSON.parse(userString);
     const email = user.email;
 
-    const fetchUserData = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/user/${email}`
-        );
-        const userData = res.data;
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/user/${email}`
+      );
+      const userData = res.data;
 
-        if (userData && userData.accounts) {
-          setAccounts(userData.accounts);
-          console.log(accounts);
-        } else {
-          setAccounts([]);
-        }
-
-        setIsLoggedIn(true);
-      } catch (err) {
-        console.error("Error fetching user data:", err);
+      if (userData && userData.accounts) {
+        setAccounts(userData.accounts);
+      } else {
         setAccounts([]);
-        setIsLoggedIn(false);
       }
-    };
 
+      setIsLoggedIn(true);
+    } catch (err) {
+      console.error("Error fetching user data:", err);
+      setAccounts([]);
+      setIsLoggedIn(false);
+    }
+  };
+
+  useEffect(() => {
     fetchUserData();
   }, []);
 
@@ -66,14 +62,19 @@ export default function LiveAccounts() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0f1d] to-[#0f172a] px-6 md:px-12 py-10 text-white flex flex-col lg:flex-row gap-10">
+    <div className="h-[80vh] bg-gradient-to-br from-[#0a0f1d] to-[#0f172a] px-6 md:px-12 py-10 text-white flex flex-col lg:flex-row gap-10">
       {/* Left Section */}
       <div className="flex-1 bg-[#121a2a] border border-gray-800 rounded-2xl p-8 shadow-xl relative overflow-hidden">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-xl font-semibold tracking-wider text-[var(--primary)]">
             Live MT5 Accounts
           </h2>
-          <Button text="+ Create Account" onClick={() => setShowModal(true)} />
+          {accounts.length === 0 && (
+            <Button
+              text="+ Create Account"
+              onClick={() => setShowModal(true)}
+            />
+          )}
         </div>
 
         {accounts.length === 0 ? (
@@ -145,7 +146,13 @@ export default function LiveAccounts() {
         </div>
       </div>
 
-      <RegisterModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <RegisterModal
+        isOpen={showModal}
+        onClose={() => {
+          setShowModal(false);
+          fetchUserData(); // ✅ Refresh account list after modal closes
+        }}
+      />
     </div>
   );
 }

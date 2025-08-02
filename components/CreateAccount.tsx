@@ -37,18 +37,21 @@ export default function RegisterModal({
     setResponseMsg("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/moneyplant/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/moneyplant/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await res.json();
 
-      if (result.response === "success") {
-        setResponseMsg(`✅ ${result.message}, Account No: ${result.accountno}`);
+      if (result) {
+        setResponseMsg(`✅ ${result.message}`);
         setTimeout(() => {
           onClose();
         }, 2000);
