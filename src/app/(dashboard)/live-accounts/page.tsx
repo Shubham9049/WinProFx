@@ -222,7 +222,7 @@ export default function LiveAccounts() {
                 Withdraw
               </button>
               <button
-                className="bg-gray-600 px-4 py-2 rounded-md text-sm"
+                className="bg-gray-600 px-4 py-2 rounded-md text-sm cursor-pointer"
                 onClick={() => setShowPasswordModal(true)}
               >
                 Update Password
