@@ -160,9 +160,9 @@ export default function About() {
             You Need to Know
           </h2>
           <p className="text-gray-400 mb-10 text-base md:text-lg">
-            Have questions? We've got answers. Whether you're getting started or
-            refining your strategy, our FAQs cover the essentials to keep your
-            experience with BillionDollarFX effortless and informed.
+            Have questions? We&#39;ve got answers. Whether you&#39;re getting
+            started or refining your strategy, our FAQs cover the essentials to
+            keep your experience with BillionDollarFX effortless and informed.
           </p>
 
           {/* Accordion */}

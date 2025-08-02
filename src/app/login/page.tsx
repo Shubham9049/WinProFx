@@ -6,6 +6,7 @@ import Image from "next/image";
 import Button from "../../../components/Button";
 import Logo from "../../../assets/logo.webp";
 import Link from "next/link";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -192,19 +193,15 @@ export default function LoginPage() {
                   required
                 />
                 <span
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer text-lg"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  👁️
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
             </div>
 
-            <div className="flex justify-between items-center text-sm text-gray-400">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-blue-500" /> Remember
-                me
-              </label>
+            <div className="flex justify-end items-center text-sm text-gray-400">
               <span
                 onClick={() => setStep("reset-request")}
                 className="hover:underline text-white cursor-pointer"
