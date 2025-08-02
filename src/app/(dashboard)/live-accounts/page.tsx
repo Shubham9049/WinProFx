@@ -7,6 +7,7 @@ import { Wallet } from "lucide-react";
 import emptyIcon from "../../../../assets/icons/empty_state.png";
 import Button from "../../../../components/Button";
 import RegisterModal from "../../../../components/CreateAccount";
+import UpdatePasswordModal from "../../../../components/UpdatePasswordModal";
 
 interface Account {
   _id: string;
@@ -30,6 +31,7 @@ export default function LiveAccounts() {
   const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
   const [summary, setSummary] = useState<AccountSummary | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
@@ -214,7 +216,10 @@ export default function LiveAccounts() {
               <button className="bg-red-600 px-4 py-2 rounded-md text-sm">
                 Withdraw
               </button>
-              <button className="bg-gray-600 px-4 py-2 rounded-md text-sm">
+              <button
+                className="bg-gray-600 px-4 py-2 rounded-md text-sm"
+                onClick={() => setShowPasswordModal(true)}
+              >
                 Update Password
               </button>
             </div>
@@ -234,6 +239,13 @@ export default function LiveAccounts() {
           fetchUserData();
         }}
       />
+      {selectedAccount && (
+        <UpdatePasswordModal
+          isOpen={showPasswordModal}
+          onClose={() => setShowPasswordModal(false)}
+          accountNo={selectedAccount.accountNo}
+        />
+      )}
     </div>
   );
 }
