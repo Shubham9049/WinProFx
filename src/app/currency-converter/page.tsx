@@ -106,7 +106,7 @@ export default function CurrencyCoverter() {
 
           <ul className="text-left text-gray-300 text-base space-y-4  list-disc pl-5">
             <li>Start by selecting your base currency.</li>
-            <li> Pick up to five currencies you'd like to convert to.</li>
+            <li> Pick up to five currencies you&#39;d like to convert to.</li>
             <li>
               Enter the amount, and the converter will instantly show the latest
               exchange rates.
