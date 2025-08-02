@@ -234,7 +234,7 @@ export default function SignUpPage() {
               value={formData.referralCode}
               onChange={handleChange}
             />
-            {/* <div className="md:col-span-2 flex items-start text-sm text-gray-300">
+            <div className="md:col-span-2 flex items-start text-sm text-gray-300">
               <input
                 name="agree"
                 type="checkbox"
@@ -244,21 +244,23 @@ export default function SignUpPage() {
               />
               <label>
                 I agree to the WinproFX{" "}
-                <span className="text-[#00CFFF] underline">Privacy Policy</span>
+                <span className="text-[var(--primary)] underline">
+                  Privacy Policy
+                </span>
                 ,{" "}
-                <span className="text-[#00CFFF] underline">
+                <span className="text-[var(--primary)] underline">
                   Terms and Conditions
                 </span>
                 , and{" "}
-                <span className="text-[#00CFFF] underline">
+                <span className="text-[var(--primary)] underline">
                   Risk Disclosure
                 </span>
                 .
               </label>
-            </div> */}
+            </div>
             <button
               type="submit"
-              className="md:col-span-2 bg-[#00CFFF] hover:bg-[#009FCF] text-black font-semibold py-3 rounded-full"
+              className="md:col-span-2 bg-[var(--primary)] hover:bg-[#f3d089] text-black font-semibold py-2 rounded-full"
             >
               {loading ? "Processing..." : "SIGN UP"}
             </button>

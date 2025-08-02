@@ -12,21 +12,53 @@ import Image from "next/image";
 
 const faqs = [
   {
-    question: "Which tools on our platform offer the best market predictions?",
+    question:
+      "Which tools on your platform provide the most accurate market predictions?",
     answer:
-      "Utilize the Economic Calendar to track important economic events and data releases. Stay updated with real-time news through FXStreet News and gain insights from Trading Central WebTV.",
+      "Track major economic events using the Economic Calendar, stay informed with real-time updates via FXStreet News, and access expert insights through Trading Central WebTV.",
   },
   {
     question:
-      "What tools on our website are best for analyzing trading patterns?",
+      "What tools on your website are best for analysing trading patterns?",
     answer:
-      "WinProFX provides a combination of fundamental and technical analysis tools to help you predict price movements and analyze trading patterns. Tools are free to use and easily accessible, allowing you to plan your trades confidently and effectively.",
+      "BillionDollarFX provides a combination of fundamental and technical analysis tools to help you predict price movements and identify patterns. These tools are free, easy to use, and available across all devices.",
   },
   {
     question:
-      "Where can I access free trading signals on the WinproFX website?",
+      "Where can I access free trading signals on the BillionDollarFX website?",
     answer:
-      "You can access free trading signals from Trading Central in your Personal Area and the WinProFX Trade app. These signals incorporate various analytical approaches, providing insights on expected trends, and are valuable for both beginners and experienced traders to plan their strategies and trades.",
+      "You can access free trading signals from Trading Central via your Personal Area or the BillionDollarFX Trade App. These signals use various analytical approaches and are ideal for building smart trade strategies.",
+  },
+  {
+    question: "How do I open a trading account on BillionDollarFX?",
+    answer:
+      "Click on the “Register” button, fill in your details, verify your identity, and your account will be ready in minutes.",
+  },
+  {
+    question: "Is a demo account available for new users?",
+    answer:
+      "Yes, we offer a free demo account with virtual funds so you can practise strategies and explore the platform without any financial risk.",
+  },
+  {
+    question: "Can I use the platform on my mobile device?",
+    answer:
+      "Absolutely. The BillionDollarFX Trade App offers full access to charts, signals, trading tools, and account management on the go.",
+  },
+  {
+    question: "How do I withdraw funds from my account?",
+    answer:
+      "Go to the withdrawal section in your Personal Area, choose a preferred method, enter the amount, and follow the steps to complete the process.",
+  },
+  {
+    question: "Is my personal and financial data secure on BillionDollarFX?",
+    answer:
+      "Yes. We use bank-level encryption, two-factor authentication, and secure protocols to ensure your data and funds are fully protected.",
+  },
+  {
+    question:
+      "Where can I find beginner-friendly resources to learn Forex trading?",
+    answer:
+      "Our Education section includes beginner video courses, trading guides, glossaries, and webinars which are ideal for building a strong foundation in Forex trading.",
   },
 ];
 
@@ -83,47 +115,42 @@ export default function EconomicCalendar() {
         <div className="w-11/12 md:w-4/5 mx-auto">
           {/* Title */}
           <h2 className="text-xl font-bold mb-6">
-            Understanding and Utilizing the Forex Economic Calendar
+            How to Use the Forex Economic Calendar Smartly?
           </h2>
 
           {/* Description */}
           <p className="text-gray-400 text-medium  leading-relaxed mb-6">
-            A Forex Economic Calendar is an invaluable tool for traders,
-            enabling them to monitor and analyze events that drive market
-            movements and forecast price changes. It lists significant national
-            and international news events in chronological order. Key events
-            such as monetary policy decisions, economic indicators, GDP
-            announcements, Non-Farm Payrolls (NFP) figures, and interest rate
-            changes are included, as they can heavily influence financial
-            markets.
+            The Forex Economic Calendar is a powerful resource for traders,
+            helping them track and interpret events that influence market trends
+            and price movements. It provides a chronological overview of major
+            national and global economic events, including central bank
+            decisions, GDP releases, interest rate updates, Non-Farm Payrolls
+            (NFP), and other key indicators.
           </p>
 
           <p className="text-gray-400 text-medium  leading-relaxed mb-6">
-            Traders receive timely notifications about these events, ensuring
-            they stay informed about the timing and potential impact on various
-            instruments. These notifications are accessible under the{" "}
-            <span className="text-white font-semibold">
-              &quot;Mailbox&quot;
-            </span>{" "}
-            tab on your trading platform. It&apos;s important to note that the
-            impact of economic news can differ for each instrument.
+            These events can significantly impact the financial markets, and
+            traders are alerted in real time through notifications available
+            under the "Mailbox" tab on their trading platform. Since each event
+            may affect instruments differently, understanding the relevance and
+            timing of these updates is essential for informed and strategic
+            trading.
           </p>
 
           {/* Subheading */}
           <h3 className="text-xl font-semibold mb-4">
-            Why You Should Use the Forex Economic Calendar
+            Your Secret Weapon in Forex? The Economic Calendar
           </h3>
 
           {/* Benefits */}
           <p className="text-gray-400 text-medium  leading-relaxed">
-            A Forex Economic Calendar is essential for keeping abreast of
-            upcoming news, reports, and announcements. These events can
-            significantly affect the volatility of forex currency pairs, stocks,
-            and other markets. By using the calendar, traders can plan their
-            trades more effectively and stay informed about chart patterns and
-            indicators that may be impacted. Referring to the calendar before
-            the trading day is a prudent practice, as these events can trigger
-            significant price movements when released.
+            The Forex Economic Calendar is a vital tool for tracking key news,
+            reports, and announcements that can drive market volatility. It
+            helps traders anticipate potential price movements across forex
+            pairs, stocks, and other assets. By checking the calendar before
+            trading, you can plan more strategically and stay prepared for
+            shifts in chart patterns and technical indicators triggered by
+            economic events.
           </p>
         </div>
       </section>

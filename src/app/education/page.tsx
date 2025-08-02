@@ -21,17 +21,52 @@ const faqs = [
   {
     question: "How do I select the base currency?",
     answer:
-      "You can select your base currency from the six available dropdown lists. This will be the currency you are converting from",
+      "You can choose your base currency from the dropdown menu before starting a trade. This is the currency you'll be using to buy or sell other currencies.",
   },
   {
     question: "How do I enter the amount to convert?",
     answer:
-      "Simply enter the amount you wish to convert from your base currency in the designated field. The converter will automatically calculate the equivalent values in the selected currencies.",
+      "Simply type the desired amount in the input field next to your selected currency. The system will automatically calculate the conversion based on current rates.",
   },
   {
     question: "Are the exchange rates updated in real-time?",
     answer:
-      "Yes, the exchange rates used by the WinProFX Currency Converter are updated in real-time to ensure accuracy.",
+      "Yes, exchange rates are refreshed in real time to ensure accurate and up-to-date trading values.",
+  },
+  {
+    question: "Can I trade Forex on my mobile device?",
+    answer:
+      "Absolutely. BillionDollarFX offers a fully optimised mobile trading experience through our web platform and supported apps.",
+  },
+  {
+    question: "What is the minimum amount required to start trading?",
+    answer:
+      "You can begin trading with as little as the platform’s minimum deposit requirement, which is designed to be accessible for beginners.",
+  },
+  {
+    question: "Is it safe to trade on BillionDollarFX?",
+    answer:
+      "Yes, BillionDollarFX uses advanced encryption and multi-layered security protocols to protect your funds and personal data.",
+  },
+  {
+    question: "Do I need prior experience to start trading?",
+    answer:
+      "No experience is necessary. Our beginner courses and demo accounts are designed to help you learn and practise before committing real funds.",
+  },
+  {
+    question: "How do I withdraw my earnings?",
+    answer:
+      "Withdrawals can be made easily through your dashboard by selecting your preferred withdrawal method and entering the desired amount.",
+  },
+  {
+    question: "What support is available if I face issues while trading?",
+    answer:
+      "Our support team is available 24/7 via live chat, email, and phone to assist you with any questions or technical concerns.",
+  },
+  {
+    question: "Can I access educational resources to improve my skills?",
+    answer:
+      "Yes, BillionDollarFX offers a wide range of free video courses, trading guides, and market analysis to help you grow as a trader.",
   },
 ];
 
@@ -63,11 +98,12 @@ export default function Education() {
           by BillionDollarFX
         </h1>
         <p className="text-center text-gray-400 max-w-4xl mx-auto px-4 text-medium">
-          This video course for beginners will guide you through the main
-          aspects of Forex trading. You will learn how the Forex market works
-          and how you can profit from it. Study the essential Forex terminology,
-          learn how to take your first steps in trading, and start developing
-          your trading strategy with the Best Basics of Forex Trading course.
+          Build your forex skills from the ground up with BillionDollarFX. This
+          beginner-friendly video program introduces you to how the Forex market
+          works and how you can unlock its earning potential. Get familiar with
+          essential trading terms and learn how to execute your first trades.
+          Build your skills and confidence with the most trusted beginner course
+          only at BillionDollarFX.
         </p>
       </section>
 

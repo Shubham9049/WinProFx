@@ -12,21 +12,53 @@ import Image from "next/image";
 
 const faqs = [
   {
-    question: "Which tools on our platform offer the best market predictions?",
+    question:
+      "Which tools on your platform provide the most accurate market predictions?",
     answer:
-      "Utilize the Economic Calendar to track important economic events and data releases. Stay updated with real-time news through FXStreet News and gain insights from Trading Central WebTV.",
+      "Track major economic events using the Economic Calendar, stay informed with real-time updates via FXStreet News, and access expert insights through Trading Central WebTV.",
   },
   {
     question:
-      "What tools on our website are best for analyzing trading patterns?",
+      "What tools on your website are best for analysing trading patterns?",
     answer:
-      "WinProFX provides a combination of fundamental and technical analysis tools to help you predict price movements and analyze trading patterns. Tools are free to use and easily accessible, allowing you to plan your trades confidently and effectively.",
+      "BillionDollarFX provides a combination of fundamental and technical analysis tools to help you predict price movements and identify patterns. These tools are free, easy to use, and available across all devices.",
   },
   {
     question:
-      "Where can I access free trading signals on the WinproFX website?",
+      "Where can I access free trading signals on the BillionDollarFX website?",
     answer:
-      "You can access free trading signals from Trading Central in your Personal Area and the WinProFX Trade app. These signals incorporate various analytical approaches, providing insights on expected trends, and are valuable for both beginners and experienced traders to plan their strategies and trades.",
+      "You can access free trading signals from Trading Central via your Personal Area or the BillionDollarFX Trade App. These signals use various analytical approaches and are ideal for building smart trade strategies.",
+  },
+  {
+    question: "How do I open a trading account on BillionDollarFX?",
+    answer:
+      "Click on the “Register” button, fill in your details, verify your identity, and your account will be ready in minutes.",
+  },
+  {
+    question: "Is a demo account available for new users?",
+    answer:
+      "Yes, we offer a free demo account with virtual funds so you can practise strategies and explore the platform without any financial risk.",
+  },
+  {
+    question: "Can I use the platform on my mobile device?",
+    answer:
+      "Absolutely. The BillionDollarFX Trade App offers full access to charts, signals, trading tools, and account management on the go.",
+  },
+  {
+    question: "How do I withdraw funds from my account?",
+    answer:
+      "Go to the withdrawal section in your Personal Area, choose a preferred method, enter the amount, and follow the steps to complete the process.",
+  },
+  {
+    question: "Is my personal and financial data secure on BillionDollarFX?",
+    answer:
+      "Yes. We use bank-level encryption, two-factor authentication, and secure protocols to ensure your data and funds are fully protected.",
+  },
+  {
+    question:
+      "Where can I find beginner-friendly resources to learn Forex trading?",
+    answer:
+      "Our Education section includes beginner video courses, trading guides, glossaries, and webinars which are ideal for building a strong foundation in Forex trading.",
   },
 ];
 
@@ -35,21 +67,21 @@ const features = [
     title: "Strategic",
     highlight: "Trading Signals",
     content:
-      "Make optimal use of Trading Central&#39;s signals to formulate your trade plans and techniques. These signals combine a number of analytical techniques, providing traders with a useful tool across all periods and market conditions. You may easily access them through the WinproFX Trade app or your WinproFX Personal Area.",
+      "Use Trading Central signals to strengthen your trading strategy. These signals combine multiple analysis techniques to offer valuable insights for all timeframes. You can access them easily through the BillionDollarFX Trade App or your BillionDollarFX Personal Area.",
     image: img1,
   },
   {
-    title: "Real-Time",
-    highlight: "Market News from WinproFX",
+    title: "Live ",
+    highlight: "Market News Updates",
     content:
-      "Stay up to date with market news and the most recent updates from the FXStreet News team in real time. Use the WinProFX Trade app or your WinProFX Personal Area to gain access to this useful data.",
+      "Real-time market updates powered by FXStreet keep you informed of key events, price shifts, and global trends. Access the latest news directly through the BillionDollarFX Trade App or your Personal Area to make smart trading decisions.",
     image: img2,
   },
   {
-    title: "Advanced",
-    highlight: "Charting Tools",
+    title: "Precision Trading with ",
+    highlight: "Advanced Charts",
     content:
-      "Analyze trends and execute strategies with our advanced charting tools. Packed with indicators and drawing tools to empower your decision-making process across all major asset classes.",
+      "Track price action, spot patterns, and execute with purpose using powerful charting tools. Equipped with a wide range of indicators and visual aids to support technical analysis. Ideal for traders working across forex, commodities, indices, and more.",
     image: img3,
   },
 ];
@@ -80,8 +112,8 @@ export default function AnalyticalTools() {
 
         {/* Subtitle */}
         <p className="text-lg text-gray-400 mb-6">
-          To help you confidently plan your trades, we give you access to the
-          best fundamental and technical analytics trading tools.
+          BillionDollarFX gives you the tools you need to trade with clarity and
+          confidence.
         </p>
       </section>
 
