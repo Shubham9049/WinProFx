@@ -6,7 +6,9 @@ import { useState } from "react";
 import {
   ChevronDown,
   ChevronUp,
-  Home,
+  LayoutDashboard,
+  FileText,
+  FileCheck,
   User,
   Wallet,
   LineChart,
@@ -18,23 +20,26 @@ import {
   Users,
   Settings,
   LogOut,
-  LayoutDashboard,
-  FileText,
   Briefcase,
   BarChart2,
   MessageCircle,
-  FileCheck,
   Shield,
   Key,
+  X,
 } from "lucide-react";
 
 import clsx from "clsx";
 import logo from "../assets/bdfx.gif";
 import Image from "next/image";
 
-export default function Sidebar() {
+export default function Sidebar({
+  showSidebar = false,
+  onClose,
+}: {
+  showSidebar?: boolean;
+  onClose?: () => void;
+}) {
   const pathname = usePathname();
-
   const [open, setOpen] = useState({
     mt5: false,
     market: false,
@@ -45,13 +50,23 @@ export default function Sidebar() {
     setOpen((prev) => ({ ...prev, [section]: !prev[section] }));
 
   return (
-    <aside className="h-screen w-64 bg-[#0b121a] text-white flex flex-col overflow-hidden">
-      {/* Fixed Logo */}
-      <div className=" flex justify-center items-center border-b border-gray-700 shrink-0 py-4">
-        <Image src={logo} alt="Billion Dollar FX" />
+    <div
+      className={clsx(
+        "fixed top-0 left-0 z-50 h-full w-64 bg-[#0b121a] text-white flex flex-col transition-transform duration-300 lg:translate-x-0",
+        showSidebar ? "translate-x-0" : "-translate-x-full"
+      )}
+    >
+      {/* Logo and Close (Mobile Only) */}
+      <div className="flex items-center justify-between px-4 py-4 border-b border-gray-700">
+        <Image src={logo} alt="Billion Dollar FX" width={150} />
+        <button
+          onClick={onClose}
+          className="lg:hidden text-white hover:text-gray-400"
+        >
+          <X size={20} />
+        </button>
       </div>
 
-      {/* Scrollable Nav */}
       <div className="flex-1 overflow-y-auto custom-scrollbar p-4 pb-16">
         {/* QUICK ACCESS */}
         <Section title="Quick Access">
@@ -130,7 +145,6 @@ export default function Sidebar() {
             icon={Book}
             pathname={pathname}
           />
-
           <Dropdown
             label="Market Data"
             icon={LineChart}
@@ -142,7 +156,11 @@ export default function Sidebar() {
                 href: "/market/live",
                 icon: BarChart3,
               },
-              { label: "News Feed", href: "/market/news", icon: MessageCircle },
+              {
+                label: "News Feed",
+                href: "/market/news",
+                icon: MessageCircle,
+              },
               {
                 label: "Forex Indicators",
                 href: "/market/indicators",
@@ -157,7 +175,7 @@ export default function Sidebar() {
         <Section title="Tools & Add-Ons">
           <NavLink
             href="/social-trading"
-            label="SOCIAL TRADING"
+            label="Social Trading"
             icon={Users}
             pathname={pathname}
           />
@@ -199,7 +217,6 @@ export default function Sidebar() {
             ]}
             pathname={pathname}
           />
-
           <NavLink
             href="/signout"
             label="Signout"
@@ -208,11 +225,11 @@ export default function Sidebar() {
           />
         </Section>
       </div>
-    </aside>
+    </div>
   );
 }
 
-// --- Reusable Components ---
+// Reusable Components
 function Section({
   title,
   children,
@@ -273,7 +290,7 @@ function Dropdown({
     <div>
       <button
         onClick={onToggle}
-        className="w-full flex justify-between items-center px-4 rounded hover:text-[var(--primary)] transition-all text-sm"
+        className="w-full flex justify-between items-center px-4 py-2 rounded hover:text-[var(--primary)] transition-all text-sm"
       >
         <span className="flex items-center gap-2">
           <Icon size={16} />
