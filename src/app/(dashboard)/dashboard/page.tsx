@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import emptyIcon from "../../../../assets/icons/empty_state.png"; // Update if needed
 import Button from "../../../../components/Button";
+import RegisterModal from "../../../../components/CreateAccount"; // adjust path as needed
 
 export default function DepositsPage() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [accounts, setAccounts] = useState([]); // Simulating no accounts
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -33,7 +35,7 @@ export default function DepositsPage() {
           <h2 className="text-xl font-semibold tracking-wider text-[var(--primary)]">
             Live MT5 Accounts
           </h2>
-          <Button text="+ Create Account" onClick={handleClick} />
+          <Button text="+ Create Account" onClick={() => setShowModal(true)} />
         </div>
 
         {accounts.length === 0 ? (
@@ -85,6 +87,7 @@ export default function DepositsPage() {
           </div>
         </div>
       </div>
+      <RegisterModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }

@@ -37,16 +37,13 @@ export default function RegisterModal({
     setResponseMsg("");
 
     try {
-      const res = await fetch(
-        "https://api.moneyplantfx.com/WSMoneyplant.aspx?type=SNDPReguser",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const res = await fetch("http://localhost:5000/api/moneyplant/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       const result = await res.json();
 
