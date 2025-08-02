@@ -8,6 +8,7 @@ import emptyIcon from "../../../../assets/icons/empty_state.png";
 import Button from "../../../../components/Button";
 import RegisterModal from "../../../../components/CreateAccount";
 import UpdatePasswordModal from "../../../../components/UpdatePasswordModal";
+import { useRouter } from "next/navigation";
 
 interface Account {
   _id: string;
@@ -33,6 +34,7 @@ export default function LiveAccounts() {
   const [showModal, setShowModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
 
+  const router = useRouter();
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
     const userString = localStorage.getItem("user");
@@ -207,13 +209,16 @@ export default function LiveAccounts() {
             </div>
 
             <div className="flex flex-wrap gap-3 pt-4">
-              <button className="bg-blue-600 px-4 py-2 rounded-md text-sm">
+              <button
+                className="bg-blue-600 px-4 py-2 rounded-md text-sm cursor-pointer"
+                onClick={() => router.push("/web-trader")}
+              >
                 Trade Now
               </button>
-              <button className="bg-green-600 px-4 py-2 rounded-md text-sm">
+              <button className="bg-green-600 px-4 py-2 rounded-md text-sm cursor-pointer">
                 Deposit
               </button>
-              <button className="bg-red-600 px-4 py-2 rounded-md text-sm">
+              <button className="bg-red-600 px-4 py-2 rounded-md text-sm cursor-pointer">
                 Withdraw
               </button>
               <button

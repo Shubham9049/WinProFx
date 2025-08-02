@@ -8,19 +8,53 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How do I select the base currency?",
+    question:
+      "Which tools on your platform provide the most accurate market predictions?",
     answer:
-      "You can select your base currency from the six available dropdown lists. This will be the currency you are converting from",
+      "Track major economic events using the Economic Calendar, stay informed with real-time updates via FXStreet News, and access expert insights through Trading Central WebTV.",
   },
   {
-    question: "How do I enter the amount to convert?",
+    question:
+      "What tools on your website are best for analysing trading patterns?",
     answer:
-      "Simply enter the amount you wish to convert from your base currency in the designated field. The converter will automatically calculate the equivalent values in the selected currencies.",
+      "BillionDollarFX provides a combination of fundamental and technical analysis tools to help you predict price movements and identify patterns. These tools are free, easy to use, and available across all devices.",
   },
   {
-    question: "Are the exchange rates updated in real-time?",
+    question:
+      "Where can I access free trading signals on the BillionDollarFX website?",
     answer:
-      "Yes, the exchange rates used by the WinProFX Currency Converter are updated in real-time to ensure accuracy.",
+      "You can access free trading signals from Trading Central via your Personal Area or the BillionDollarFX Trade App. These signals use various analytical approaches and are ideal for building smart trade strategies.",
+  },
+  {
+    question: "How do I open a trading account on BillionDollarFX?",
+    answer:
+      "Click on the “Register” button, fill in your details, verify your identity, and your account will be ready in minutes.",
+  },
+  {
+    question: "Is a demo account available for new users?",
+    answer:
+      "Yes, we offer a free demo account with virtual funds so you can practise strategies and explore the platform without any financial risk.",
+  },
+  {
+    question: "Can I use the platform on my mobile device?",
+    answer:
+      "Absolutely. The BillionDollarFX Trade App offers full access to charts, signals, trading tools, and account management on the go.",
+  },
+  {
+    question: "How do I withdraw funds from my account?",
+    answer:
+      "Go to the withdrawal section in your Personal Area, choose a preferred method, enter the amount, and follow the steps to complete the process.",
+  },
+  {
+    question: "Is my personal and financial data secure on BillionDollarFX?",
+    answer:
+      "Yes. We use bank-level encryption, two-factor authentication, and secure protocols to ensure your data and funds are fully protected.",
+  },
+  {
+    question:
+      "Where can I find beginner-friendly resources to learn Forex trading?",
+    answer:
+      "Our Education section includes beginner video courses, trading guides, glossaries, and webinars which are ideal for building a strong foundation in Forex trading.",
   },
 ];
 
@@ -52,17 +86,19 @@ export default function CurrencyCalculator() {
       <section className="text-white bg-[var(--bg)] py-12">
         {/* Disclaimer */}
         <p className="text-center text-gray-400 max-w-3xl mx-auto px-4 text-sm mb-12">
-          Disclaimer: The trading calculator is provided for illustrative
-          purposes only. The results presented by this calculator are for
-          educational and estimation purposes and you should not rely upon it as
-          being complete and for making investment decisions. Real-time results
-          can only be determined at the time of order execution.
+          Disclaimer: The trading calculator is intended for illustrative and
+          educational purposes only. The figures it provides are estimates and
+          should not be considered as financial advice or relied upon for actual
+          trading decisions. Final results may vary and are only confirmed at
+          the time of order execution.
         </p>
 
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-16">
-          How to use the <span className="text-white">WinproFX</span>{" "}
-          <span className="text-[var(--primary)]">Trading Calculator</span>
+          How to use the{" "}
+          <span className="text-[var(--primary)]">
+            BillionDollarFX Trading Calculator?
+          </span>
         </h2>
 
         {/* Steps */}
@@ -73,8 +109,7 @@ export default function CurrencyCalculator() {
               1
             </span>
             <p className="text-gray-300 text-base">
-              Choose your WinproFX account type and specify your account&#39;s
-              leverage and currency.
+              Select your account type, leverage, and currency.
             </p>
             {/* Line & Diamond to Step 2 */}
             <div className="hidden md:flex items-center absolute top-6 right-[-110px] w-[250px] h-[1px] bg-[var(--primary)]">
@@ -88,7 +123,7 @@ export default function CurrencyCalculator() {
               2
             </span>
             <p className="text-gray-300 text-base">
-              Select your desired trading instrument from the available list.
+              Choose a trading instrument.
             </p>
             {/* Line & Diamond to Step 3 */}
             <div className="hidden md:flex items-center absolute top-6 right-[-150px] w-[250px] h-[1px] bg-[var(--primary)]">
@@ -102,8 +137,7 @@ export default function CurrencyCalculator() {
               3
             </span>
             <p className="text-gray-300 text-base">
-              Determine your trade&#39;s lot size and proceed to calculate by
-              clicking the &#39;Calculate&#39; button.
+              Enter lot size and click Calculate to view results.
             </p>
           </div>
         </div>
