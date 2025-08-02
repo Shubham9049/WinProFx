@@ -41,13 +41,17 @@ export default function LiveAccounts() {
       );
       const userData = res.data;
 
-      if (userData && userData.accounts) {
+      if (
+        userData &&
+        Array.isArray(userData.accounts) &&
+        userData.accounts.length > 0
+      ) {
         setAccounts(userData.accounts);
         const firstAccountNo = userData.accounts[0].accountNo;
         setAccountNo(firstAccountNo);
-        fetchAccountSummary(firstAccountNo); // ✅ fetch balance info
+        fetchAccountSummary(firstAccountNo);
       } else {
-        setAccounts([]);
+        setAccounts([]); // Set empty accounts safely
       }
 
       setIsLoggedIn(true);
