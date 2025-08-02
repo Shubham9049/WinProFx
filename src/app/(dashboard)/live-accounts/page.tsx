@@ -8,6 +8,7 @@ import { Wallet } from "lucide-react";
 import emptyIcon from "../../../../assets/icons/empty_state.png";
 import Button from "../../../../components/Button";
 import RegisterModal from "../../../../components/CreateAccount";
+import mt5 from "../../../../assets/mt5_logo.png";
 
 interface Account {
   _id: string;
@@ -21,6 +22,9 @@ export default function LiveAccounts() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const [accountNo, setAccountNo] = useState("");
+  const [balance, setBalance] = useState<string>("0.00");
+  const [DWBalance, setDWBalance] = useState<string>("0.00");
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
@@ -39,6 +43,9 @@ export default function LiveAccounts() {
 
       if (userData && userData.accounts) {
         setAccounts(userData.accounts);
+        const firstAccountNo = userData.accounts[0].accountNo;
+        setAccountNo(firstAccountNo);
+        fetchAccountSummary(firstAccountNo); // ✅ fetch balance info
       } else {
         setAccounts([]);
       }
@@ -48,6 +55,38 @@ export default function LiveAccounts() {
       console.error("Error fetching user data:", err);
       setAccounts([]);
       setIsLoggedIn(false);
+    }
+  };
+
+  const fetchAccountSummary = async (accountNo: number) => {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/moneyplant/checkBalance`,
+        {
+          accountno: accountNo.toString(), // Sent in body as required
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const result = res.data;
+      console.log(result);
+      if (result.data?.response === "success") {
+        const accountData = result.data;
+
+        setBalance(accountData.balance);
+        setDWBalance(accountData.DWBalance);
+      } else {
+        console.warn(
+          "Account summary fetch failed:",
+          result.data?.message || result.message
+        );
+      }
+    } catch (error) {
+      console.error("Failed to fetch account summary:", error);
     }
   };
 
@@ -100,15 +139,125 @@ export default function LiveAccounts() {
                 key={acc._id}
                 className="bg-[#0d1b2a] border border-gray-700 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-200"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div>
+                <div className="flex flex-col lg:flex-row gap-4">
+                  {/* Left: Basic Info */}
+                  <div className="flex-1 space-y-2">
                     <p className="text-xs text-gray-400">Account Number</p>
                     <p className="text-xl font-semibold text-white">
                       {acc.accountNo}
                     </p>
+                    <div className="bg-[var(--primary)]/20 px-3 py-1 inline-block rounded-full text-[var(--primary)] text-sm font-medium">
+                      {acc.currency}
+                    </div>
                   </div>
-                  <div className="bg-[var(--primary)]/20 px-3 py-1 rounded-full text-[var(--primary)] text-sm font-medium">
-                    {acc.currency}
+
+                  {/* Right: Account Summary */}
+                  <div className="w-full lg:w-[400px] rounded-2xl p-6 bg-[#101d35] border border-[#2a3b58] text-white shadow-xl space-y-4">
+                    <div className="flex justify-between items-start">
+                      <div className="flex gap-3">
+                        <Image
+                          src={mt5}
+                          alt="MT5 Icon"
+                          width={48}
+                          height={48}
+                        />
+                        <div>
+                          <h2 className="text-lg font-semibold leading-tight">
+                            MT {acc.accountNo} (Standard)
+                          </h2>
+                          <p className="text-sm text-gray-400 mt-1">
+                            BALANCE : ${balance}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <button className="bg-blue-500 text-white text-sm px-4 py-1.5 rounded-full">
+                          Trade Now
+                        </button>
+                        <button className="bg-blue-700 text-white text-xs px-3 py-1 rounded-full">
+                          QUICK DEPOSIT
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 text-sm">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            🖥️ SERVER
+                          </p>
+                          <p className="bg-[#17263e] text-white px-3 py-2 rounded-md text-sm">
+                            WinprofX-Live
+                          </p>
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            🧮 LEVERAGE
+                          </p>
+                          <div className="flex justify-between items-center bg-[#17263e] px-3 py-2 rounded-md">
+                            <span>1:500</span>
+                            <button className="text-blue-400 text-xs underline">
+                              UPDATE LEVERAGE
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            📈 EQUITY
+                          </p>
+                          <p className="bg-[#17263e] px-3 py-2 rounded-md">
+                            ${balance}
+                          </p>
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            💰 FREE MARGIN
+                          </p>
+                          <p className="bg-[#17263e] px-3 py-2 rounded-md">
+                            ${DWBalance}
+                          </p>
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            📊 MARGIN
+                          </p>
+                          <p className="bg-[#17263e] px-3 py-2 rounded-md">
+                            $0
+                          </p>
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            📐 MARGIN LEVEL
+                          </p>
+                          <p className="bg-[#17263e] px-3 py-2 rounded-md">
+                            0%
+                          </p>
+                        </div>
+                        <div className="col-span-2 space-y-1">
+                          <p className="text-gray-400 flex items-center gap-2">
+                            🔄 FLOATING PL
+                          </p>
+                          <p className="bg-[#17263e] px-3 py-2 rounded-md">
+                            $0
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between pt-4">
+                      <button className="bg-blue-700 text-white text-sm px-4 py-2 rounded-md">
+                        Update Password
+                      </button>
+                      <button className="bg-blue-700 text-white text-sm px-4 py-2 rounded-md">
+                        Deposit
+                      </button>
+                      <button className="bg-blue-700 text-white text-sm px-4 py-2 rounded-md">
+                        Withdraw
+                      </button>
+                    </div>
                   </div>
                 </div>
 

@@ -131,10 +131,10 @@ export default function EconomicCalendar() {
           <p className="text-gray-400 text-medium  leading-relaxed mb-6">
             These events can significantly impact the financial markets, and
             traders are alerted in real time through notifications available
-            under the "Mailbox" tab on their trading platform. Since each event
-            may affect instruments differently, understanding the relevance and
-            timing of these updates is essential for informed and strategic
-            trading.
+            under the &#34;Mailbox&#34; tab on their trading platform. Since
+            each event may affect instruments differently, understanding the
+            relevance and timing of these updates is essential for informed and
+            strategic trading.
           </p>
 
           {/* Subheading */}

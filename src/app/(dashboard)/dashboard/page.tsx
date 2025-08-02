@@ -38,7 +38,6 @@ export default function DepositsPage() {
         `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/user/${email}`
       );
       const userData = res.data;
-      console.log(userData.accounts[0].accountNo);
       if (userData && userData.accounts) {
         setAccounts(userData.accounts);
         const firstAccountNo = userData.accounts[0].accountNo;
