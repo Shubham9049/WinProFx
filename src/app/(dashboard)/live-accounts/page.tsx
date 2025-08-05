@@ -9,6 +9,7 @@ import Button from "../../../../components/Button";
 import RegisterModal from "../../../../components/CreateAccount";
 import UpdatePasswordModal from "../../../../components/UpdatePasswordModal";
 import { useRouter } from "next/navigation";
+import AddBalanceModal from "../../../../components/AddBalanceModal";
 
 interface Account {
   _id: string;
@@ -33,6 +34,10 @@ export default function LiveAccounts() {
   const [summary, setSummary] = useState<AccountSummary | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [showAddBalanceModal, setShowAddBalanceModal] = useState(false);
+  const [balanceMode, setBalanceMode] = useState<"deposit" | "withdraw">(
+    "deposit"
+  );
 
   const router = useRouter();
   const fetchUserData = async () => {
@@ -215,10 +220,22 @@ export default function LiveAccounts() {
               >
                 Trade Now
               </button>
-              <button className="bg-green-600 px-4 py-2 rounded-md text-sm cursor-pointer">
+              <button
+                className="bg-green-600 px-4 py-2 rounded-md text-sm cursor-pointer"
+                onClick={() => {
+                  setBalanceMode("deposit");
+                  setShowAddBalanceModal(true);
+                }}
+              >
                 Deposit
               </button>
-              <button className="bg-red-600 px-4 py-2 rounded-md text-sm cursor-pointer">
+              <button
+                className="bg-red-600 px-4 py-2 rounded-md text-sm cursor-pointer"
+                onClick={() => {
+                  setBalanceMode("withdraw");
+                  setShowAddBalanceModal(true);
+                }}
+              >
                 Withdraw
               </button>
               <button
@@ -251,6 +268,23 @@ export default function LiveAccounts() {
           accountNo={selectedAccount.accountNo}
         />
       )}
+
+      <AddBalanceModal
+        isOpen={showAddBalanceModal}
+        onClose={() => setShowAddBalanceModal(false)}
+        accountNo={selectedAccount?.accountNo || 0}
+        mode={balanceMode}
+        onSuccess={() => {
+          const accNo = selectedAccount?.accountNo;
+          setShowAddBalanceModal(false); // ✅ Close modal immediately
+          if (accNo) {
+            setTimeout(() => {
+              fetchAccountSummary(accNo); // ✅ Allow time for modal to close before fetching
+              fetchUserData();
+            }, 100);
+          }
+        }}
+      />
     </div>
   );
 }

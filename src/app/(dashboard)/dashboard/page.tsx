@@ -7,6 +7,7 @@ import emptyIcon from "../../../../assets/icons/empty_state.png"; // Update if n
 import Button from "../../../../components/Button";
 import RegisterModal from "../../../../components/CreateAccount"; // adjust path as needed
 import axios from "axios";
+import AddBalanceModal from "../../../../components/AddBalanceModal";
 
 interface Account {
   _id: string;
@@ -23,6 +24,7 @@ export default function DepositsPage() {
   const [accountNo, setAccountNo] = useState("");
   const [balance, setBalance] = useState<string>("0.00");
   const [DWBalance, setDWBalance] = useState<string>("0.00");
+  const [showDepositModal, setShowDepositModal] = useState(false);
 
   const fetchUserData = async () => {
     const token = localStorage.getItem("token");
@@ -95,9 +97,6 @@ export default function DepositsPage() {
   }, []);
 
   if (!isLoggedIn) return null;
-  const handleClick = () => {
-    alert("clicked");
-  };
 
   return (
     <div className="h-screen md:h-[80vh] bg-gradient-to-br from-[#0a0f1d] to-[#0f172a] px-6 md:px-12 py-10 text-white flex flex-col lg:flex-row gap-10">
@@ -175,7 +174,10 @@ export default function DepositsPage() {
             <div className="text-white font-bold">${balance}</div>
           </div>
           <div className="flex justify-center">
-            <Button text="Make a Deposit" onClick={handleClick} />
+            <Button
+              text="Make a Deposit"
+              onClick={() => setShowDepositModal(true)}
+            />
           </div>
 
           {/* <div className="bg-[#0d1b2a] p-4 rounded-xl flex justify-between items-center">
@@ -192,6 +194,19 @@ export default function DepositsPage() {
         onClose={() => {
           setShowModal(false);
           fetchUserData(); // ✅ Refresh account list after modal closes
+        }}
+      />
+
+      <AddBalanceModal
+        isOpen={showDepositModal}
+        onClose={() => setShowDepositModal(false)}
+        accountNo={Number(accountNo)}
+        mode="deposit"
+        onSuccess={() => {
+          setShowDepositModal(false); // ✅ close modal first
+          setTimeout(() => {
+            fetchAccountSummary(Number(accountNo)); // ✅ refresh balance after short delay
+          }, 100);
         }}
       />
     </div>
