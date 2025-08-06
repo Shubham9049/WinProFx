@@ -40,10 +40,7 @@ export default function IdentityVerification() {
   ) => {
     const file = e.target.files?.[0];
     if (file) {
-      console.log(`Uploading [${name}]:`, file); // ⬅️ Add this
       setFormFiles((prev) => ({ ...prev, [name]: file }));
-    } else {
-      console.warn(`No file selected for [${name}]`);
     }
   };
 
@@ -59,8 +56,6 @@ export default function IdentityVerification() {
       formData.append("selfieProof", formFiles.selfieProof);
     setLoading(true);
 
-    console.log(formFiles);
-
     for (const [key, value] of formData.entries()) {
       console.log(`${key}:`, value);
     }
@@ -69,9 +64,6 @@ export default function IdentityVerification() {
       await axios.put(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/documents/${email}`,
         formData
-      );
-      console.log(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/documents/${email}`
       );
       alert("Documents submitted successfully!");
       setCurrentStep(1); // ⬅️ Go back to Step 1
@@ -215,14 +207,7 @@ export default function IdentityVerification() {
                 name="identityFront"
                 type="file"
                 accept="image/*,application/pdf"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    console.log("Selected File:", file);
-                  } else {
-                    console.warn("No file selected");
-                  }
-                }}
+                onChange={(e) => handleFileChange(e, "identityFront")}
                 className="mt-1 file:bg-white file:text-black file:px-3 file:py-1 file:rounded file:border-0 file:font-medium text-sm text-white w-full cursor-pointer"
               />
               {filePreview(formFiles.identityFront)}
@@ -235,14 +220,7 @@ export default function IdentityVerification() {
                 name="identityBack"
                 type="file"
                 accept="image/*,application/pdf"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    console.log("Selected File:", file);
-                  } else {
-                    console.warn("No file selected");
-                  }
-                }}
+                onChange={(e) => handleFileChange(e, "identityBack")}
                 className="mt-1 file:bg-white file:text-black file:px-3 file:py-1 file:rounded file:border-0 file:font-medium text-sm text-white w-full cursor-pointer"
               />
               {filePreview(formFiles.identityBack)}
