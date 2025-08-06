@@ -205,20 +205,10 @@ export default function Sidebar({
 
         {/* PROFILE */}
         <Section title="Profile">
-          <Dropdown
+          <NavLink
+            href="/settings"
             label="Settings"
             icon={Settings}
-            isOpen={open.settings}
-            onToggle={() => toggle("settings")}
-            items={[
-              { label: "Accounts", href: "/settings/accounts", icon: User },
-              {
-                label: "Verification",
-                href: "/settings/verification",
-                icon: Shield,
-              },
-              { label: "Security", href: "/settings/security", icon: Key },
-            ]}
             pathname={pathname}
           />
           <NavLink

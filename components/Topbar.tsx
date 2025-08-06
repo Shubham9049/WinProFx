@@ -76,9 +76,6 @@ export default function Topbar({
         <button title="Language">
           <Globe size={20} />
         </button>
-        <button title="Help">
-          <HelpCircle size={20} />
-        </button>
 
         {/* User dropdown */}
         <div className="relative">
@@ -90,19 +87,14 @@ export default function Topbar({
           </button>
 
           {openUserMenu && (
-            <div className="absolute right-0 mt-2 w-40 bg-white text-black rounded shadow z-50">
+            <div className="absolute right-0 mt-2 w-40 bg-[#121E2C] text-white  rounded shadow z-50">
               <a
-                href="/settings/accounts"
-                className="block px-4 py-2 hover:bg-gray-100"
+                href="/settings"
+                className="block px-4 py-2 hover:bg-gray-100 hover:text-black"
               >
                 Profile
               </a>
-              <a
-                href="/settings/security"
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                Security
-              </a>
+
               <button
                 onClick={handleSignOut}
                 className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600"
