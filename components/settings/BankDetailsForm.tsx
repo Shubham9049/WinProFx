@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import ProfileImage from "./ProfileImage";
+import axios from "axios";
 
-// Define types for form fields
 type BankDetailsFormFields = {
-  accountHolder: string;
+  accountHolderName: string;
   accountNumber: string;
-  ifscSwift: string;
+  ifscCode: string;
   iban: string;
   bankName: string;
   bankAddress: string;
@@ -23,9 +23,9 @@ type FieldConfig = {
 
 export default function BankDetailsForm() {
   const [form, setForm] = useState<BankDetailsFormFields>({
-    accountHolder: "",
+    accountHolderName: "",
     accountNumber: "",
-    ifscSwift: "",
+    ifscCode: "",
     iban: "",
     bankName: "",
     bankAddress: "",
@@ -45,9 +45,9 @@ export default function BankDetailsForm() {
     e.preventDefault();
 
     const requiredFields: (keyof BankDetailsFormFields)[] = [
-      "accountHolder",
+      "accountHolderName",
       "accountNumber",
-      "ifscSwift",
+      "ifscCode",
       "bankName",
       "bankAddress",
     ];
@@ -59,20 +59,29 @@ export default function BankDetailsForm() {
       }
     }
 
+    const email = JSON.parse(localStorage.getItem("user") || "{}").email;
+    if (!email) {
+      alert("User email not found.");
+      return;
+    }
+
     setLoading(true);
     try {
-      // Simulate API call
-      await new Promise((res) => setTimeout(res, 1000));
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/bank/${email}`,
+        form
+      );
       alert("Bank details saved successfully!");
       setForm({
-        accountHolder: "",
+        accountHolderName: "",
         accountNumber: "",
-        ifscSwift: "",
+        ifscCode: "",
         iban: "",
         bankName: "",
         bankAddress: "",
       });
-    } catch {
+    } catch (err) {
+      console.error(err);
       alert("Something went wrong. Try again.");
     } finally {
       setLoading(false);
@@ -82,7 +91,7 @@ export default function BankDetailsForm() {
   const fields: FieldConfig[] = [
     {
       label: "Account Holder Name",
-      name: "accountHolder",
+      name: "accountHolderName",
       required: true,
       placeholder: "Enter account holder's name",
       description:
@@ -96,7 +105,7 @@ export default function BankDetailsForm() {
     },
     {
       label: "IFSC/SWIFT Code",
-      name: "ifscSwift",
+      name: "ifscCode",
       required: true,
       placeholder: "Enter IFSC/SWIFT code",
     },
@@ -133,7 +142,6 @@ export default function BankDetailsForm() {
         </h2>
         <hr className="border-gray-700" />
 
-        {/* Field Builder */}
         {fields.map((field) => (
           <div
             key={field.name}
@@ -163,12 +171,11 @@ export default function BankDetailsForm() {
           </div>
         ))}
 
-        {/* Submit Button */}
         <div className="flex justify-end mt-6">
           <button
             type="submit"
             disabled={loading}
-            className="bg-[var(--primary)] hover:bg-blue-700 text-white px-6 py-2 rounded-md disabled:opacity-50"
+            className="bg-[var(--primary)] cursor-pointer text-white px-6 py-2 rounded-md disabled:opacity-50"
           >
             {loading ? "Saving..." : "Save Bank Details"}
           </button>
