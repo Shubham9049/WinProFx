@@ -73,7 +73,7 @@ export default function TradingPlatform() {
 
           <div className="flex gap-4 mt-6">
             <a
-              href="https://www.metatrader5.com/en/download"
+              href="https://download.mql5.com/cdn/web/metaquotes.ltd/mt5/mt5setup.exe?utm_source=www.metatrader5.com&utm_campaign=download"
               className="bg-[#1d2233] hover:bg-[#2a314a] text-white px-4 py-2 rounded-lg text-sm flex items-center gap-2"
             >
               <FaWindows className="text-xl" />
