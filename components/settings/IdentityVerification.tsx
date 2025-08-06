@@ -26,14 +26,6 @@ export default function IdentityVerification() {
     selfieProof?: File;
   }>({});
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      const parsed = JSON.parse(user);
-      if (parsed.email) setEmail(parsed.email);
-    }
-  }, []);
-
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     name: keyof typeof formFiles
@@ -56,8 +48,14 @@ export default function IdentityVerification() {
       formData.append("selfieProof", formFiles.selfieProof);
     setLoading(true);
 
-    for (const [key, value] of formData.entries()) {
-      console.log(`${key}:`, value);
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(`${key}:`, value);
+    // }
+
+    const email = JSON.parse(localStorage.getItem("user") || "{}").email;
+    if (!email) {
+      alert("User email not found.");
+      return;
     }
 
     try {
