@@ -2,13 +2,10 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { Camera } from "lucide-react";
 import ProfileImage from "./ProfileImage";
 
 export default function ProfileForm() {
-  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
-  //   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -22,22 +19,45 @@ export default function ProfileForm() {
     postalCode: "",
   });
 
-  //   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     const file = e.target.files?.[0];
-  //     if (!file) return;
+  // Fetch user from localStorage & backend
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        const userEmail = parsedUser.email;
+        setEmail(userEmail);
 
-  //     const formData = new FormData();
-  //     formData.append("image", file);
+        // Fetch full profile from backend
+        axios
+          .get(`${process.env.NEXT_PUBLIC_API_BASE}/api/auth/user/${userEmail}`)
+          .then((res) => {
+            const user = res.data;
 
-  //     try {
-  //       const res = await axios.post("/api/upload-profile-image", formData, {
-  //         headers: { "Content-Type": "multipart/form-data" },
-  //       });
-  //       setProfileImage(res.data.imageUrl); // Assuming your API returns `imageUrl`
-  //     } catch (err) {
-  //       console.error("Image upload failed", err);
-  //     }
-  //   };
+            console.log(user);
+            if (user) {
+              setFormData({
+                fullName: user.fullName || "",
+                email: user.email || "",
+                phone: user.phone || "",
+                gender: user.gender || "",
+                accountType: user.accountType || "",
+                address: user.address || "",
+                country: user.country || "",
+                state: user.state || "",
+                city: user.city || "",
+                postalCode: user.postalCode || "",
+              });
+            }
+          })
+          .catch((err) => {
+            console.error("Failed to fetch user profile", err);
+          });
+      } catch (err) {
+        console.error("Error parsing user from localStorage", err);
+      }
+    }
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -48,36 +68,29 @@ export default function ProfileForm() {
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
-      await axios.post("/api/update-profile", formData);
-      alert("Profile updated successfully");
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/update-profile/${email}`,
+        formData
+      );
+
+      if (res.data?.success && res.data?.user) {
+        alert("Profile updated successfully");
+
+        // Update localStorage
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+      }
     } catch (err) {
-      console.error("Update failed", err);
+      console.error("Profile update failed", err);
       alert("Something went wrong.");
     }
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        try {
-          const parsedUser = JSON.parse(storedUser);
-          setUserName(parsedUser.fullName || "U");
-          setEmail(parsedUser.email);
-        } catch (e) {
-          setUserName("U");
-        }
-      }
-    }
-  }, []);
-
   return (
     <div className="space-y-6">
-      {/* Profile Image Box */}
       <ProfileImage />
 
-      {/* Profile Info Form */}
       <form
         onSubmit={handleUpdate}
         className="bg-[#121a2a] border border-gray-800 p-6 rounded-xl shadow-lg space-y-4"
@@ -94,7 +107,7 @@ export default function ProfileForm() {
             name="fullName"
             required
             onChange={handleInputChange}
-            value={userName}
+            value={formData.fullName}
             className="w-full p-2 rounded-md bg-[#10151f] border border-gray-700 text-white focus:outline-none focus:border-[var(--primary)]"
           />
         </div>
@@ -128,7 +141,7 @@ export default function ProfileForm() {
           </div>
         </div>
 
-        {/* Email */}
+        {/* Email (read-only) */}
         <div>
           <label className="block text-sm font-medium mb-1">
             Email <span className="text-red-500">*</span>
@@ -136,10 +149,9 @@ export default function ProfileForm() {
           <input
             name="email"
             type="email"
-            required
-            onChange={handleInputChange}
-            value={email}
-            className="w-full p-2 rounded-md bg-[#10151f] border border-gray-700 text-white focus:outline-none focus:border-[var(--primary)]"
+            readOnly
+            value={formData.email}
+            className="w-full p-2 rounded-md bg-gray-800 text-gray-400 border border-gray-700 cursor-not-allowed"
           />
         </div>
 
@@ -202,7 +214,7 @@ export default function ProfileForm() {
           />
         </div>
 
-        {/* Location Details */}
+        {/* Country, State, City */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {["country", "state", "city"].map((field) => (
             <div key={field}>
