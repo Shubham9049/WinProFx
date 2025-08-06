@@ -91,10 +91,14 @@ export default function SecurityForm() {
       setForm({ oldPassword: "", newPassword: "", confirmPassword: "" });
       setTouched({ newPassword: false, confirmPassword: false });
       router.push("/login");
-    } catch (err: any) {
-      const message =
-        err.response?.data?.message || "Failed to update password.";
-      alert(message);
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        const message =
+          err.response?.data?.message || "Failed to update password.";
+        alert(message);
+      } else {
+        alert("An unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }
