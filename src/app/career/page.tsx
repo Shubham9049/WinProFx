@@ -32,9 +32,9 @@ const Career = () => {
         </h2>
         <p className="text-gray-400 max-w-3xl mx-auto text-base leading-relaxed">
           At <span className="text-white font-medium">BillionDollarFX</span>,
-          innovation meets precision in the world of Forex. We're driven by
-          results and focused on breaking new ground. We don't follow trends —
-          we set them. Join a team that thrives on bold thinking, fast
+          innovation meets precision in the world of Forex. We&#39;re driven by
+          results and focused on breaking new ground. We don&#39;t follow trends
+          — we set them. Join a team that thrives on bold thinking, fast
           execution, and a culture built for winners.
         </p>
       </section>
@@ -46,10 +46,10 @@ const Career = () => {
             Global Vibes, Local Impact
           </h3>
           <p className="text-gray-400 max-w-3xl mx-auto text-base leading-relaxed">
-            Work with Forex professionals from across the globe. You'll be part
-            of a connected, diverse culture that shares knowledge, wins
+            Work with Forex professionals from across the globe. You&#39;ll be
+            part of a connected, diverse culture that shares knowledge, wins
             together, and grows together. If market trends excite you and
-            candlesticks feel like art, you're in the right place.
+            candlesticks feel like art, you&#39;re in the right place.
           </p>
         </div>
       </section>
@@ -64,8 +64,8 @@ const Career = () => {
           <span className="text-white font-medium"> BillionDollarFX</span>,
           we’re all about bold moves, sharp minds, and turning ambition into
           action. We’re always looking for analysts, devs, and creative
-          thinkers. If you're hungry to disrupt Forex with smart work and sharp
-          insights — end the wait!
+          thinkers. If you&#39;re hungry to disrupt Forex with smart work and
+          sharp insights — end the wait!
         </p>
       </section>
 
