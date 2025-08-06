@@ -40,7 +40,10 @@ export default function IdentityVerification() {
   ) => {
     const file = e.target.files?.[0];
     if (file) {
+      console.log(`Uploading [${name}]:`, file); // ⬅️ Add this
       setFormFiles((prev) => ({ ...prev, [name]: file }));
+    } else {
+      console.warn(`No file selected for [${name}]`);
     }
   };
 
@@ -56,15 +59,19 @@ export default function IdentityVerification() {
       formData.append("selfieProof", formFiles.selfieProof);
     setLoading(true);
 
+    console.log(formFiles);
+
+    for (const [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
+
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/documents/${email}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/documents/${email}`,
+        formData
+      );
+      console.log(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/auth/documents/${email}`
       );
       alert("Documents submitted successfully!");
       setCurrentStep(1); // ⬅️ Go back to Step 1
@@ -205,9 +212,17 @@ export default function IdentityVerification() {
                 Front Side
               </label>
               <input
+                name="identityFront"
                 type="file"
                 accept="image/*,application/pdf"
-                onChange={(e) => handleFileChange(e, "identityFront")}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    console.log("Selected File:", file);
+                  } else {
+                    console.warn("No file selected");
+                  }
+                }}
                 className="mt-1 file:bg-white file:text-black file:px-3 file:py-1 file:rounded file:border-0 file:font-medium text-sm text-white w-full cursor-pointer"
               />
               {filePreview(formFiles.identityFront)}
@@ -217,9 +232,17 @@ export default function IdentityVerification() {
                 Back Side
               </label>
               <input
+                name="identityBack"
                 type="file"
                 accept="image/*,application/pdf"
-                onChange={(e) => handleFileChange(e, "identityBack")}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    console.log("Selected File:", file);
+                  } else {
+                    console.warn("No file selected");
+                  }
+                }}
                 className="mt-1 file:bg-white file:text-black file:px-3 file:py-1 file:rounded file:border-0 file:font-medium text-sm text-white w-full cursor-pointer"
               />
               {filePreview(formFiles.identityBack)}
@@ -254,6 +277,7 @@ export default function IdentityVerification() {
             ADDRESS PROOF
           </label>
           <input
+            name="addressProof"
             type="file"
             accept="image/*,application/pdf"
             onChange={(e) => handleFileChange(e, "addressProof")}
@@ -287,6 +311,7 @@ export default function IdentityVerification() {
         <div className="bg-[#121a2a] border border-gray-800 p-6 rounded-xl shadow-lg">
           <label className="text-sm font-medium text-white">SELFIE PROOF</label>
           <input
+            name="selfieProof"
             type="file"
             accept="image/*,application/pdf"
             onChange={(e) => handleFileChange(e, "selfieProof")}
