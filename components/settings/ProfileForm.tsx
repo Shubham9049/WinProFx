@@ -213,7 +213,7 @@ export default function ProfileForm() {
                 name={field}
                 required
                 onChange={handleInputChange}
-                value={(formData as any)[field]}
+                value={formData[field as keyof typeof formData]}
                 className="w-full p-2 rounded-md bg-[#10151f] border border-gray-700 text-white focus:outline-none focus:border-[var(--primary)]"
               />
             </div>

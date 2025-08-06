@@ -52,7 +52,7 @@ export default function BankDetailsForm() {
       "bankAddress",
     ];
 
-    for (let field of requiredFields) {
+    for (const field of requiredFields) {
       if (!form[field]) {
         alert("Please fill in all required fields.");
         return;
@@ -72,7 +72,7 @@ export default function BankDetailsForm() {
         bankName: "",
         bankAddress: "",
       });
-    } catch (err) {
+    } catch {
       alert("Something went wrong. Try again.");
     } finally {
       setLoading(false);
