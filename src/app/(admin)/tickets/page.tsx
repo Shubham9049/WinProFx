@@ -1,47 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
+interface User {
+  fullName: string;
+}
+
+interface Message {
+  _id: string;
+  senderType: "Admin" | "User";
+  message: string;
+  createdAt: string;
+}
+
+interface Ticket {
+  _id: string;
+  subject: string;
+  category: string;
+  status: "Open" | "Pending" | "Closed";
+  user?: User;
+}
+
 export default function AdminTicketsPage() {
-  const [tickets, setTickets] = useState<any[]>([]);
-  const [activeTicket, setActiveTicket] = useState<any | null>(null);
-  const [messages, setMessages] = useState<any[]>([]);
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
-  useEffect(() => {
-    fetchTickets();
-  }, [currentPage]);
-
-  const updateStatus = async (status: string) => {
-    if (!activeTicket) return;
-
+  const fetchTickets = useCallback(async () => {
     try {
-      await axios.put(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/${activeTicket._id}/status`,
-        { status }
-      );
-
-      // Refresh ticket in modal
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${activeTicket._id}`
-      );
-      setMessages(res.data.messages);
-      setActiveTicket({ ...activeTicket, status });
-
-      // Refresh ticket list
-      fetchTickets();
-    } catch (err) {
-      alert("Failed to update status.");
-    }
-  };
-
-  const fetchTickets = async () => {
-    try {
-      const res = await axios.get(
+      const res = await axios.get<Ticket[]>(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/admin`
       );
       const allTickets = res.data;
@@ -50,20 +42,45 @@ export default function AdminTicketsPage() {
         currentPage * itemsPerPage
       );
       setTickets(paginated);
-    } catch (err) {
-      console.error("Error fetching tickets", err);
+    } catch {
+      console.error("Error fetching tickets");
+    }
+  }, [currentPage]);
+
+  useEffect(() => {
+    fetchTickets();
+  }, [fetchTickets]);
+
+  const updateStatus = async (status: Ticket["status"]) => {
+    if (!activeTicket) return;
+
+    try {
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/${activeTicket._id}/status`,
+        { status }
+      );
+
+      const res = await axios.get<{ messages: Message[] }>(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${activeTicket._id}`
+      );
+
+      setMessages(res.data.messages);
+      setActiveTicket({ ...activeTicket, status });
+      fetchTickets();
+    } catch {
+      alert("Failed to update status.");
     }
   };
 
-  const openModal = async (ticket: any) => {
+  const openModal = async (ticket: Ticket) => {
     setActiveTicket(ticket);
     setShowModal(true);
     try {
-      const res = await axios.get(
+      const res = await axios.get<{ messages: Message[] }>(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${ticket._id}`
       );
       setMessages(res.data.messages);
-    } catch (err) {
+    } catch {
       alert("Failed to fetch messages.");
     }
   };
@@ -87,11 +104,12 @@ export default function AdminTicketsPage() {
         }
       );
       setNewMessage("");
-      const res = await axios.get(
+
+      const res = await axios.get<{ messages: Message[] }>(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${activeTicket._id}`
       );
       setMessages(res.data.messages);
-    } catch (err) {
+    } catch {
       alert("Failed to send message.");
     }
   };
@@ -103,11 +121,11 @@ export default function AdminTicketsPage() {
         <p>No tickets found.</p>
       ) : (
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-          {tickets.map((ticket: any) => (
+          {tickets.map((ticket) => (
             <div
               key={ticket._id}
               onClick={() => openModal(ticket)}
-              className="p-4 border rounded cursor-pointer  transition"
+              className="p-4 border rounded cursor-pointer transition"
             >
               <div className="flex justify-between items-center">
                 <div>
@@ -133,23 +151,23 @@ export default function AdminTicketsPage() {
         </div>
       )}
 
-      {/* Modal for Messages */}
       {showModal && activeTicket && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <div className="bg-black text-whtie border w-full max-w-2xl p-6 rounded relative">
+          <div className="bg-black text-white border w-full max-w-2xl p-6 rounded relative">
             <button
               onClick={closeModal}
               className="absolute top-2 right-4 text-2xl font-bold"
             >
               &times;
             </button>
+
             <div className="flex justify-between items-start mb-4 mt-4">
               <div>
                 <h2 className="text-xl mb-1">
                   Category: {activeTicket.category}
                 </h2>
                 <h2 className="text-lg mb-1">{activeTicket.subject}</h2>
-                <h3 className="text-md text-gray-600">
+                <h3 className="text-md text-gray-400">
                   User: {activeTicket.user?.fullName}
                 </h3>
               </div>
@@ -159,7 +177,9 @@ export default function AdminTicketsPage() {
                 </label>
                 <select
                   value={activeTicket.status}
-                  onChange={(e) => updateStatus(e.target.value)}
+                  onChange={(e) =>
+                    updateStatus(e.target.value as Ticket["status"])
+                  }
                   className="border border-gray-300 rounded p-2 bg-black text-white"
                 >
                   <option value="Open">Open</option>
@@ -171,8 +191,8 @@ export default function AdminTicketsPage() {
 
             <hr className="mb-4" />
 
-            <div className="h-[300px] overflow-y-auto no-scrollbar">
-              {messages.map((msg: any) => (
+            <div className="h-[300px] overflow-y-auto no-scrollbar space-y-3">
+              {messages.map((msg) => (
                 <div
                   key={msg._id}
                   className={`${
@@ -186,19 +206,14 @@ export default function AdminTicketsPage() {
                     <br />
                     {new Date(msg.createdAt).toLocaleString()}
                   </div>
-                  <div
-                    className={`inline-block py-2 rounded ${
-                      msg.senderType === "Admin" ? " text-white" : " text-white"
-                    }`}
-                  >
+                  <div className="inline-block py-2 text-white">
                     {msg.message}
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Message Input */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mt-4">
               <input
                 type="text"
                 value={newMessage}
