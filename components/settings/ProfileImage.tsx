@@ -41,8 +41,12 @@ function ProfileImage() {
         };
         localStorage.setItem("user", JSON.stringify(updatedUser));
       }
-    } catch (err: any) {
-      console.error("Image upload failed", err.response?.data || err.message);
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.error("Image upload failed", err.response?.data || err.message);
+      } else {
+        console.error("An unknown error occurred", err);
+      }
     }
   };
 

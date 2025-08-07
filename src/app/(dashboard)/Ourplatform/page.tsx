@@ -37,7 +37,8 @@ export default function TradingPlatform() {
 
           <div className="flex justify-end gap-4 mt-6">
             <a
-              href="#"
+              href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5
+"
               className="bg-[#1d2233] hover:bg-[#2a314a] text-white px-4 py-2 rounded-lg text-sm flex items-center gap-2"
             >
               <FaGooglePlay className="text-xl" />
@@ -47,7 +48,7 @@ export default function TradingPlatform() {
               </span>
             </a>
             <a
-              href="#"
+              href="https://apps.apple.com/in/app/metatrader-5/id413251709"
               className="bg-[#1d2233] hover:bg-[#2a314a] text-white px-4 py-2 rounded-lg text-sm flex items-center gap-2"
             >
               <FaApple className="text-xl" />
@@ -72,7 +73,7 @@ export default function TradingPlatform() {
 
           <div className="flex gap-4 mt-6">
             <a
-              href="#"
+              href="https://download.mql5.com/cdn/web/metaquotes.ltd/mt5/mt5setup.exe?utm_source=www.metatrader5.com&utm_campaign=download"
               className="bg-[#1d2233] hover:bg-[#2a314a] text-white px-4 py-2 rounded-lg text-sm flex items-center gap-2"
             >
               <FaWindows className="text-xl" />
@@ -82,7 +83,7 @@ export default function TradingPlatform() {
               </span>
             </a>
             <a
-              href="#"
+              href="https://apps.apple.com/us/app/metatrader-5/id413251709"
               className="bg-[#1d2233] hover:bg-[#2a314a] text-white px-4 py-2 rounded-lg text-sm flex items-center gap-2"
             >
               <SiMacos className="text-xl" />
