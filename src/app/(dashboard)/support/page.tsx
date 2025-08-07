@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 interface Ticket {
@@ -27,14 +27,22 @@ export default function Support() {
     subject: "",
     description: "",
   });
-
   const [currentPage, setCurrentPage] = useState(1);
-  const ticketsPerPage = 5;
+  const ticketsPerPage = 6;
 
   const [showModal, setShowModal] = useState(false);
   const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (showModal) scrollToBottom();
+  }, [messages, showModal]);
 
   useEffect(() => {
     const storedEmail = JSON.parse(localStorage.getItem("user") || "{}").email;
@@ -50,7 +58,6 @@ export default function Support() {
     axios
       .get(`${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/${email}`)
       .then((res) => {
-        // Sort tickets by latest
         const sorted = res.data.sort(
           (a: Ticket, b: Ticket) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -63,7 +70,7 @@ export default function Support() {
   const handleCreateTicket = () => {
     const { category, subject, description } = newTicket;
     if (!category || !subject || !description) {
-      alert("Please fill in all fields.");
+      alert("All fields required.");
       return;
     }
 
@@ -108,7 +115,6 @@ export default function Support() {
         `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/${activeTicket._id}/messages`,
         {
           senderType: "User",
-
           message: newMessage,
         }
       )
@@ -129,173 +135,191 @@ export default function Support() {
     setNewMessage("");
   };
 
-  // Pagination
   const indexOfLastTicket = currentPage * ticketsPerPage;
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
   const currentTickets = tickets.slice(indexOfFirstTicket, indexOfLastTicket);
   const totalPages = Math.ceil(tickets.length / ticketsPerPage);
 
+  const statusBadge = (status: string) => {
+    switch (status) {
+      case "Open":
+        return "bg-red-600";
+      case "Pending":
+        return "bg-yellow-600";
+      case "Closed":
+        return "bg-green-600";
+      default:
+        return "bg-gray-600";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white p-6 font-raleway">
-      <h1 className="text-2xl font-bold mb-6">Support Tickets</h1>
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* CREATE TICKET */}
+        <div className="bg-[#121a2a] p-5 rounded-lg shadow-md">
+          <h2 className="text-xl font-bold mb-4">Create a New Ticket</h2>
+          <select
+            value={newTicket.category}
+            onChange={(e) =>
+              setNewTicket({ ...newTicket, category: e.target.value })
+            }
+            className="w-full bg-[#0d1b2a] border border-gray-700 p-2 rounded mb-3"
+          >
+            <option value="">Select Category</option>
+            <option value="Deposit/Withdrawal">Deposit/Withdrawal</option>
+            <option value="Account-verification">Account-verification</option>
+            <option value="MT5 Support">MT5 Support</option>
+            <option value="IB Commission">IB Commission</option>
+            <option value="Bonous&Other Promotion">
+              Bonous & Other Promotion
+            </option>
+            <option value="Others">Others</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Subject"
+            value={newTicket.subject}
+            onChange={(e) =>
+              setNewTicket({ ...newTicket, subject: e.target.value })
+            }
+            className="w-full bg-[#0d1b2a] border border-gray-700 p-2 rounded mb-3"
+          />
+          <textarea
+            placeholder="Describe your issue..."
+            value={newTicket.description}
+            onChange={(e) =>
+              setNewTicket({ ...newTicket, description: e.target.value })
+            }
+            className="w-full bg-[#0d1b2a] border border-gray-700 p-2 rounded mb-4 h-28"
+          ></textarea>
+          <button
+            onClick={handleCreateTicket}
+            className="bg-[var(--primary)] hover:opacity-90 px-4 py-2 rounded text-white w-full"
+          >
+            Submit Ticket
+          </button>
+        </div>
 
-      {/* CREATE TICKET */}
-      <div className="bg-[#121a2a] p-4 rounded-lg mb-6">
-        <h2 className="text-lg font-semibold mb-3">Create Ticket</h2>
-        <select
-          value={newTicket.category}
-          onChange={(e) =>
-            setNewTicket({ ...newTicket, category: e.target.value })
-          }
-          className="w-full bg-black border border-gray-700 p-2 rounded mb-3"
-        >
-          <option value="">Select Category</option>
-          <option value="Deposit/Withdrawal">Deposit/Withdrawal</option>
-          <option value="Account-verification">Account-verification</option>
-          <option value="MT5 Support">MT5 Support</option>
-          <option value="IB Commission">IB Commission</option>
-          <option value="Bonous&Other Promotion">
-            Bonous & Other Promotion
-          </option>
-          <option value="Others">Others</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Subject"
-          value={newTicket.subject}
-          onChange={(e) =>
-            setNewTicket({ ...newTicket, subject: e.target.value })
-          }
-          className="w-full bg-black border border-gray-700 p-2 rounded mb-3"
-        />
-        <textarea
-          placeholder="Describe your issue..."
-          value={newTicket.description}
-          onChange={(e) =>
-            setNewTicket({ ...newTicket, description: e.target.value })
-          }
-          className="w-full bg-black border border-gray-700 p-2 rounded mb-3 h-24"
-        ></textarea>
-        <button
-          onClick={handleCreateTicket}
-          className="bg-[var(--primary)] px-4 py-2 rounded text-white"
-        >
-          Submit Ticket
-        </button>
-      </div>
+        {/* TICKET LIST */}
+        <div className="bg-[#121a2a] p-5 rounded-lg shadow-md">
+          <h2 className="text-xl font-bold mb-4">My Tickets</h2>
+          {currentTickets.length === 0 ? (
+            <p className="text-gray-400">No tickets yet.</p>
+          ) : (
+            <ul className="space-y-3">
+              {currentTickets.map((ticket) => (
+                <li
+                  key={ticket._id}
+                  onClick={() => openTicketModal(ticket)}
+                  className="p-3 border border-gray-700 rounded hover:bg-[#2a2a45] cursor-pointer"
+                >
+                  <div className="flex justify-between">
+                    <span className="font-medium">{ticket.subject}</span>
+                    <span
+                      className={`text-xs px-2 py-1 rounded-full ${statusBadge(
+                        ticket.status
+                      )}`}
+                    >
+                      {ticket.status}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-400 mt-1">
+                    {ticket.category}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {new Date(ticket.createdAt).toLocaleString()}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
 
-      {/* TICKET LIST */}
-      <div className="bg-[#121a2a] p-4 rounded-lg mb-6">
-        <h2 className="text-lg font-semibold mb-3">My Tickets</h2>
-        {currentTickets.length === 0 ? (
-          <p className="text-gray-400">No tickets found.</p>
-        ) : (
-          <ul className="space-y-3">
-            {currentTickets.map((ticket) => (
-              <li
-                key={ticket._id}
-                onClick={() => openTicketModal(ticket)}
-                className="p-3 border border-gray-700 rounded cursor-pointer hover:bg-[#1c253a]"
+          {/* Pagination */}
+          <div className="mt-4 flex justify-center gap-2 flex-wrap">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`px-3 py-1 text-sm rounded ${
+                  currentPage === i + 1
+                    ? "bg-[var(--primary)] text-white"
+                    : "bg-gray-800 text-gray-300"
+                }`}
               >
-                <div className="flex justify-between">
-                  <span className="font-semibold">{ticket.category}</span>
-                  <span
-                    className={`text-sm ${
-                      ticket.status === "Open"
-                        ? "text-red-500"
-                        : ticket.status === "Pending"
-                        ? "text-yellow-500"
-                        : ticket.status === "Closed"
-                        ? "text-green-500"
-                        : "text-gray-400"
-                    }`}
-                  >
-                    {ticket.status || "open"}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-300">{ticket.subject}</p>
-                <p className="text-xs text-gray-500">
-                  Created: {new Date(ticket.createdAt).toLocaleString()}
-                </p>
-              </li>
+                {i + 1}
+              </button>
             ))}
-          </ul>
-        )}
-
-        {/* Pagination Controls */}
-        <div className="mt-4 flex justify-center gap-2">
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPage(index + 1)}
-              className={`px-3 py-1 rounded ${
-                currentPage === index + 1
-                  ? "bg-[var(--primary)] text-white"
-                  : "bg-gray-700 text-gray-200"
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
+          </div>
         </div>
       </div>
 
-      {/* MODAL FOR TICKET MESSAGES */}
+      {/* MODAL */}
       {showModal && activeTicket && (
-        <div className="fixed inset-0 bg-black/90 flex justify-center items-center z-50">
-          <div className="bg-[#1a1a2c] rounded-lg w-full max-w-2xl p-6 relative">
-            <button
-              onClick={closeModal}
-              className="absolute top-3 right-4 text-gray-400 hover:text-white text-xl"
-            >
-              &times;
-            </button>
-            <h2 className="text-xl font-semibold mb-4">
-              Category: {activeTicket.category}
-            </h2>
-            <h2 className="text-lg  mb-4">Ticket: {activeTicket.subject}</h2>
-            <hr />
-            <div className="max-h-[400px] overflow-y-auto space-y-3 mb-4">
+        <div className="fixed inset-0 bg-black/90 z-50 flex justify-center items-center px-4">
+          <div className="bg-[#121a2a] rounded-lg w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex justify-between items-center px-6 py-4 border-b border-gray-700">
+              <div>
+                <h3 className="text-lg font-semibold">
+                  {activeTicket.subject}
+                </h3>
+                <p className="text-sm text-gray-400">
+                  Category: {activeTicket.category}
+                </p>
+              </div>
+              <button
+                onClick={closeModal}
+                className="text-gray-400 hover:text-white text-2xl"
+              >
+                &times;
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6 space-y-4 no-scrollbar">
               {messages.length === 0 ? (
-                <p className="text-gray-400">No messages yet.</p>
+                <p className="text-gray-500">No messages yet.</p>
               ) : (
                 messages.map((msg) => (
                   <div
                     key={msg._id}
-                    className={`p-3  ${
-                      msg.senderType === "Admin" ? " text-right " : "text-left"
+                    className={`${
+                      msg.senderType === "Admin" ? "text-left" : "text-right"
                     }`}
                   >
                     <div className="text-xs text-gray-400 mb-1">
-                      {msg.senderType === "User" ? "You" : "BillionDollarFX"}{" "}
+                      {msg.senderType === "Admin" ? "BillionDollarFX" : "You"}{" "}
                       <br />
-                      <span className="text-xs text-gray-500">
+                      <span className="text-gray-500 text-xs">
                         {new Date(msg.createdAt).toLocaleString()}
                       </span>
                     </div>
-
-                    <p>{msg.message}</p>
+                    <div className="inline-block py-2 px-3 bg-gray-800 rounded text-white max-w-[80%]">
+                      {msg.message}
+                    </div>
                   </div>
                 ))
               )}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Message Input */}
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Type a message..."
-                className="flex-1 bg-black border border-gray-600 rounded p-2 text-white"
-              />
-              <button
-                onClick={sendMessage}
-                className="bg-[var(--primary)] px-4 py-2 rounded text-white"
-              >
-                Send
-              </button>
-            </div>
+            {activeTicket.status !== "Closed" && (
+              <div className="p-4 border-t border-gray-700 flex items-center gap-2">
+                <textarea
+                  rows={2}
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  placeholder="Type a message..."
+                  className="flex-1 bg-black border border-gray-600 rounded p-2 text-white resize-none"
+                />
+                <button
+                  onClick={sendMessage}
+                  className="bg-[var(--primary)] px-4 py-2 rounded text-white"
+                >
+                  Send
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

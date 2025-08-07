@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import axios from "axios";
 
 interface User {
@@ -23,6 +23,7 @@ interface Ticket {
 }
 
 export default function AdminTicketsPage() {
+  const [allTickets, setAllTickets] = useState<Ticket[]>([]);
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [activeTicket, setActiveTicket] = useState<Ticket | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -31,25 +32,34 @@ export default function AdminTicketsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const totalPages = Math.ceil(allTickets.length / itemsPerPage);
+
   const fetchTickets = useCallback(async () => {
     try {
       const res = await axios.get<Ticket[]>(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/admin`
       );
-      const allTickets = res.data;
-      const paginated = allTickets.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-      );
-      setTickets(paginated);
+      setAllTickets(res.data);
     } catch {
       console.error("Error fetching tickets");
     }
-  }, [currentPage]);
+  }, []);
 
   useEffect(() => {
     fetchTickets();
   }, [fetchTickets]);
+
+  useEffect(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = currentPage * itemsPerPage;
+    setTickets(allTickets.slice(start, end));
+  }, [currentPage, allTickets]);
 
   const updateStatus = async (status: Ticket["status"]) => {
     if (!activeTicket) return;
@@ -114,41 +124,93 @@ export default function AdminTicketsPage() {
     }
   };
 
+  const renderPagination = () => {
+    const pages = [];
+    const maxVisible = 5;
+    const half = Math.floor(maxVisible / 2);
+    let start = Math.max(1, currentPage - half);
+    let end = Math.min(totalPages, currentPage + half);
+
+    if (currentPage <= half) {
+      end = Math.min(totalPages, maxVisible);
+    } else if (currentPage + half >= totalPages) {
+      start = Math.max(1, totalPages - maxVisible + 1);
+    }
+
+    for (let i = start; i <= end; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => setCurrentPage(i)}
+          className={`px-3 py-1 border rounded ${
+            i === currentPage ? "bg-[var(--primary)] text-white" : ""
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return (
+      <div className="flex items-center gap-2 mt-6 justify-center">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+          className="px-3 py-1 border rounded disabled:opacity-50"
+        >
+          Prev
+        </button>
+        {pages}
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+          className="px-3 py-1 border rounded disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">All Tickets</h2>
       {tickets.length === 0 ? (
         <p>No tickets found.</p>
       ) : (
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-          {tickets.map((ticket) => (
-            <div
-              key={ticket._id}
-              onClick={() => openModal(ticket)}
-              className="p-4 border rounded cursor-pointer transition"
-            >
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="text-lg font-medium">{ticket.subject}</p>
-                  <p className="text-sm text-gray-500">
-                    {ticket.user?.fullName}
-                  </p>
+        <>
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+            {tickets.map((ticket) => (
+              <div
+                key={ticket._id}
+                onClick={() => openModal(ticket)}
+                className="p-4 border rounded cursor-pointer transition"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-lg font-medium">{ticket.subject}</p>
+                    <p className="text-sm text-gray-500">
+                      {ticket.user?.fullName}
+                    </p>
+                  </div>
+                  <span
+                    className={`text-sm px-2 py-1 rounded ${
+                      ticket.status === "Open"
+                        ? "bg-red-100 text-red-500"
+                        : ticket.status === "Pending"
+                        ? "bg-yellow-100 text-yellow-600"
+                        : "bg-green-100 text-green-600"
+                    }`}
+                  >
+                    {ticket.status || "open"}
+                  </span>
                 </div>
-                <span
-                  className={`text-sm px-2 py-1 rounded ${
-                    ticket.status === "Open"
-                      ? "bg-red-100 text-red-500"
-                      : ticket.status === "Pending"
-                      ? "bg-yellow-100 text-yellow-600"
-                      : "bg-green-100 text-green-600"
-                  }`}
-                >
-                  {ticket.status || "open"}
-                </span>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          {renderPagination()}
+        </>
       )}
 
       {showModal && activeTicket && (
@@ -211,6 +273,7 @@ export default function AdminTicketsPage() {
                   </div>
                 </div>
               ))}
+              <div ref={messagesEndRef} />
             </div>
 
             <div className="flex items-center gap-2 mt-4">
