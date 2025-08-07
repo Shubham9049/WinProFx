@@ -183,12 +183,12 @@ export default function Sidebar({
             icon={Users}
             pathname={pathname}
           />
-          <NavLink
+          {/* <NavLink
             href="/pamm"
             label="PAMM"
             icon={Briefcase}
             pathname={pathname}
-          />
+          /> */}
           <NavLink
             href="/ib"
             label="Introducing Broker"

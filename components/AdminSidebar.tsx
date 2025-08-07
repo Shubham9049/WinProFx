@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, LogOut, X } from "lucide-react";
+import { LayoutDashboard, Users, LogOut, X, MessageSquare } from "lucide-react";
 import clsx from "clsx";
 import Image from "next/image";
 import logo from "../assets/bdfx.gif";
@@ -44,6 +44,12 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             href="/users"
             label="Users"
             icon={Users}
+            pathname={pathname}
+          />
+          <NavLink
+            href="/tickets"
+            label="Support Ticket"
+            icon={MessageSquare}
             pathname={pathname}
           />
         </Section>

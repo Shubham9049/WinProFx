@@ -28,7 +28,7 @@ export default function AdminDashboardLayout({
       </div>
 
       {/* Content */}
-      <div className="flex-1 ml-0 md:ml-64 overflow-y-auto pt-16 md:pt-0">
+      <div className="flex-1 overflow-y-auto pt-16 md:pt-0">
         <main className="p-6 min-h-screen">{children}</main>
       </div>
     </div>
