@@ -10,6 +10,7 @@ interface Ticket {
   description: string;
   status: string;
   createdAt: string;
+  unreadByUser?: number; // 👈 added
 }
 
 interface Message {
@@ -92,12 +93,20 @@ export default function Support() {
   const openTicketModal = (ticket: Ticket) => {
     setActiveTicket(ticket);
     fetchMessages(ticket._id);
+
+    // Reset unread count locally so badge disappears immediately
+    setTickets((prev) =>
+      prev.map((t) => (t._id === ticket._id ? { ...t, unreadByUser: 0 } : t))
+    );
+
     setShowModal(true);
   };
 
   const fetchMessages = (ticketId: string) => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${ticketId}`)
+      .get(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${ticketId}?viewer=User`
+      )
       .then((res) => {
         setMessages(res.data.messages);
       })
@@ -215,7 +224,14 @@ export default function Support() {
                   className="p-3 border border-gray-700 rounded hover:bg-[#2a2a45] cursor-pointer"
                 >
                   <div className="flex justify-between">
-                    <span className="font-medium">{ticket.subject}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-medium">{ticket.subject}</span>
+                      {Number(ticket.unreadByUser) > 0 && (
+                        <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+                          {ticket.unreadByUser}
+                        </span>
+                      )}
+                    </div>
                     <span
                       className={`text-xs px-2 py-1 rounded-full ${statusBadge(
                         ticket.status

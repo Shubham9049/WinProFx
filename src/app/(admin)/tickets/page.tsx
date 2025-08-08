@@ -20,6 +20,7 @@ interface Ticket {
   category: string;
   status: "Open" | "Pending" | "Closed";
   user?: User;
+  unreadByAdmin?: number;
 }
 
 export default function AdminTicketsPage() {
@@ -87,9 +88,14 @@ export default function AdminTicketsPage() {
     setShowModal(true);
     try {
       const res = await axios.get<{ messages: Message[] }>(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${ticket._id}`
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${ticket._id}?viewer=Admin`
       );
       setMessages(res.data.messages);
+
+      // 🔹 Reset unread count locally (backend already resets it)
+      setAllTickets((prev) =>
+        prev.map((t) => (t._id === ticket._id ? { ...t, unreadByAdmin: 0 } : t))
+      );
     } catch {
       alert("Failed to fetch messages.");
     }
@@ -116,7 +122,7 @@ export default function AdminTicketsPage() {
       setNewMessage("");
 
       const res = await axios.get<{ messages: Message[] }>(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${activeTicket._id}`
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/tickets/one/${activeTicket._id}?viewer=Admin`
       );
       setMessages(res.data.messages);
     } catch {
@@ -188,7 +194,15 @@ export default function AdminTicketsPage() {
               >
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-lg font-medium">{ticket.subject}</p>
+                    <p className="text-lg font-medium">
+                      {ticket.subject}{" "}
+                      {Number(ticket.unreadByAdmin) > 0 && (
+                        <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+                          {ticket.unreadByAdmin}
+                        </span>
+                      )}
+                    </p>
+
                     <p className="text-sm text-gray-500">
                       {ticket.user?.fullName}
                     </p>

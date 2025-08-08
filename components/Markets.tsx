@@ -121,7 +121,7 @@ export default function TradeSection() {
             >
               {/* Background zoom on hover */}
               <div className="absolute inset-0 z-0 overflow-hidden">
-                <div className="absolute inset-0 scale-0 rounded-full bg-[#927948] transition-transform duration-1000 ease-out group-hover:scale-[3]" />
+                <div className="absolute inset-0 scale-0 rounded-full bg-[#ffebbf] transition-transform duration-1000 ease-out group-hover:scale-[3]" />
               </div>
 
               <div className="flex flex-col justify-end h-full relative z-10 transition-all duration-1000 ease-in-out group-hover:pt-6">
@@ -135,9 +135,11 @@ export default function TradeSection() {
                 </div>
 
                 {/* Title + Description */}
-                <div className="transition-all duration-1000 ease-in-out transform group-hover:-translate-y-2 px-2">
-                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-300 line-clamp-2 group-hover:line-clamp-none group-hover:mb-4">
+                <div className="transition-all duration-1000 ease-in-out transform group-hover:-translate-y-2  px-2">
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-black">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-300 line-clamp-2 group-hover:line-clamp-none group-hover:mb-4 group-hover:text-gray-800">
                     {item.description}
                   </p>
                 </div>
