@@ -35,8 +35,25 @@ export default function Setting() {
     <div className="min-h-screen bg-black text-white md:p-6 font-raleway">
       <h1 className="sticky md:top-10 text-2xl font-bold mb-6">Settings</h1>
 
+      {/* Mobile Tabs at Top */}
+      <div className="md:hidden mb-4 grid grid-cols-2 gap-2">
+        {tabs.map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className={`px-4 py-2 rounded-md font-medium transition ${
+              activeTab === tab.key
+                ? "bg-[var(--primary)] text-white"
+                : "bg-[#121a2a] text-gray-200 hover:bg-[var(--bg)]"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
       <div className="flex gap-6">
-        {/* LEFT MENU */}
+        {/* LEFT MENU (Desktop) */}
         <div className="hidden md:block md:w-64">
           <div className="sticky top-20 bg-[#121a2a] rounded-lg p-4 shadow-md">
             {tabs.map((tab) => (
