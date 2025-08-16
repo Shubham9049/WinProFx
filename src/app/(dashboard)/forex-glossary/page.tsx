@@ -10,62 +10,181 @@ const glossaryData: GlossaryItem[] = [
   {
     term: "Abandon",
     definition:
-      "Abandon literally means rejection (from the French. Abandon). As applied to the sphere of financial operations, abandon can be a waiver of any right or property, withdrawal from a transaction, waiver of using an option until its full expiration date.",
+      "This is derived from the French term abondon which means to abandon or to forsake. In finance, an action of forfeiting a right, abandoning or quitting a trade, or refusing to use an option before that option expires.",
   },
   {
     term: "Accelerator/Decelerator",
     definition:
-      "The Accelerator/Decelerator technical indicator shows the acceleration or deceleration of the current market driving force.",
+      "A technical indicator that tracks the rate at which the market's driving force gains or loses momentum.",
   },
   {
     term: "Accumulation/Distribution",
     definition:
-      "Accumulation/Distribution is an indicator designed to reflect cumulative inflows and outflows of money by comparing closing prices with corresponding highs and lows.",
+      "An indicator that measures the total flow of funds into and out of an asset by comparing closing prices to their respective highs and lows.",
   },
   {
-    term: "ADR (American Depository Receipts)",
+    term: "ADRs (American Depository Receipts) ",
     definition:
-      "The American Depositary Receipt is used to trade in securities of foreign companies in the United States. Shares of foreign companies are acquired by the American depositary bank in the process of listing these shares on US stock exchanges. This scheme has been used since 1927. Receipts (ADRs) are denominated in US dollars. In the same way, they are freely traded in Europe. ADRs are a tool for raising capital in the US and international markets. They may have different names that meet the requirements of a particular market.",
+      "It enableS U.S. investors to trade shares of international firms on American exchanges. A US depositary bank buys overseas shares and issues ADRs priced in US dollars. This system, which has been in place since 1927, assists enterprises in raising finance in the United States and other international markets, as well as trading freely throughout Europe.",
   },
   {
     term: "AMEX",
     definition:
-      "World Stock Exchange, which grew out of a small company of stock traders in the second largest US stock exchange. Its distinctive feature is that shares of firms that are in the development stage (small and medium business) are traded here. Two major indices are calculated on this exchange: AMEX Major Market Index and AMEX Market Value Index.",
+      "The American Stock Exchange began as a small group of merchants and is now the second-largest stock exchange in the United States. It is well-known for listing shares of small and medium-sized enterprises. Two important indices, the AMEX important Market Index and the AMEX Market Value Index, are computed here",
   },
   {
     term: "Arbitrage",
     definition:
-      "Simultaneous purchase of an undervalued financial asset and sale of its overvalued equivalent in order to make further risk-free profit from the price difference of assets which emerged as a result of temporary market inefficiency.",
+      "A method in which a trader buys an inexpensive asset while simultaneously selling an overpriced equivalent, benefitting from the momentary price differential while avoiding market risk.",
   },
   {
     term: "Ascending Triangle",
     definition:
-      "The Ascending triangle graphical price pattern is a chart pattern of an existing trend continuation, which is usually formed in an uptrend and confirms its further direction.",
+      "A bullish continuation chart pattern that typically forms during an uptrend and indicates that the trend will continue in the same direction.",
   },
   {
-    term: "Ask price",
+    term: "Ask Price",
     definition:
-      "The ask price is the price at which one buys any financial instrument.",
+      "The amount that a seller consents to charge for a financial item.",
   },
   {
     term: "Ask Rate",
-    definition: "See ask price",
+    definition: "Another term for Ask Price.",
   },
   {
     term: "Asset",
     definition:
-      "An instrument which has an economic value and may generate income in future.",
+      "Any resource with economic value that can generate future income or benefits.",
   },
   {
     term: "AUDUSD",
     definition:
-      "The Australian dollar and the US dollar currency pair. In this pair the Australian dollar is the base currency, and the US dollar is the quoted one.",
+      "A pair referencing the rate at which you can exchange the Australian dollar (base currency) into the U.S. dollar (quote currency).",
   },
-  { term: "Aussie", definition: "Slang term  for the Australian Dollar." },
+  { term: "Aussie", definition: "Australian dollar slang." },
   {
     term: "Automated Trading",
     definition:
-      "Automated trading gives an opportunity to make the trading process absolutely automated.",
+      "A system where trades can be placed and maintained automatically under pre-configured rules or sets of algorithms, minimising or eliminating manual input.",
+  },
+  {
+    term: "Average Directional Index (ADX)",
+    definition:
+      "Welles Wilder invented this indicator that measures the power of a trend based on the analysis of ranges between the high and low-prices.",
+  },
+  {
+    term: "Average True Range Indicator",
+    definition:
+      "An indicator that measures market volatility by analysing the average range between high and low prices over a set period.",
+  },
+  {
+    term: "Awesome Oscillator",
+    definition:
+      "A technical tool that reflects changes in market momentum by comparing current and past price movements (definition continues if needed).",
+  },
+  {
+    term: "Backwardation",
+    definition:
+      "The state of the market where a futures contract's price is lower than the underlying's price as established by the spot market. Or when further-dated futures are priced at a lesser level than near future futures.",
+  },
+  {
+    term: "Balance/Account Balance",
+    definition:
+      "The entire value of all closed trades, deposits, and withdrawals from a trading account.",
+  },
+  {
+    term: "Bank of Canada (BOC)",
+    definition:
+      "The financial system, the monetary policy and the supply of currencies in Canada are managed by the bank of Canada (BOC).",
+  },
+  {
+    term: "Bank of England (BOE)",
+    definition: "The United Kingdom's central bank is the Bank of England.",
+  },
+  {
+    term: "Bank of Japan (BOJ)",
+    definition:
+      "The central bank of Japan monitors monetary policy, the issuance of currency, and has the stability of the economy.",
+  },
+  {
+    term: "Bar Chart",
+    definition:
+      "A bar chart that displays the high, low, open, and close points over a specific period of time. The vertical stroke represents high and low and the horizontal marks are open (left) and close (right).",
+  },
+  {
+    term: "Base Currency",
+    definition:
+      "The first currency in a currency pair represents the unit being purchased or sold.",
+  },
+  {
+    term: "Base Interest Rate",
+    definition:
+      "The interest rate established by a nation's central bank has an impact on the value of its currency and lending rates within the economy.",
+  },
+  {
+    term: "Basis",
+    definition:
+      "An asset's futures price minus its current price. As a futures contract approaches expiration, its basis narrows to zero.",
+  },
+  {
+    term: "Basis Point",
+    definition:
+      "Basis points, or 0.01 percent (one tenth of a percentage point),are frequently used to quantify changes in interest rates.",
+  },
+  {
+    term: "Bear Market",
+    definition:
+      "A market climate characterized by persistently declining pricing.",
+  },
+  {
+    term: "Bearish Rectangle",
+    definition:
+      "A continuation chart pattern formed during a downtrend, indicating that the decline will most likely continue.",
+  },
+  {
+    term: "Beneficiary",
+    definition:
+      "An individual or organization entitled to receive advantages or profits, as stipulated in a financial agreement or legal document.",
+  },
+  {
+    term: "Bid Price",
+    definition:
+      "The price at which a buyer is willing to pay for a financial asset.",
+  },
+  {
+    term: "Bid-Ask Spread",
+    definition:
+      "Bid (buy) and ask (sell) prices of a financial instrument are not equal.",
+  },
+  {
+    term: "Big Board",
+    definition:
+      "In terms of market value, the New York Stock Exchange, or NYSE, is the biggest stock exchange in the world, with over 3000 listed companies.",
+  },
+  {
+    term: "Binary Options",
+    definition:
+      "A kind of monetary option whose payment is fixed, and whose risk is set in advance; where traders gamble whether an asset would go up or down in price, given a certain amount of time.",
+  },
+  {
+    term: "Bollinger Bands Indicator",
+    definition:
+      "An indicator developed based on volatility, which employs moving average with upper and lower bands to make price extremes, potential breakouts and market consolidation evident.",
+  },
+  {
+    term: "Break",
+    definition:
+      "The steep rise or fall in price that often takes place when there is an uneven relationship between the buyers and the sellers.",
+  },
+  {
+    term: "Bretton Woods Agreement",
+    definition:
+      "An agreement of 1944 between Allied Countries to create a fixed exchange rate regime with currencies pegged to the US dollar which was convertible to gold. This made the International Monetary Fund come into being. This system failed in 1971 when America ended the convertibility of gold.",
+  },
+  {
+    term: "Broker",
+    definition:
+      "The individual or business that serves as a broker allows a client to enter a market and trades on their behalf.",
   },
 ];
 
@@ -78,17 +197,16 @@ export default function ForexGlossary() {
 
   return (
     <section className="bg-black text-white py-10 px-4 sm:px-10">
-      {/* Top description */}
-      <p className="max-w-4xl mb-6 text-gray-300">
-        Explore our detailed Forex Glossary, a complete guide to essential
-        trading terms and concepts. From technical indicators like RSI and MACD
-        to financial terms like bid/ask spread, leverage, and volatility, this
-        glossary is designed to help traders of all levels enhance their
-        understanding of the Forex market.
-      </p>
-
       {/* Glossary Title */}
       <h2 className="text-3xl font-bold mb-6">Forex Glossary</h2>
+      {/* Top description */}
+      <p className="max-w-4xl mb-6 text-gray-300">
+        Our Forex Glossary gives a concise view of important trading terms and
+        concepts. It discusses not only such technical indicators as RSI and
+        MACD but also such financial terms as bid/ask spread, leverage, and
+        volatility, which makes it an efficient choice regardless of what stage
+        of progression of a trader.
+      </p>
 
       {/* Search bar */}
       <div className="flex justify-end mb-4">
@@ -97,7 +215,7 @@ export default function ForexGlossary() {
           placeholder="Search term..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="px-4 py-2 rounded-md border border-gray-500 bg-white text-black w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 rounded-md border border-gray-500 bg-black text-white w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
