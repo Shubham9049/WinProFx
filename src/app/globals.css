@@ -44,3 +44,48 @@
   background-color: #444;
   border-radius: 4px;
 }
+
+#google_translate_element span {
+  display: none;
+}
+
+.goog-te-gadget {
+  font-size: 0px !important;
+}
+
+#google_translate_element select {
+  @apply bg-transparent text-white border border-white px-2 rounded-full py-1;
+}
+
+#google_translate_element select option {
+  background-color: black;
+  color: white;
+}
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+
+/* Hide Google’s default gadget icon */
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+/* Force white text inside custom language selector */
+select,
+select option {
+  color: white !important;
+}
+
+/* For your specific selector */
+.language-selector {
+  color: white !important;
+  max-width: 120px;
+}
+
+.language-selector option {
+  color: white !important;
+  background-color: black !important;
+}

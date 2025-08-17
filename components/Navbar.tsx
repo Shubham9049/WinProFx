@@ -4,6 +4,14 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import logo from "../assets/bdfx.gif";
 import Image from "next/image";
+import LanguageSelector from "./LanguageSelector";
+
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void;
+    google: any;
+  }
+}
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -75,6 +83,31 @@ const Navbar = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          autoDisplay: false,
+        },
+        "google_translate_element"
+      );
+    };
+
+    const loadGoogleTranslateScript = () => {
+      if (!window.googleTranslateElementInit) {
+        const script = document.createElement("script");
+        script.src =
+          "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        script.async = true;
+        document.body.appendChild(script);
+        window.googleTranslateElementInit = googleTranslateElementInit;
+      }
+    };
+
+    loadGoogleTranslateScript();
   }, []);
 
   return (
@@ -153,22 +186,16 @@ const Navbar = () => {
               Register
             </span>
           </Link>
+          <div className="notranslate">
+            <LanguageSelector />
+          </div>
         </div>
 
         {/* Mobile Buttons */}
         <div className="lg:hidden flex items-center gap-2 ml-auto">
-          <button
-            className="text-[var(--primary)] border border-[var(--primary)] px-3 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
-            onClick={() => (window.location.href = "/login")}
-          >
-            Login
-          </button>
-          <button
-            className="text-[var(--primary)] border border-[var(--primary)] px-3 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
-            onClick={() => (window.location.href = "/register")}
-          >
-            Register
-          </button>
+          <div className="notranslate">
+            <LanguageSelector />
+          </div>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="ml-2"
@@ -240,8 +267,23 @@ const Navbar = () => {
           >
             Introducing Broker
           </Link>
+          <div className="flex gap-5">
+            <button
+              className="text-[var(--primary)] border border-[var(--primary)] px-3 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
+              onClick={() => (window.location.href = "/login")}
+            >
+              Login
+            </button>
+            <button
+              className="text-[var(--primary)] border border-[var(--primary)] px-3 py-1 rounded-full text-sm hover:bg-[var(--primary)] hover:text-black transition"
+              onClick={() => (window.location.href = "/register")}
+            >
+              Register
+            </button>
+          </div>
         </div>
       )}
+      <div id="google_translate_element" className="hidden" />
     </nav>
   );
 };
