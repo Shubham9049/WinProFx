@@ -9,7 +9,14 @@ import LanguageSelector from "./LanguageSelector";
 declare global {
   interface Window {
     googleTranslateElementInit: () => void;
-    google: any;
+    google: {
+      translate: {
+        TranslateElement: new (
+          options: { pageLanguage: string; autoDisplay?: boolean },
+          elementId: string
+        ) => void;
+      };
+    };
   }
 }
 
