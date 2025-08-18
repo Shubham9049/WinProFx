@@ -24,6 +24,22 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <style>{`
+          body > .skiptranslate {
+            display: none;
+          }
+          .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+          }
+          body {
+            top: 0px !important;
+          }
+          @media print {
+            #google_translate_element {
+              display: none;
+            }
+          }
+        `}</style>
       </head>
       <body className={montserrat.className}>
         <AOSWrapper>{children}</AOSWrapper>
