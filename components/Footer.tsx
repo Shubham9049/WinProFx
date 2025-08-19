@@ -178,7 +178,7 @@ export default function Footer() {
             </span>
           ))}
         </div>
-        <div className="w-full flex justify-center mt-4">
+        {/* <div className="w-full flex justify-center mt-4">
           <a
             href="https://www.bigwigdigital.in/"
             target="_blank"
@@ -187,7 +187,7 @@ export default function Footer() {
           >
             Made & Marketed with ❤️ by Bigwig Digital
           </a>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
