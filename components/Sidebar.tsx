@@ -157,17 +157,17 @@ export default function Sidebar({
             items={[
               {
                 label: "Live Market Rates",
-                href: "/market/live",
+                href: "/live-markets-rates",
                 icon: BarChart3,
               },
               {
                 label: "News Feed",
-                href: "/market/news",
+                href: "/top-news",
                 icon: MessageCircle,
               },
               {
                 label: "Forex Indicators",
-                href: "/market/indicators",
+                href: "/indicators",
                 icon: BarChart2,
               },
             ]}
@@ -177,12 +177,12 @@ export default function Sidebar({
 
         {/* TOOLS */}
         <Section title="Tools & Add-Ons">
-          <NavLink
+          {/* <NavLink
             href="/social-trading"
             label="Social Trading"
             icon={Users}
             pathname={pathname}
-          />
+          /> */}
           {/* <NavLink
             href="/pamm"
             label="PAMM"
