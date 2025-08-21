@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, memo } from "react";
 const TradingViewWidget = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // 👇 State for dropdowns
+  // 👇 Dropdown states
   const [feedMode, setFeedMode] = useState<"all_symbols" | "market" | "symbol">(
     "all_symbols"
   );
@@ -12,10 +12,16 @@ const TradingViewWidget = () => {
     "regular"
   );
 
+  // 👇 Loading state for skeleton/spinner
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // ✅ Clear old widget before injecting new one
+    // Reset loading every time widget re-renders
+    setLoading(true);
+
+    // Clear old widget
     containerRef.current.innerHTML = "";
 
     const script = document.createElement("script");
@@ -26,7 +32,7 @@ const TradingViewWidget = () => {
 
     script.innerHTML = JSON.stringify({
       displayMode: displayMode,
-      feedMode: feedMode, // state driven
+      feedMode: feedMode,
       colorTheme: "dark",
       isTransparent: false,
       locale: "en",
@@ -34,11 +40,19 @@ const TradingViewWidget = () => {
       height: "600",
     });
 
+    // Append script
     containerRef.current.appendChild(script);
-  }, [feedMode, displayMode]); // 👈 re-run when changed
+
+    // ⏳ Assume it takes ~2s for TradingView to render
+    const timer = setTimeout(() => setLoading(false), 2000);
+
+    return () => clearTimeout(timer);
+  }, [feedMode, displayMode]);
 
   return (
-    <div className="w-full bg-[#0d1117] rounded-lg shadow-md p-4">
+    <div className="w-full bg-[#0d1117] rounded-lg shadow-md p-4 relative">
+      <h2 className="text-xl font-bold text-white mb-4">📢 Technical News</h2>
+
       {/* Controls */}
       <div className="flex gap-4 mb-4">
         {/* Feed Selector */}
@@ -74,6 +88,14 @@ const TradingViewWidget = () => {
           </select>
         </div>
       </div>
+
+      {/* Loader */}
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#0d1117] bg-opacity-80">
+          <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+          <span className="ml-3 text-gray-400">Loading news...</span>
+        </div>
+      )}
 
       {/* TradingView Widget */}
       <div
