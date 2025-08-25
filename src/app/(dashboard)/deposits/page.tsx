@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { CreditCard, X } from "lucide-react";
+import Button from "../../../../components/Button"; // ✅ import your Button
 
 interface Account {
   _id: string;
@@ -97,12 +98,12 @@ function Deposit() {
           Secure and fast deposit using DigiPay. Click below to proceed.
         </p>
 
-        <button
+        {/* ✅ Use Button instead of <button> */}
+        <Button
+          text="Deposit"
           onClick={() => setShowModal(true)}
-          className="cursor-pointer w-full border font-medium px-6 py-2 rounded-lg transition"
-        >
-          Deposit
-        </button>
+          className="w-fit"
+        />
       </div>
 
       {/* Modal Popup */}
@@ -157,13 +158,12 @@ function Deposit() {
                 />
               </div>
 
-              <button
-                type="submit"
+              {/* ✅ Use Button instead of <button> */}
+              <Button
+                text={loading ? "Processing..." : "Confirm Deposit"}
+                className="w-fit disabled:opacity-50"
                 disabled={loading}
-                className="w-full px-6 py-2 border  font-medium rounded-lg transition  disabled:opacity-50"
-              >
-                {loading ? "Processing..." : "Confirm Deposit"}
-              </button>
+              />
             </form>
           </div>
         </div>
